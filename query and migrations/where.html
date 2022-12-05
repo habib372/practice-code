@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+<body>
+
+    $header_one = App\HeaderSetting::where('id',1)->first();
+    $all_category = App\Category::where('status',0)->get();
+    $subcategory = App\Page::where('parent',14)->get();
+
+        $header = App\Header::where('status',0)->first();
+        {{$header->header_title}}
+
+        {{asset('uploads/product')}}/{{$product->image}}
+
+//$upcomingCourseEvents = CourseEvent::whereDate('start_date','>',now())->take(5)->get();
+        $upcomingCourseEvents = News::latest()->where('type','training')->take(4)->get();
+        $currentCourses = Course::all();
+        $news = News::latest()->where('type','training')->get();
+
+<!-- text limit -->
+{!! strip_tags(Illuminate\Support\Str::limit($singleNews->excerpt, 200)) !!}
+
+
+<!-- counter id -->
+@php
+ $i=1
+@endphp
+{{ $i++ }}
+
+<option disabled hidden readonly selected value="">Select your education..</option>
+
+</body>
+</html>
