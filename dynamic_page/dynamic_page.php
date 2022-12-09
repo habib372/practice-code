@@ -10,8 +10,6 @@
         return view('frontend.page',compact('page','color'));
     }
 
-
-
 <!-- navbar link page: -->
                         @php
                             $page = App\Page::where('parent_id', 14)->get();
