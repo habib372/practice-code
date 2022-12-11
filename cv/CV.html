@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="">
+
+     <title>habib Profile</title>
+
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet"  href="css/main.css">
+    <link rel="stylesheet" href="css/resume.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="css/iconfont.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    <title>test</title>
+
+    <style>
+        body{
+		        background: #eee;
+
+		}
+		*{
+		    font-family: 'Roboto', sans-serif;
+
+		}
+		h1,h2,h3, h4{
+		    margin-top:0;
+		}
+		.resume{
+		    grid-template-columns: 1fr 2fr;
+		    width:800px;
+		    height: 100%;overflow:hidden;
+		}
+		.resume_container{
+            width: 100%;
+            max-width: 1000px;
+            min-height: 1000px;
+            margin: auto;
+
+		}
+		.img-box img{
+		    height: 100%;
+		}
+
+        .top-info h1.title{
+            font-size: 1.5rem;
+        }
+        .job-info{
+            padding-top: 16px;
+        }
+        .right-content h4{
+            margin-bottom:0;
+            margin-top: 4px;
+        }
+        .career-objective.experince-data.bd-grid{
+            margin-top:0;
+            padding-top:10px;
+        }
+        .career-objective p{
+            margin-bottom:0;
+            margin-top:0;
+        }
+        .experince-details{
+            margin-bottom:0;
+        }
+        h3.title{
+            font-size: 14px;
+            font-weight:600;
+            letter-spacing: 1px;
+            margin-top: 28px
+        }
+        .box ul{
+            padding-left:3px;
+            padding-right:15px;
+        }
+        .box ul li{
+            margin: 10px 0;
+           align-items: end;
+        }
+        .box ul li .text h4{
+            margin-bottom:0;
+            margin-top:0;font-size:14px;
+        }
+        .box ul li .icon{
+            width: 20px;
+        }
+        .img-box{
+            width: 150px; height: 150px;
+        }
+        .left-side{
+            padding: 20px 0px 20px 15px;
+        }
+        .objective p strong, .objective  span, .objective  p b,.objective  div, .objective  ul li{
+            font-weight: normal;
+            font-size: 12px !important;
+        }
+        .right-side{
+            padding-right: 30px;
+        }
+        .left-icon i{
+            padding-top: 2px;
+            padding-left: 2px;
+            display: block;
+            font-size: 17px;
+        }
+        .work-experince{
+            margin-bottom:30px;
+        }
+        .job-info{
+            position: relative;
+        }
+
+        .middle-info{
+                grid-template-columns: 1fr 16fr;
+                height: 100%;
+
+        }
+        .job-info{
+            padding-left:0;
+        }
+        .copyinfo{
+            position: relative;
+            width:30px;
+        }
+        /* .copyinfo:before{ */
+            /*background: url({{asset('assets/1.png')}}) repeat;*/
+            /* background: url({{asset('storage/uploads/setting/'.$getSetting->cv_logo)}}) repeat;
+            width: 59%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            content: '';
+            background-position: top;
+            top: 0;
+            transform: rotate(0deg);
+            opacity: .3;
+        } */
+        .resposiblity{
+               overflow-wrap: break-word;
+            width: 100%;
+            text-align: justify;
+
+        }
+        .experince-year {
+            font-size: 13px;
+            width: 22%;
+        }
+        .experince-title{
+            font-size:16px;
+        }
+        .experince-studies{
+            font-size:14px;
+        }
+        .resposiblity span, .resposiblity p, .resposiblity strong, .resposiblity b, .resposiblity ul li{
+            font-size: 13px !important;
+             font-family: 'Roboto', sans-serif !important;
+        }
+        .work .experince-data.bd-grid{
+            width:70%;
+        }
+        .job-info{
+            margin-right: 0px;
+        }
+        .text .fa{
+            font-size:20px;
+        }
+
+    </style>
+   </head>
+  <body id="renderMe">
+
+
+<div id="app">
+
+<div class="container my-5">
+    <div class="resume_container">
+        <div class="resume"  id="resume">
+            <div class="left-side">
+                <div class="user_pic">
+                    <div class="img-box">
+                        <img class="img-responsive rounded" width="250" height="250" src="css/download.jpg" alt="">
+                    </div>
+                </div>
+                <div class="top-info about sm-show rounded">
+                    <h1 class="title">Habibur Rahman</h1>
+                    <p class="h5">Software Engineer</p>
+
+                </div>
+                <div class="box userinfo mt-3">
+
+                    <h3 class="title">Basic Info</h3>
+                    <div class="border-bottom"></div>
+                    <ul>
+                        <li>
+                            <span class="text">
+                                <h4 class="d-flex"><span class="mr-2"><strong>Name</strong></span>
+                                    <span>habibur rahman</span></h4>
+                            </span>
+                        </li>
+
+                         <li>
+                            <span class="text">
+                                <h4 class="d-flex"><span class="mr-2"><strong>Father Name</strong>
+                                    </span><span>abdur rahman</span></h4>
+                            </span>
+                        </li>
+
+                         <li>
+                            <span class="text">
+                                <h4 class="d-flex"><span class="mr-2"><strong>Mother Name</strong>
+                                    </span><span>khadeza begum</span></h4>
+                            </span>
+                        </li>
+
+                         <li>
+                            <span class="text">
+                                <h4 class="d-flex"><span class="mr-2"><strong>Religion</strong>
+                                    </span><span>Islam</span></h4>
+                            </span>
+                        </li>
+
+                         <li>
+                            <span class="text">
+                                <h4 class="d-flex"><span class="mr-2"><strong>Date of Birth</strong>
+                                    </span><span>15-07-1997</span></h4>
+                            </span>
+                        </li>
+
+                         <li>
+                            <span class="text">
+                                <h4 class="d-flex"><span class="mr-2"><strong>Gender</strong>
+                                    </span><span>Male</span></h4>
+                            </span>
+                        </li>
+                         <li>
+                            <span class="text">
+                                <h4 class="d-flex"><span class="mr-2"><strong>Nationality</strong>
+                                   </span> <span>Bangladeshi</span></h4>
+                            </span>
+                        </li>
+
+                        <li>
+                            <span class="text">
+                                <h4 class="d-flex"><span class="mr-2"><strong>Present Address</strong>
+                                   </span> <span>Mohammadpur, Dhaka, Bangladesh</span></h4>
+                            </span>
+                        </li>
+
+                        <li>
+                            <span class="text">
+                                <h4 class="d-flex"><span class="mr-2"><strong>Permanent Address</strong>
+                                    </span><span>Thakurgaon Sadar, Thakurgaon</span></h4>
+                            </span>
+                        </li>
+
+                        <li>
+                            <span class="icon">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                            </span>
+                            <span class="text"><h4 class="d-flex"><span class="mr-2"><strong>Phone</strong></span> <span>01767177372</span></h4></span>
+                        </li>
+
+                        <li>
+                            <span class="icon">
+                                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            </span>
+                            <span class="text">
+                                <h4 class="d-flex"><span class="mr-2"><strong>Email</strong></span>
+                                <span>habibsoft372@gmail.com</span>
+                                </h4>
+                            </span>
+                        </li>
+
+                        <li>
+                            <span class="icon">
+                                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                            </span>
+                            <span class="text">
+                                <h4 class="d-flex"><span class="mr-2"><strong>Website</strong></span>
+                                <span>http://habibsoft.intels.co/</span>
+                                </h4>
+                            </span>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="box userinfo mt-3">
+
+                    <h3 class="title">Social</h3>
+                    <div class="border-bottom"></div>
+                    <ul>
+
+                         <!-- <li>
+                            <span class="icon">
+                                <i class="fa fa-skype" aria-hidden="true"></i>
+                            </span>
+                            <span class="text">
+                                <h4 class="d-flex "><span>https://skype.com/ahsan-habib</span></h4>
+                            </span>
+                        </li> -->
+                         <li>
+                            <span class="text">
+                                <h4 class="d-flex" ><i class="fa fa-skype mr-2" aria-hidden="true"></i> <span>https://linkedin.com/habibur-rahman</span></h4>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="text">
+                                <h4 class="d-flex" ><i class="fa fa-twitter mr-2" aria-hidden="true"></i> <span>https://skype.com/habib25523</span></h4>
+                            </span>
+                        </li>
+
+
+                        <li>
+                            <span class="text">
+                                <h4 class="d-flex" ><i class="fa fa-linkedin mr-2" aria-hidden="true"></i> <span>https://linkedin.com/habibur-rahman35256</span></h4>
+                            </span>
+                        </li>
+
+                         <li>
+                            <span class="text">
+                                <h4 class="d-flex" ><i class="fa fa-facebook mr-2" aria-hidden="true"></i> <span>https://linkedin.com/habib9143</span></h4>
+                            </span>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+                <div class="box userinfo language mt-3">
+
+                    <h3 class="title">Language</h3>
+                    <div class="border-bottom"></div>
+                   <ul>
+
+                      <li><span class="text">Bengali</span>
+                        <span class="percentage">
+                          <div style="width:100%; background:rgb(97, 97, 172)"></div>
+                        </span>
+                      </li>
+                      <li><span class="text">English</span>
+                        <span class="percentage">
+                          <div style="width:70%; background:rgb(97, 97, 172)"></div>
+                        </span>
+                      </li>
+
+                    </ul>
+                </div>
+
+                <!-- <div class="box userinfo language mt-3">
+                    <h3 class="title">Personal Skill</h3>
+                    <div class="border-bottom"></div>
+                   <ul>
+
+                      <li><span class="text">HTML</span>
+                        <span class="percentage">
+                          <div style="width:95%; background:rgb(75, 75, 162)"></div>
+                        </span>
+                      </li>
+                       <li><span class="text">PHP</span>
+                        <span class="percentage">
+                          <div style="width:80%; background:rgb(75, 75, 162)"></div>
+                        </span>
+                      </li>
+                       <li><span class="text">Laravel</span>
+                        <span class="percentage">
+                          <div style="width:85%; background:rgb(75, 75, 162)"></div>
+                        </span>
+                      </li>
+
+                    </ul>
+                </div> -->
+
+                <div class="box userinfo language mt-3">
+                    <h3 class="title">Job Infomation</h3>
+                    <div class="border-bottom"></div>
+                   <ul>
+
+                        <li>
+
+                            <span class="text">
+                                <h4 class="d-flex"><span class="mr-2"><strong>Pro level</strong>
+                                <span>Mid-level</span>
+                                </h4>
+                            </span>
+                        </li>
+
+                        <li>
+
+                            <span class="text">
+                                <h4 class="d-flex"><span class="mr-2"><strong>Prefered Area</strong>
+                                <span>Dhaka</span>
+                                </h4>
+                            </span>
+                        </li>
+
+                        <li>
+
+                            <span class="text">
+                                <h4 class="d-flex"><span class="mr-2"><strong>Present Salary</strong>
+                                <span>15,000</span>
+                                </h4>
+                            </span>
+                        </li>
+
+                        <li>
+
+                            <span class="text">
+                                <h4 class="d-flex"><span class="mr-2"><strong>Expected salary</strong>
+                                <span>25,000</span>
+                                </h4>
+                            </span>
+                        </li>
+
+                   </ul>
+                </div>
+
+            </div>
+            <div class="right-side">
+                <div class="top-info about rounded">
+                    <h1 class="title">Habibur Rahman</h1>
+                    <p class="n-p">Software Engineer</p>
+                </div>
+                <div class="middle-info bd-grid">
+                    <div class="copyinfo"></div>
+                    <div class="job-info">
+                        <div class=" work-experince">
+                            <div class="info-box">
+                                <div class="right-content">
+                                    <i class="fa fa-pencil left-icon" aria-hidden="true"></i><h4>Career Objective</h4>
+                                </div>
+                            </div>
+                            <div class="objective experince-container bd-grid">
+
+                                <div class="experince-content">
+
+                                    <div class="experince-data bd-grid career-objective ">
+                                        <p>To develop career in IT fields as a software engineer with the best utilization of my
+                                            theoretical and practical knowledge with challenges and innovation to pursue longterm successful career in professional environment as an efficient part of the
+                                            organization through the own aptitude and hard work.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="work-experince work">
+                            <div class="info-box">
+                                <div class="right-content">
+                                    <i class="fa fa-briefcase left-icon" aria-hidden="true"></i><h4>Work Experince</h4>
+                                    <span class="ml-auto">2 Years</span>
+                                </div>
+                            </div>
+                            <div class="experince-container bd-grid">
+
+                                <div class="experince-content">
+                                    <div class="experince-time">
+                                        <span class="experince-line ">2021-2022</span>
+                                    </div>
+
+                                    <div class="experince-data bd-grid">
+                                        <h3 class="experince-title">Hesper IT Solution</h3>
+                                        <span class="experince-studies">Web Developer</span>
+                                        <span class="experince-details resposiblity">Highly focused and detail-oriented Account Manager with an exceptional record of client service and revenue generation.</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                             <div class="experince-container bd-grid">
+
+                                <div class="experince-content">
+                                    <div class="experince-time">
+                                        <span class="experince-line ">2021-2022</span>
+                                    </div>
+
+                                    <div class="experince-data bd-grid">
+                                        <h3 class="experince-title">Hesper IT Solution</h3>
+                                        <span class="experince-studies">Web Developer</span>
+                                        <span class="experince-details resposiblity">Highly focused and detail-oriented Account Manager with an exceptional record of client service and revenue generation.</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <section class="work work-experince">
+                            <div class="info-box">
+                                <div class="right-content">
+                                   <i class="fa fa-graduation-cap left-icon" aria-hidden="true" ></i><h4>Education</h4>
+                                </div>
+                            </div>
+                            <div class="experince-container bd-grid">
+                                <div class="experince-content">
+                                    <div class="experince-time">
+                                        <span class="experince-line ">2014-2018</span>
+                                    </div>
+
+                                    <div class="experince-data bd-grid">
+                                        <h3 class="experince-title">Dinajpur Polytechnic Institute</h3>
+                                        <span class="experince-studies">Diploma in Engineering</span>
+                                        <span class="group_name">Computer Technology</span>
+                                        <span class="board">Dinajpur</span>
+                                        <span class="experince-details">Grade: 3.41</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="experince-container bd-grid">
+                                <div class="experince-content">
+                                    <div class="experince-time">
+                                        <span class="experince-line ">2013-2014</span>
+                                    </div>
+
+                                    <div class="experince-data bd-grid">
+                                        <h3 class="experince-title">Umed Ali High School</h3>
+                                        <span class="experince-studies">Secondary School Certificate (SSC)</span>
+                                        <span class="group_name">Science</span>
+                                        <span class="board">Dinajpur</span>
+                                        <span class="experince-details">Grade: 5.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+
+                        <section class=" work-experince work">
+                            <div class="info-box">
+                                <div class="right-content">
+                                    <i class="fa fa-certificate left-icon" aria-hidden="true"></i><h4>Professional Training</h4>
+                                </div>
+                            </div>
+                            <div class="experince-container bd-grid">
+                                <div class="experince-content">
+                                    <div class="experince-time">
+                                        <span class="experince-line">2020</span>
+                                    </div>
+                                    <div class="experince-data bd-grid">
+                                        <h3 class="experince-title">Course Name: Professional Web Application Development</h3>
+                                        <span class="experince-studies">Institute: IsDB-BISEW</span>
+                                        <span class="experince-details">Duration: 6 Month</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="experince-container bd-grid">
+                                <div class="experince-content">
+                                    <div class="experince-time">
+                                        <span class="experince-line">2019</span>
+                                    </div>
+                                    <div class="experince-data bd-grid">
+                                        <h3 class="experince-title">Course Name: Certificate in Graphics Design</h3>
+                                        <span class="experince-studies">Institute: Dinajpur Technical Training Centre.</span>
+                                        <span class="experince-details">Duration: 6 Month</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class=" work-experince work">
+                            <div class="box userinfo language mt-3">
+                                <div class="info-box">
+                                    <div class="right-content">
+                                        <i class="fa fa-cogs left-icon" aria-hidden="true"></i><h4>Technical Skills</h4>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <ul>
+                                            <li><span class="text">PHP</span>
+                                                <span class="percentage">
+                                                <div style="width:85%; background:rgb(75, 75, 162)"></div>
+                                                </span>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                     <div class="col-md-6 col-sm-12">
+                                        <ul>
+                                            <li><span class="text">Laravel</span>
+                                                <span class="percentage">
+                                                <div style="width:90%; background:rgb(75, 75, 162)"></div>
+                                                </span>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                     <div class="col-md-6 col-sm-12">
+                                        <ul>
+                                            <li><span class="text">MySQL</span>
+                                                <span class="percentage">
+                                                <div style="width:80%; background:rgb(75, 75, 162)"></div>
+                                                </span>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                     <div class="col-md-6 col-sm-12">
+                                        <ul>
+                                            <li><span class="text">HTML</span>
+                                                <span class="percentage">
+                                                <div style="width:95%; background:rgb(75, 75, 162)"></div>
+                                                </span>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>

@@ -1,0 +1,565 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+/*===== VARIABLES CSS =====*/
+
+/*Main style start here */
+.resume {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    min-height: 980px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    /*box-shadow: 0 35px 55px var(--white-color);*/
+     /*background: var(--white-color);*/
+     /*margin: 50px;*/
+
+    /* grid-template-columns: 1fr 2fr;
+    width: 800px;
+    height: 100%;
+    overflow: hidden; */
+}
+
+.left-side {
+    position: relative;
+    background-color: #15484285;
+    padding: 40px 15px;
+    /*box-shadow: 0 35px 55px var(--white-color);*/
+    /*margin: 50px;*/
+}
+
+.right-side {
+    position: relative;
+    background-color: #fff;
+    padding-left: 0;
+    /*background-color: var(--);
+	padding: 40px;*/
+}
+
+.user_pic {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background-color: #505e7c;
+   margin-right: 13px;
+   border-radius: 45px 5px;
+   padding: 20px 0px;
+}
+
+.img-box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.img-box img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    /*height: 100%;*/
+    width: 100%;
+    object-fit: cover;
+}
+
+h3.title {
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 1.4rem;
+    /*letter-spacing: 1px;*/
+    color: #5d564e;
+    letter-spacing: .1rem;
+    font-size: 20px;
+}
+
+.border-bottom {
+    width: 94%;
+    height: 2px;
+    background: #928781;
+    margin-bottom: 12px;
+}
+
+.box ul {
+    position: relative;
+}
+
+.box ul li {
+    position: relative;
+    margin: 20px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: top;
+}
+
+.box ul li .icon {
+    display: inline-block;
+    width: 30px;
+    font-size: 17px;
+    color: #000;
+    margin-right: 7px;
+}
+
+.box ul li .text h4 {
+    color: #2c2219;
+    font-weight: 400;
+}
+
+.box ul li .text h4 span {
+    font-weight: 400;
+    color: #212529;
+    font-size: 14px;
+}
+
+.box ul li .text h4 span:nth-child(2) {
+    font-size: 14px;
+}
+
+.box ul li .text p {
+    color: #212529;
+}
+
+.top-info {
+            background:#15484285;
+            text-align: left;
+            color: #fff;
+            margin-top: 21px;
+            margin-left: 4px;
+            padding: 40px 0 20px 25px;
+
+}
+
+.top-info h1.title {
+    color: #55405c;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+.top-info p {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.job-info {
+    padding: 10px 20px;
+}
+
+.right-content {
+    border-bottom: 2px solid #343434;
+    width: 100%;
+    padding-bottom: 8px;
+    display:flex;
+}
+
+.work-experince {
+    margin-bottom: 20px;
+}
+
+.work .right-content {
+    display: flex;
+
+}
+
+.info-box {
+    display: flex;
+}
+
+.experince-content {
+    display: flex;
+}
+
+.experince-time {
+    padding-right: 2rem;
+    margin-top:1rem;
+}
+
+.experince-rounder {
+    position: relative;
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #ddd;
+    margin-top: 1rem;
+    margin-left: 8px;
+    border: 1px solid #5F5F5F;
+    z-index: 1;
+}
+
+.experince-line {
+    display: inline;
+    width: 2px;
+    height: 100%;
+
+    transform: translate(15px, -14px);
+}
+
+.experince-data.bd-grid {
+    gap: 0.1rem;
+    margin-top: 1rem;
+
+}
+
+.work .experince-data.bd-grid {
+    width: 80%;
+    overflow: hidden;
+}
+
+.work .right-content {
+    display: flex;
+}
+
+.education .experince-data.bd-grid {
+    width: calc(100% - 10%);
+}
+
+.profession .experince-data.bd-grid {
+    width: 100%;
+}
+
+.bd-grid {
+    display: grid;
+    /*gap: 1.5rem;*/
+}
+
+
+.skill .box {
+    position: relative;
+    width: 100%;
+    grid-template-columns: 150px 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.percent {
+    position: relative;
+    width: 100%;
+    height: 8px;
+    background: #CDCDCD;
+}
+
+.percent div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 8px;
+    background-color: #6C6C6C;
+
+}
+
+.skill-box .experince-line {
+    transform: translate(15px, 7px);
+    height: 100%;
+}
+
+.bd-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.half-column {
+    width: 50%;
+    flex: 0 0 auto;
+}
+
+.skill-list {
+    flex-grow: 1;
+    padding: 0 25px;
+    margin-top: 15px;
+}
+
+.skill-list div {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.skill-list h4 {
+    margin-right: 13px;
+    width: 70%;
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: 400;
+    color: #7D7D7D;
+
+}
+
+
+
+/*/Right content /*/
+.right-content h4 {
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    font-size: 16px;
+}
+
+.left-icon {
+    width: 30px;
+    height: 30px;
+
+    background: #15484285;
+    border-radius: 50%;
+    padding: 7px;
+    margin-right: 15px;
+}
+
+.experince-year {
+    font-size: 16px;
+    margin-right: 15px;
+    margin-left: 2%;
+    margin-top: 1rem;
+    color: #565656;
+    width: 20%;
+}
+
+.experince-details {
+    margin-bottom: 20px;
+    color: #505050;
+    font-size: 14px;
+}
+
+.board,
+.group_name {
+    color: #505050;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.experince-title {
+    font-weight: 700;
+    color: #3e3e3e;
+    margin-bottom: 3px;
+    font-size: 15px;
+}
+
+.experince-studies {
+    /*margin-bottom: 5px;*/
+    font-size: 18px;
+    color: #626262;
+    font-weight: bold;
+}
+
+.education span.experince-studies {
+    margin-bottom: 0;
+}
+
+.sm-show {
+    display: none;
+}
+
+.mr-3 {
+    margin-left: 1.5rem;
+}
+
+.mt-3 {
+    margin-top: 1.5rem;
+}
+
+.career-objective {
+    margin-top: 0;
+    gap: 0;
+    text-align: justify;
+}
+
+.language .percentage {
+    position: relative;
+
+    width: 100%;
+    height: 10px;
+    background: #081921;
+    display: block;
+    margin-top: 5px;
+}
+
+.box.language ul li {
+    display: block;
+}
+
+.language .percentage div {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: blue;
+}
+
+.agreement {
+    /*background: #E1D4CC;*/
+    background: #fff;
+    /* padding: 10px 20px; */
+    display: flex;
+    align-items: center;
+    height: 50px;
+    font-size: 14px;
+    padding-left: 15px;
+    width: 100%;
+}
+
+.agreement p {
+    margin: 0;
+    color: #000;
+}
+
+.box ul li .text h4 {
+    font-weight: 700;
+    color: #3e3e3e;
+    margin-bottom: 3px;
+    font-size: 16px;
+
+}
+
+.box ul li .text h4 strong {
+    margin-bottom: 6px;
+    display: inline-block;
+}
+
+.left-side {
+    padding: 40px 15px;
+}
+
+h3.title {
+    letter-spacing: .1rem;
+    font-size: 20px;
+}
+
+.resposiblity p,
+.resposiblity span,
+.resposiblity ul,
+.resposiblity div,
+.resposiblity b,
+.resposiblity strong,
+.career-objective p,
+.career-objective span,
+.career-objective ul,
+.career-objective div,
+.career-objective b,
+.career-objective strong {
+    font-size: 14px !important;
+}
+
+@media only screen and (max-width: 1000px) {}
+
+@media only screen and (max-width: 600px) {}
+
+@media only screen and (max-width: 1000px) {
+
+    .resume {
+        margin-top: 10px;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .resume {
+        margin: 0;
+        margin-top: 10px;
+    }
+
+    .left-side {
+        overflow: hidden;
+    }
+
+    .top-info p {
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .experince-year {
+        order: 2;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+
+    .sm-show {
+        display: block;
+        text-align: center;
+    }
+
+    .sm-hide {
+        display: none;
+    }
+
+    .d-none {
+        display: none;
+    }
+
+    .about .box {
+        flex-direction: column;
+    }
+
+    .skill-box .experince-content {
+        flex-direction: column;
+        flex-basis: 100%;
+    }
+
+    .agreement {
+        margin: 10px;
+        width: 100%;
+    }
+
+    .agreement {
+        margin: 10px;
+        width: 100%;
+    }
+
+    .sm-show {
+        display: block;
+    }
+
+    .job-info {
+        padding-left: 0 !important;
+    }
+
+    .copyinfo {
+        display: none;
+    }
+
+    .career-objective.experince-data.bd-grid {
+        padding-left: 0 !important;
+    }
+
+}
+
+@media only screen and (max-width: 425px) {
+    .experince-time {
+        display: none;
+    }
+
+    .experince-content {
+        display: flex;
+        flex-flow: column;
+        padding-left: 0px;
+    }
+
+    .experince-year {
+        width: 100%;
+    }
+
+    .work .experince-data.bd-grid {
+        width: 100%;
+    }
+
+    .left-icon {
+        display: none;
+    }
+
+    .top-info h1.title {
+        font-size: 1.5rem;
+    }
+
+    .box ul li .icon {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .resume .title {
+        font-size: 18px;
+    }
+}

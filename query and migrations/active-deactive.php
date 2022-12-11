@@ -7,3 +7,6 @@
     </a>
     @endif
 </td>
+
+
+@php if($basic->gender==1){ echo "Male"; }else{ echo "Female"; } @endphp
