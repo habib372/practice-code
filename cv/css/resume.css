@@ -68,7 +68,7 @@ h3.title {
     font-weight: bold;
     line-height: 1.4rem;
     /*letter-spacing: 1px;*/
-    color: #5d564e;
+    color: #fff;
     letter-spacing: .1rem;
     font-size: 20px;
 }
@@ -140,6 +140,7 @@ h3.title {
 .top-info p {
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-size:16px;
 }
 
 .job-info {
@@ -172,7 +173,7 @@ h3.title {
 
 .experince-time {
     padding-right: 2rem;
-    margin-top:1rem;
+    margin-top:1rem!important;
 }
 
 .experince-rounder {
