@@ -10,3 +10,6 @@
 
 
 @php if($basic->gender==1){ echo "Male"; }else{ echo "Female"; } @endphp
+
+
+<div class="carousel-item {{ $loop->first ? 'active' : ''}}">

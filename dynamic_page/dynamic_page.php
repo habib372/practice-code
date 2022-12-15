@@ -21,12 +21,21 @@ $page = App\Page::where('parent_id', 14)->get();
     <input type="checkbox" id="btn-2-services">
     <ul style="background-color: {{$color->color_code}};">
         @foreach($page as $sub_data)
-        <li ><a href="{{url('services/')}}/{{strtolower(str_replace(" ", "-",$sub_data->page_name))}}">{{$sub_data->page_name}}</a></li>
+        <li><a href="{{url('services/')}}/{{strtolower(str_replace(" ", "-",$sub_data->page_name))}}">{{$sub_data->page_name}}</a></li>
         @endforeach
     </ul>
 </li>
+
+@foreach($manpower as $data)
+<li class="text-left">
+    <label for="btn-3-{{$data->id}}" class="show">{{$data->page_name}} +</label>
+    <a href="{{url('manpower')}}/{{Illuminate\Support\Str::of(strtolower($data->page_name))->replace(' ', '-')}}">{{$data->page_name}}</a>
+</li>
+@endforeach
 
 <!-- navbar active inactive -->
 {{ (request()->is('page*')) ? 'active' : '' }}
 
 {{ (request()->is('about*')) ? 'active' : '' }}
+
+class="{{ (request()->is('/')) ? 'active text-dark' : '' }}"
