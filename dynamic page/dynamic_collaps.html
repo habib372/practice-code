@@ -1,0 +1,27 @@
+<section id="page-section" class="my-md-5">
+        <div class="container py-3">
+                @php
+                    $i=1; $j=1; $k=1; $l=1; $m=1;
+                @endphp
+                 <div class="accordion" style="width:100%;" id="accordionExample">
+                    @foreach($manpowerCategory as $data)
+                      <div class="card my-2">
+                        <div class="card-header" id="heading{{$i++}}">
+                          <h5 class="mb-0">
+                            <button class="btn btn-link {{ $loop->first ? '' : 'collapsed'}}" type="button" data-toggle="collapse" data-target="#collapse{{$j++}}" aria-expanded="{{ $loop->first ? 'true' : 'false'}}"  aria-controls="collapse{{$k++}}">
+                               {{$data->title}}
+                            </button>
+                          </h5>
+                        </div>
+
+                        <div id="collapse{{$l++}}" class="collapse {{$loop->first ? 'show' : ''}}" aria-labelledby="heading{{$m++}}" data-parent="#accordionExample">
+                          <div class="card-body">
+                            <p>{!!$data->description!!}</p>
+                          </div>
+                        </div>
+                      </div>
+                     @endforeach
+                </div>
+
+        </div>
+    </section>

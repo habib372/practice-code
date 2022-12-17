@@ -3,10 +3,10 @@ Route::get('/services/{slug}', 'FrontendController@servicesdetails');
 
 <!-- controller:   -->
 public function servicesdetails($slug){
-$page_name = str_replace("-", " ",$slug);
-$page = Page::where('page_name', $page_name)->first();
-$color = Color::where('status',0)->first();
-return view('frontend.page',compact('page','color'));
+    $page_name = str_replace("-", " ",$slug);
+    $page = Page::where('page_name', $page_name)->first();
+    $color = Color::where('status',0)->first();
+    return view('frontend.page',compact('page','color'));
 }
 
 
@@ -33,9 +33,3 @@ $page = App\Page::where('parent_id', 14)->get();
 </li>
 @endforeach
 
-<!-- navbar active inactive -->
-{{ (request()->is('page*')) ? 'active' : '' }}
-
-{{ (request()->is('about*')) ? 'active' : '' }}
-
-class="{{ (request()->is('/')) ? 'active text-dark' : '' }}"
