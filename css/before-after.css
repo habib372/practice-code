@@ -1,0 +1,19 @@
+#page-section .title h2:before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 0;
+    height: 8px;
+    width: 37%;
+    background: #a08d7c3c;
+}
+
+#page-section .title h2:after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    right: 0;
+    height: 8px;
+    width: 37%;
+    background: #a08d7c3c;
+}
