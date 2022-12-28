@@ -1,0 +1,21 @@
+/*--
+    - Input Placeholder
+-----------------------------------------*/
+*::-moz-placeholder {
+    color: #d2d2d2;
+    font-size: 14px;
+    opacity: 1;
+}
+
+*::placeholder {
+    color: #d2d2d2;
+    font-size: 14px;
+    opacity: 1;
+}
+
+#our-brand form input::placeholder {
+    font-size: 13px;
+    color: #d2d2d2;
+}
+
+/*--

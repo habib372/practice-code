@@ -1,0 +1,49 @@
+@extends('layouts.frontend')
+@section('title')
+About Us
+@endsection
+
+@section('content')
+<section id="page-title-area">
+    <div class=" title mb-5">
+        <h2>{{$aboutus->page_name}}</h2>
+    </div>
+</section>
+
+<section id="page-section" class="my-md-5">
+    <div class="container py-3">
+        @if (!empty($aboutus->image))
+        <div class="row">
+            <div class="col-md-6">
+                <div class="top-image">
+                    <img src="{{asset('uploads/page')}}/{{$aboutus->image}}" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                {!!$aboutus->description!!}
+            </div>
+            @if (isset($aboutus->description_two))
+            <div class="col-12">
+                <!--<p style="font-size:18px;">    Our unique vision , mission and values capture the essence of who we are and how we interact with one another. In addition, it speaks to how we go  to market and our commitment to delivering excellence to our customer.</p>-->
+                {!!$aboutus->description_two!!}
+            </div>
+            @endif
+        </div>
+        @else
+        <div class="row">
+
+            <div class="col-md-12">
+                {!!$aboutus->description!!}
+            </div>
+            @if (isset($aboutus->description_two))
+            <div class="col-12">
+                <!--<p style="font-size:18px;">    Our unique vision , mission and values capture the essence of who we are and how we interact with one another. In addition, it speaks to how we go  to market and our commitment to delivering excellence to our customer.</p>-->
+                {!!$aboutus->description_two!!}
+            </div>
+            @endif
+        </div>
+        @endif
+    </div>
+</section>
+
+@endsection

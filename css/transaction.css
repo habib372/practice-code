@@ -1,0 +1,4 @@
+ #product-categories .card:hover {
+     transition: .5s;
+     box-shadow: 3px 3px 3px #1c89b2;
+ }

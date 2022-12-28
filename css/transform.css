@@ -1,0 +1,10 @@
+#botomnav nav ul li a {
+    color: #000;
+    text-decoration: none;
+    line-height: 70px;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 13px;
+    text-transform: uppercase;
+
+}

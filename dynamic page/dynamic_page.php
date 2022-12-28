@@ -9,6 +9,14 @@ public function servicesdetails($slug){
     return view('frontend.page',compact('page','color'));
 }
 
+ public function blog_details($slug)
+    {
+        $blog_name = str_replace("-", " ",$slug);
+        $blog = Blog::where('title', 'LIKE','%'.$blog_name.'%')->first();
+    // dd($blog);
+        $all_blog_list = Blog::where('status',0)->orderBy('id','desc')->take(10)->get();
+        return view('frontend.blog_details',compact('blog','all_blog_list'));
+    }
 
 <!-- navbar link page: -->
 @php

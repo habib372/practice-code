@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    <title>test</title>
+<style>
+    .sticky-header{
+        position: fixed;
+        width: 100%;
+        z-index: 99;
+    }
+</style>
+</head>
+<body>
+<div class="sticky-header" id="">
+    <section id="botomnav" class="botom-nav bottomnavThree">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4 col-lg-3 d-none d-sm-block" style="display: ;">
+                    <div class="category" style="display: none;">>
+                        <a href="#offcanvas-slide" title="Click To Show Side Nav" class="uk-button uk-button-default" uk-toggle><span class="d-none d-sm-inline text-white">ALL</span> CATEGORIES</a>
+                        <!-- <a href="#offcanvas-slide" class="d-block d-md-none uk-button uk-button-default" uk-toggle>CATEGORIES</a> -->
+                        <div id="offcanvas-slide" uk-offcanvas>
+                            <div class="uk-offcanvas-bar">
+                                <ul class="uk-nav uk-nav-default pt-5 pl-3" style="background-color: ">
+                                    <li class="uk-nav-header mb-3"><h6>ALL CATEGORIES</h6></li>
+
+                                    @php
+                                        $all_category = App\Category::where('status',0)->get();
+                                        $all_subcategory = App\SubCategory::where('status',0)->get();
+                                    @endphp
+
+                                    @foreach($all_category as $category)
+                                    <li class=""><a href="#">{{$category->category_name}}<i class="mt-1 float-right fas fa-angle-double-right"></i></a>
+                                    </li>
+                                    @endforeach
+
+                                    <li><a href="#" class="morecat">More Category<i class="float-right mt-1 fas fa-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <nav>
+                            <div class="right-top-two d-flex d-sm-none py-2">
+                                <!--<div class="social">-->
+                                    <!--<a class="d-none d-md-inline" id="searchIcon" title="Search"><i class="fas fa-search"></i></a>-->
+                                <!--    <a href="{{$header->facebook}}" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>-->
+                                <!--    <a href="{{$header->twitter}}" title="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>-->
+                                <!--    <a href="{{$header->instragram}}" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>-->
+                                <!--    <a href="{{$header->whatsapp}}" title="Whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>-->
+                                <!--    <a href="{{$header->linkedIn}}" title="Linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>-->
+                                <!--</div>-->
+                                <a href="{{url('/')}}">
+                                    <img class="mobile-img-1" src="{{asset('uploads/footer')}}/{{$footer->image}}" alt="logo">
+                                </a>
+                            </div>
+
+                        <label for="btn" class="icon">
+                          <span class="fa fa-bars"></span>
+                        </label>
+                        <input type="checkbox" id="btn">
+
+
+                        <ul class="nav-menu">
+                            <a href="{{url('/')}}" class="p-2 img-hover show1 ">
+                                <li>
+                                    <img class="header-img header" src="{{asset('uploads/header')}}/{{$header->image}}" alt="logo">
+                                </li>
+                            </a>
+
+                            <li><a href="{{url('/')}}"><span></span>Home</a></li>
+                            <li>
+                                <label for="btn-3" class="show">About Us +</label>
+                                <a href="#"><span></span> About Us </a>
+                                <input type="checkbox" id="btn-3">
+                                @php
+                                  $subcategory = App\Page::where('parent',14)->get();
+                                @endphp
+                                 <ul class="menu-list" style="margin-left:0px;">
+                                    @foreach($subcategory as $data)
+
+                                    <li class="text-left">
+                                        <!--<label for="btn-3-{{$data->id}}" class="show">{{$data->page_name}}</label>-->
+                                        <a href="{{url('about')}}/{{Illuminate\Support\Str::of(strtolower($data->page_name))->replace(' ', '-')}}">{{$data->page_name}}</a>
+                                    </li>
+                                    @endforeach
+                                    <!--<li class="text-left">-->
+                                    <!--  <label for="btn-3-4" class="show">Board of Director</label>-->
+                                    <!--  <a href="{{url('director')}}"> Board of Director-->
+                                    <!--  </a>-->
+
+                                    <!--</li>-->
+                                </ul>
+                            </li>
+
+                          <li>
+                            <label for="btn-1" class="show"><span></span>Manpower +</label>
+                            <a href="#">Manpower</a>
+                            <input type="checkbox" id="btn-1">
+                            @php
+                              $manpower = App\Page::where('parent',33)->get();
+                            @endphp
+                            <ul class="menu-list" style="margin-left:0px;">
+                                <!--<li class="text-left"><a href="#">Overview</a></li>-->
+                                <li class="text-left"><a href="{{url('/manpower/overview')}}">Overview</a></li>
+                                @foreach($manpower as $data)
+                                  <li class="text-left">
+                                    <label for="btn-1-{{$data->id}}" class="show">{{$data->page_name}} +</label>
+                                    <a href="{{url('manpower')}}/{{Illuminate\Support\Str::of(strtolower($data->page_name))->replace(' ', '-')}}">{{$data->page_name}}</a>
+                                  </li>
+                                  @endforeach
+                                <li class="text-left" style="color:#d56507"><a href="{{url('/manpowers/category')}}">Category</a></li>
+                            </ul>
+                          </li>
+
+
+                          <!--hide-->
+                            {{--<li>
+                            <label for="btn-2" class="show">Manpower +</label>
+                            <a href="#"> Manpower</a>
+                            <input type="checkbox" id="btn-2">
+                            <ul class="menu-list" style="margin-left:0px;">
+                              @foreach($all_category as $data)
+
+                              <li class="text-left">
+                                <label for="btn-3-{{$data->id}}" class="show">{{$data->category_name}} +</label>
+                                <a href="{{url('category_products')}}/{{$data->id}}">{{$data->category_name}}
+                                </a>
+                                @php
+                                    $all_subcategory = App\SubCategory::where('status',0)->where('category_id',$data->id)->get();
+                                @endphp
+                                <input type="checkbox" id="btn-3-{{$data->id}}">
+                                 <ul class="subUl" style="padding-left: 24px; width: 100%; margin-left:-3px">
+                                @foreach($all_subcategory as $sub_data)
+                                  <li>
+                                    <label for="btn-4" class="show"><a href="{{url('products')}}/{{$sub_data->id}}">{{$sub_data->title}}</a></label>
+                                    <a href="{{url('products')}}/{{$sub_data->id}}">{{$sub_data->title}}
+                                    </a>
+                                    <input type="checkbox" id="btn-4">
+                                    <ul class="menu-list" style="margin-left: 22px; width: 100%;">
+                                        @php
+                                            $all_childcategory = App\ChildCategory::where('status',0)->where('subcategory_id',$sub_data->id)->get();
+                                        @endphp
+                                        @foreach($all_childcategory as $child_data)
+                                         <li><a href="{{url('products')}}/{{$child_data->id}}">{{$child_data->title}}</a></li>
+                                        @endforeach
+                                    </ul>
+                                  </li>
+                                @endforeach
+                                </ul>
+                              </li>
+                              @endforeach
+                            </ul>
+                          </li> --}}
+                          <!--end hide-->
+
+
+
+                          <!-- Multiple Dropdown Menu -->
+
+                            <!--<li><a href="{{url('compliance')}}"> FAQ</a></li>-->
+                            <li><a href="{{url('recruitment')}}"><span></span>Recruitment</a></li>
+
+
+                            <li><a href="{{url('employers')}}"><span></span>Employers</a></li>
+                            <li><a href="{{url('career')}}"><span></span>Career</a></li>
+                            <li><a href="{{url('blog')}}"><span></span>Bangladesh</a></li>
+                            <li><a href="{{url('contact-us')}}"><span></span> Contact</a></li>
+                            <li><a href="#"><span></span> Apply</a></li>
+                            <!--<li><a href="#"> Apply</a></li>-->
+                        </ul>
+                      </nav>
+
+
+                </div>
+                <!-- <div class="d-none d-lg-block col-lg-2">
+                    <div class="botomnav-right">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Whatsapp"><i class="fab fa-whatsapp"></i></a>
+
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>
