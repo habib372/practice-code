@@ -18,6 +18,7 @@ public function send_message(Request $request)
  // 'email' => $request->email,
  // 'message' => $request->message,
  // ]);
+
  \Mail::send('email.contact_email',
  array(
  'name' => $request->get('first_name'),

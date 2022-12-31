@@ -28,13 +28,13 @@ public function send_message(Request $request)
                 'nid back part' => 'required|image|mimes:jpeg,png,jpg|max:2048',
                 'message' => 'required',
             ]);
-
+<!--
         Message::insert([
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
             'message' => $request->message,
-        ]);
+        ]); -->
         \Mail::send('email.contact_email',
              array(
                  'name' => $request->get('name'),

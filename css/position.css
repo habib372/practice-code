@@ -1,0 +1,7 @@
+.nav-icon {
+    position: fixed;
+    top: 85px;
+    width: 100%;
+    z-index: 8;
+    border-bottom: 1px solid #5555552c;
+}

@@ -1,0 +1,34 @@
+ // career
+    public function send_resume(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'position' => 'required',
+            'resume' => 'required',
+        ]);
+
+        $fileName = time().'.'.$request->resume->getClientOriginalName();
+
+        $request->resume->move(public_path('resume'), $fileName);
+
+        $sourceofFile = public_path('resume').'/'. $fileName;
+
+        \Mail::send('email.resume_send',
+             array(
+                 'name' => $request->get('name'),
+                 'phone' => $request->get('phone'),
+                 'email' => $request->get('email'),
+                 'position' => $request->get('position'),
+                 'resume' => $request->get('resume'),
+             ), function($message) use ($request,$sourceofFile)
+              {
+                  $message->from($request->email);
+                  $message->to('info@sarainteriorbd.com')->subject('Sara Interior Career Message');
+                  $message->attach($sourceofFile);
+              });
+
+        return back()->with('success','Send Successfully');
+
+    }
