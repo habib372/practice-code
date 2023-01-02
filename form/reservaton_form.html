@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+@extends('layouts.master')
+
+@section('content')
+      <div class="container reservation-container">
+		  <div class="row">
+			  <div class="col-md-12">
+            <h3 class="text-center mb-5">Reservation Form</h3>
+					@if(session()->has('success'))
+					<div class="alert alert-danger">
+					{{ session()->get('success') }}
+					</div>
+				@endif
+				@if ($errors->any())
+					<div class="alert alert-danger">
+						<ul>
+							@foreach ($errors->all() as $error)
+								<li>{{ $error }}</li>
+							@endforeach
+						</ul>
+					</div>
+				@endif
+				<form method="POST" action="{{url('/reservation-form')}}">
+					@csrf
+					<div class="form-row">
+						<div class="col">
+							<label for="name">Name</label>
+							<input type="text" class="form-control" name="name" placeholder="Your Full Name" onfocus="this.placeholder=''" onblur="this.placeholder='Your Full Name'" required>
+						</div>
+					</div>
+          <br>
+
+					<div class="form-row">
+						<div class="col">
+							<label for="email">Email</label>
+							<input type="text" class="form-control" id="email" name="email" placeholder="Email Address" onfocus="this.placeholder=''" onblur="this.placeholder='Email Address'" required>
+						</div>
+						<br>
+						<div class="col">
+							<label for="mobile">Mobile No.</label>
+							<input type="text" id="mobile" class="form-control" name="mobile" placeholder="Mobile No." onfocus="this.placeholder=''" onblur="this.placeholder='Mobile No.'" required>
+						</div>
+						<br>
+					</div>
+					<br>
+
+					<div class="form-row">
+						<div class="col">
+							<label for="subject">Subject</label>
+							<input type="text" class="form-control" name="subject" placeholder="Subject" onfocus="this.placeholder=''" onblur="this.placeholder='Subject'" required>
+						</div>
+					</div>
+					<br>
+
+					<div class="form-row">
+						<label for="email">NID Number</label>
+						<input type="text" class="form-control" id="text" name="nid" placeholder="Your NID Number" onfocus="this.placeholder=''" onblur="this.placeholder='NID Number'" required>
+					</div>
+					<br>
+
+					<div class="form-row">
+					    <div class='col'>
+					        	<label for="email">Pickup Location</label>
+						        <input type="text" class="form-control" id="text" name="picklocation" placeholder="Your Pickup Location" onfocus="this.placeholder=''" onblur="this.placeholder='Pickup Location'" required>
+					    </div>
+					    <div class='col'>
+					        <label for="email">Pickup Date</label>
+					    	<input type="date" value='{{date("Y-m-d")}}' class="form-control" id="text" name="pickdate" placeholder="Pickup Date" onfocus="this.placeholder=''" onblur="this.placeholder='Pickup Date'" required>
+
+					    </div>
+					</div>
+
+					<br>
+
+					<div class="form-row">
+						<div class='col'>
+						    <label for="email">Pickup Time</label>
+						<input type="time" class="form-control" id="text" name="picktime" placeholder="Pickup Time" onfocus="this.placeholder=''" onblur="this.placeholder='Pickup Time'" required>
+						</div>
+
+						<div class='col'>
+						   <label for="email">Drop off Location</label>
+						<input type="text" class="form-control" id="text" name="drop_of_location" placeholder="Where you want to go ?" onfocus="this.placeholder=''" onblur="this.placeholder='Drop Date'" required>
+						</div>
+					</div>
+					<br>
+
+
+					<div class="form-group">
+						<label for="message">Message</label>
+						<textarea class="form-control" id="message" name="message" rows="5" placeholder="Write Your Needed Ride Qualities.">{{($product = Session::get('product')) ?  'Product ID: '.$product->id.PHP_EOL.'Product Title: '.$product->title : ''}}</textarea>
+					</div>
+					<br>
+
+					<div class="container">
+							<div class="row">
+							  <div class="col text-center">
+								<button type="submit" class="btn btn-success btn-block">Confirm Reservation</button>
+							  </div>
+							</div>
+					</div>
+
+					{{-- <button type="submit" class="btn btn-primary">Send</button> --}}
+				</form>
+			  </div>
+		  </div>
+	  </div>
+@endsection
+
+
+</body>
+</html>

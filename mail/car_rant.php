@@ -182,3 +182,46 @@ You received a message from : {{ $email }}<br>
 <p>
     Message: {{ $message }}
 </p>
+
+
+
+public function reservationsend(Request $request){
+
+$request->validate([
+'name' => 'required',
+'email' => 'required',
+'mobile' => 'required',
+'subject' => 'required',
+'nid' => 'required',
+'picklocation' => 'required',
+// 'pickdate' => 'required',
+// 'picktime' => 'required',
+'drop_of_location' => 'required',
+'message' =>'required',
+]);
+
+
+\Mail::send('email.contact',
+array(
+'name' => $request->get('name'),
+'email' => $request->get('email'),
+'mobile' => $request->get('mobile'),
+'subject' => $request->get('subject'),
+'nid' => $request->get('nid'),
+'picklocation' => $request->get('picklocation'),
+// 'pickdate'=>$request->get('pickdate'),
+// 'picktime' => $request->get('picktime'),
+'drop_of_location' => $request->get('drop_of_location'),
+'message' => $request->get('message'),
+), function($message) use ($request)
+{
+
+$message->from($request->email);
+$message->to('info@bdrentacar.com')->subject('Customer Message for Reservation');
+});
+
+
+return back()->with('success', 'Thanks for contacting us!');
+}
+
+}

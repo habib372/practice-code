@@ -1,5 +1,5 @@
 
-<!-- email/contact_email.blade.php -->
+<!--folder:  email/contact_email.blade.php -->
 <h2>Hello Admin,</h2><br>
 You received an email from : {{ $name }}<br>
 Here are the details:<br>
@@ -50,3 +50,5 @@ public function send_message(Request $request)
         return back()->with('success','Message Sent Successfully');
 
     }
+
+
