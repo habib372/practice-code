@@ -10,7 +10,7 @@ MAIL_FROM_NAME="${Buying House}"
 
 <!-- goto manage email: -->
 MAIL_MAILER=sendmail
-MAIL_HOST=mail.bdrentacar.com
+MAIL_HOST=mail.bdrentacar.com    [ cpanel-> email accoutn-> Connect Device ]
 MAIL_PORT=465
 MAIL_USERNAME=webmail
 MAIL_PASSWORD='password'
