@@ -1,0 +1,76 @@
+<style>
+    #botomnav nav ul{
+    list-style: none;
+    /* margin-right: 40px; */
+    position: relative;
+    z-index: 100000;
+  }
+  #botomnav nav ul li{
+    display: inline-block;
+  }
+  #botomnav nav ul li:last-child{
+    display: inline-block;
+    /*background: #161616;*/
+    margin-right: 0px;
+  }
+  #botomnav nav ul li a{
+    color: #161616;
+    text-decoration: none;
+    line-height: 50px;
+    font-weight: 600;
+    font-size: 17px;
+    padding: 8px 28px;
+    color: #fff;
+    /*background: #161616;*/
+
+  }
+
+
+  /*#botomnav nav ul li a:hover{*/
+  /*  color: #bbbbbc;*/
+  /*  border-radius: 5px;*/
+  /*  box-shadow: 0 0 5px #bbbbbc,*/
+  /*              0 0 5px #bbbbbc;*/
+  /*}*/
+  /*#botomnav nav ul ul li a:hover{*/
+  /*  color: #f17640;*/
+  /*  box-shadow: none;*/
+  /*}*/
+  #botomnav nav ul ul{
+    position: absolute;
+    top: 80px;
+    border-top: 2px solid #fff;
+    opacity: 0;
+    visibility: hidden;
+    transition: top .5s;
+  }
+  #botomnav nav ul ul ul{
+    border-top: none;
+  }
+  #botomnav nav ul li:hover > ul{
+    top: 69px;
+    opacity: 1;
+    visibility: visible;
+  }
+  #botomnav nav ul ul li{
+    position: relative;
+    margin: 0;
+    top:-20px;
+    /*width: 150px;*/
+    width:100%;
+    float: none;
+    display: list-item;
+    border: 1px solid rgba(0, 0, 0, .1);
+  }
+  #botomnav nav ul ul li a{
+    line-height: 45px;
+    font-size: 14px;
+    /*margin-right: 22px;*/
+  }
+  #botomnav nav ul ul ul li{
+    position: relative;
+    top: -70px;
+    left: 136px;
+    width: max-content;
+  }
+</style>
