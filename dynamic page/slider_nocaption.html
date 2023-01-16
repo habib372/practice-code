@@ -9,6 +9,13 @@ for dot:
     .carousel-indicators .active{
         background-color:green;
     }
+    .carousel {
+    position: relative;
+    height: 650px;
+}
+  .carousel-indicators {
+      bottom:30px;
+  }
     </style>
 
 <section id="slider-section">
@@ -19,19 +26,18 @@ for dot:
                         <div id="carousel1" class="carousel slide" data-ride="carousel">
 
                           <ol class="carousel-indicators">
-                            <li data-target="#carousel1" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel1" data-slide-to="1"></li>
-                            <li data-target="#carousel1" data-slide-to="2"></li>
-                            <li data-target="#carousel1" data-slide-to="3"></li>
+                            <ol class="carousel-indicators">
+                                @foreach($all_slider as $slider)
+                                <li data-target="#carousel1" data-slide-to="{{ $slider->id }}" class="{{ $loop->first ? 'active' : ' ' }}"></li>
+                                @endforeach
+                            </ol>
                           </ol>
 
                           <div class="carousel-inner">
                            @foreach($all_slider as $slider)
 
                             <div class="carousel-item {{ $loop->first ? 'active' : ' ' }}">
-
-                                  <img class="d-block w-100" src="{{asset('uploads/slider')}}/{{$slider->image}}" alt=" ">
-
+                                <img class="d-block w-100" src="{{asset('uploads/slider')}}/{{$slider->image}}" alt=" ">
                             </div>
                             @endforeach
                           </div>

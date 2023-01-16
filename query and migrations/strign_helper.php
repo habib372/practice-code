@@ -19,3 +19,22 @@ Str::random(10),
     {!!$news->description_two!!}
 </div>
 @endif
+
+{!! (Illuminate\Support\Str::limit($coach->about, 300, $end="")) !!}
+
+{{$product->product_name??''}}
+
+{{$product->product_name??'Null'}}
+
+
+
+   public function edit(Request $request)
+    {
+        FooterBottom::where('id',$request->id)->update([
+            'icon' => $request->icon,
+            'short_description' => $request->short_description,
+            'title' => $request->title,
+            'created_at' => Carbon::now(),
+        ]);
+    }
+<input type="hidden" name="id" class="form-control" value="{{$footer->id}}" />
