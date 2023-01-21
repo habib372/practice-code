@@ -1,0 +1,33 @@
+/*-------------------------------- Respinsive Media Styles --------------------------------*/
+
+@media only screen and (min-width: 1200px) {
+    .container {
+        max-width: 1170px;
+    }
+}
+
+/* Medium Device: 1200px */
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+@media only screen and (max-width: 991px) {
+
+}
+
+/* Tablet Device: 768px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Large Mobile: 480px */
+@media only screen and (max-width: 767px) {
+
+}
+
+
+/* Small Mobile: 320px */
+@media only screen and (max-width: 479px) {
+
+}
