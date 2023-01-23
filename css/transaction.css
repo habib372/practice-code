@@ -7,3 +7,9 @@
      transition: .7s;
      transform: scale(1.1);
  }
+
+ /* hover transition */
+a:hover{
+    transition: .7s;
+    transform: scale(1.1);
+}
