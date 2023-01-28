@@ -38,3 +38,8 @@ FooterBottom::where('id',$request->id)->update([
 ]);
 }
 <input type="hidden" name="id" class="form-control" value="{{$footer->id}}" />
+
+
+{{App\Footer::where('status',0)->first()->map_url}}
+
+{{App\Page::where('parent',28)->first()->page_name}}

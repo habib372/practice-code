@@ -9,6 +9,7 @@ public function servicesdetails($slug){
     return view('frontend.page',compact('page','color'));
 }
 
+<!-- demo-1 -->
  public function blog_details($slug)
     {
         $blog_name = str_replace("-", " ",$slug);
@@ -17,6 +18,15 @@ public function servicesdetails($slug){
         $all_blog_list = Blog::where('status',0)->orderBy('id','desc')->take(10)->get();
         return view('frontend.blog_details',compact('blog','all_blog_list'));
     }
+<!-- demo-2 -->
+public function page_details($slug)
+    {
+        $slug = Str::of($slug)->replace('-', ' ');
+        // Str::of('Laravel 6.x')->replace('6.x', '7.x');
+       $aboutus = Page::where('page_name',$slug)->first();
+       return view('frontend.page_details',compact('aboutus'));
+    }
+
 
 <!-- navbar link page: -->
 @php
