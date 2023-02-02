@@ -1,0 +1,46 @@
+
+<link rel="stylesheet" href="{{asset('assets/magiczoomplus/magiczoomplus.css')}}">
+
+<style>
+    .app-figure {
+        width: 100% !important;
+        margin: 0px auto;
+        border: 0px solid red;
+        padding: 20px;
+        position: relative;
+        text-align: center;
+    }
+    .MagicZoom {
+        display: none;
+    }
+    .MagicZoom.Active {
+        display: block;
+    }
+    .selectors { margin-top: 10px; }
+    .selectors .mz-thumb img { max-width: 56px; }
+
+    @media  screen and (max-width: 1023px) {
+        .app-figure { width: 99% !important; margin: 20px auto; padding: 0; }
+    }
+</style>
+
+
+<!-- code -->
+<div class="app-figure mx-auto" id="zoom-fig" style='padding: 0px 20px;'>
+
+    <a rel="selectors-effect-speed: 600; disable-zoom: true;" id="Zoom-1" class="MagicZoom Active" data-options="zoomWidth: 400; zoomHeight: 400; expandZoomMode: magnifier; expandZoomOn: always; variableZoom: true;" title="Show your product in stunning detail with {{config('app.name')}} Zoom." href="{{asset('uploads/product')}}/{{$product->image}}">
+        <img src="{{asset('uploads/product')}}/{{$product->image}}" class="img-responsive halfheight"  alt=""/>
+    </a>
+                        <div class="selectors">
+                             @foreach($images as $image)
+                                <a rel="selectors-effect-speed: 600; disable-zoom: true;"  data-zoom-id="Zoom-1" href="{{asset('uploads/product')}}/{{$image}}" data-image="{{asset('uploads/product')}}/{{$image}}">
+                                    <img src="{{asset('uploads/product')}}/{{$image}}"/>
+                                </a>
+                            @endforeach
+                        </div>
+
+                    </div>
+
+
+<!-- js -->
+<script src="{{asset('assets/magiczoomplus/test.js')}}"></script>
