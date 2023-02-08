@@ -43,3 +43,5 @@ FooterBottom::where('id',$request->id)->update([
 {{App\Footer::where('status',0)->first()->map_url}}
 
 {{App\Page::where('parent',28)->first()->page_name}}
+
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">

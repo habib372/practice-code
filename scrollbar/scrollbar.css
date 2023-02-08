@@ -1,0 +1,27 @@
+
+/* main class: scroll-category */
+
+.scroll-category {
+    height: 342px;
+    overflow: scroll;
+
+}
+
+.scroll-category::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+.scroll-category::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.scroll-category::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+.scroll-category::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
