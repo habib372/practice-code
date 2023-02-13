@@ -45,7 +45,8 @@ return back();
 
 
 
-
+@if(count($rootCat->children) > 0) submenu-caret @endif
+{{ $loop->first ? '' : 'collapsed'}}
 
 
 
