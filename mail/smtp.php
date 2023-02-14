@@ -19,6 +19,7 @@ MAIL_FROM_ADDRESS=
 MAIL_FROM_NAME="BD RENT A CAR"
 
 
+<!-- success -->
 MAIL_DRIVER=sendmail
 MAIL_HOST=smtp.gmail.com
 MAIL_PORT=465
