@@ -1,0 +1,12 @@
+/* single line content */
+.footer .widget ul.ttm-recent-post-list>li>.post-detail a {
+    font-size: 15px;
+    line-height: 23px;
+    display: block;
+    font-weight: 400;
+    position: relative;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;     /* single line content */
+    -webkit-box-orient: vertical;
+}
