@@ -1,3 +1,5 @@
+<!-- url https://demowebsite.com/clear-cache -->
+
 Route::get('/clear-cache', function() {
    Artisan::call('cache:clear');
    Artisan::call('route:cache');
@@ -5,3 +7,14 @@ Route::get('/clear-cache', function() {
    Artisan::call('view:clear');
    return "/clear-cache";
 });
+
+
+<!-- terminal command -->
+php artisan route:cache
+php artisan route:clear
+php artisan config:cache
+php artisan config:clear
+php artisan optimize
+
+
+<!-- ERROR: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) . DB_HOST set to localhost -->

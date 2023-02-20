@@ -3,3 +3,14 @@
   background: #161616;
   margin-right: 0px;
   }
+
+  nav.main-menu ul.menu li ul.mega-submenu li:not(:last-child) a:before {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 1px;
+      bottom: 0;
+      left: 20px;
+      right: 20px;
+      transform: scaleX(0);
+  }
