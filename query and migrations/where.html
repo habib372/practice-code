@@ -25,6 +25,7 @@
 <!-- text limit -->
 {!! strip_tags(Illuminate\Support\Str::limit($singleNews->excerpt, 200)) !!}
 
+   $datas = Page::orderBy('id','desc')->whereIn('id',[14,15])->get();
 
 <!-- counter id -->
 @php
