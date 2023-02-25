@@ -14,23 +14,51 @@
         }
         .whatsapp-chat{
             position: fixed;
-             bottom: -7px;
-             right: 30px;
-              -webkit-transform: translateY(-50%);
-              -ms-transform: translateY(-50%);
-              transform: translateY(-50%);
+            bottom: -7px;
+            right: 30px;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            z-index:1024;
         }
+        /*end whatsapp-chat-icon*/
+
+        /* call icon */
+        .float2 {
+            position: fixed;
+            width: 46px;
+            height: 46px;
+            bottom: 67px;
+            right: 5px;
+            background-color: #2909aa;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 23px;
+            box-shadow: 5px 5px 20px 0px rgb(53 51 51 / 80%);
+            z-index: 100;
+        }
+        .my-float2 {
+            margin-top: 12px;
+            color: #fff;
+        }
+        /*end call icon */
+
     </style>
 
 </head>
 <body>
-
+        <!-- whatsapp-1 -->
         <div class="whatsapp-chat">
-            <a href="https://api.whatsapp.com/send/?phone=8801707082085&text&type=phone_number&app_absent=0" target="_blank"><img class="whatsapp-icon" src="whatsapp-1.png"></a>
+            <a href="https://api.whatsapp.com/send/?phone=8801707082085&text&type=phone_number&app_absent=0" target="_blank"> <img class="whatsapp-icon" src="whatsapp-1.png"> </a>
         </div>
-
+        <!-- whatsapp-2 -->
         <div>
             <a href="https://api.whatsapp.com/send?phone=+8801712456803&text=Hello this is the starting message">Whatsapp Chat</a>
         </div>
+
+
+        <!-- call -->
+          <a href="tel:{{$footer->mobile2}}" class="float2"><i class="fa fa-phone my-float2"></i></a>
 </body>
 </html>
