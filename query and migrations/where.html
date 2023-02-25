@@ -22,6 +22,9 @@
         $currentCourses = Course::all();
         $news = News::latest()->where('type','training')->get();
 
+
+         @foreach($writer->skip(15)->take(5) AS $item)
+
 <!-- text limit -->
 {!! strip_tags(Illuminate\Support\Str::limit($singleNews->excerpt, 200)) !!}
 
@@ -38,6 +41,8 @@
 
 <!-- fav icon -->
 href="{{asset('/uploads/header/'.App\Header::where('status',0)->first()->favicon)}}"
+
+
 
 <!-- redirect -->
 return redirect('admin/view/blog');
