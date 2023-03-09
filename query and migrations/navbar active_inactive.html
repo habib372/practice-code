@@ -1,8 +1,10 @@
 
 
 <!-- navbar active inactive -->
-class="{{ (request()->is('page*')) ? 'active' : '' }}"
+<li class="{{ (request()->is('page*')) ? 'active' : '' }}"></li>
 
-class="{{ (request()->is('about*')) ? 'active' : '' }}"
+<li class="{{ (request()->is('about*')) ? 'active' : '' }}"></li>
 
-class="{{ (request()->is('/')) ? 'active text-dark' : '' }}"
+<li class="{{ (request()->is('/')) ? 'active text-dark' : '' }}"></li>
+
+<li class="{{request()->is('blog') || request()->is('news-update') || request()->is('announcement') || request()->is('blog_details/*') ? 'active' : ''}}"></li>
