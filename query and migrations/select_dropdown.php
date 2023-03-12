@@ -14,3 +14,10 @@
 	</select>
 	<span class="form-text text-muted">Please select an option.</span>
 </div>
+
+
+<option value="" selected disabled>Select</option>
+
+
+<a class="dropdown-item text-warning" href="{{ url('admin/product/edit',$product->id) }}"><i class="flaticon2-edit icon-lg"></i> Edit
+</a>

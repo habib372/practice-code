@@ -8,3 +8,8 @@
 <li class="{{ (request()->is('/')) ? 'active text-dark' : '' }}"></li>
 
 <li class="{{request()->is('blog') || request()->is('news-update') || request()->is('announcement') || request()->is('blog_details/*') ? 'active' : ''}}"></li>
+
+<li class="{{request()->is('wholesale/products') ? 'active' : ''}}"><a href="{{url('/wholesale/products')}}"><span></span>Wholesale</a></li>
+
+
+                            <li class="{{request()->is('buying-house/products*') || request()->is('buying-house/product/*') ? 'active' : ''}}">
