@@ -25,3 +25,19 @@ $data = $request->validate([
     'other_images' => 'required',
     'other_images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|dimensions:max_width=1920|max:1024',
 ]);
+
+
+$table->id();
+$table->integer('added_by')->nullable();
+$table->string('showroom_name')->nullable();
+$table->string('address')->nullable();
+$table->string('map_link')->nullable();
+$table->string('email')->nullable();
+$table->string('mobile')->nullable();
+$table->string('facebook')->nullable();
+$table->string('whatsapp')->nullable();
+$table->string('linkedin')->nullable();
+$table->string('youtube')->nullable();
+$table->string('image')->default('photo.jpg');
+$table->integer('status')->default(0);
+$table->timestamps();
