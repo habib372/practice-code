@@ -19,7 +19,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-4 col-lg-3 d-none d-sm-block" >
-                    <div class="category" style="display: none;">>
+                    <div class="category" style="display: none;">
                         <a href="#offcanvas-slide" title="Click To Show Side Nav" class="uk-button uk-button-default" uk-toggle><span class="d-none d-sm-inline text-white">ALL</span> CATEGORIES</a>
                         <!-- <a href="#offcanvas-slide" class="d-block d-md-none uk-button uk-button-default" uk-toggle>CATEGORIES</a> -->
                         <div id="offcanvas-slide" uk-offcanvas>
@@ -191,6 +191,45 @@
         </div>
     </section>
 </div>
+
+<!-- navbar 1 hide when scroll -->
+    <script>
+        $(document).ready(function(){
+            $(window).on("scroll",function(){
+            var wn = $(window).scrollTop();
+            console.log(wn);
+            var navbarScroll = $("#navbarScroll");
+            if (wn>200) {
+                navbarScroll.css("background-color", "#000");
+                $("#header2_mid").addClass("after-scroll");
+                $("#header2_mid").removeClass("before-scroll");
+                $("#header2_mid").css("transition", ".7s");
+
+            } else {
+                navbarScroll.css("background-color", "transparent");
+                $("#header2_mid").addClass("before-scroll");
+                $("#header2_mid").removeClass("after-scroll");
+                $("#header2_mid").css("transition", ".7s");
+            }
+          });
+        });
+    </script>
+
+<!-- scroll navbar color change -->
+    <script>
+        $(document).ready(function(){
+            $(window).on("scroll",function(){
+            var wn = $(window).scrollTop();
+            // console.log(wn);
+            if(wn > 200){
+                $('.bottomnavThree').addClass('nav-scroll');
+            }
+            else{
+                $('.bottomnavThree').removeClass('nav-scroll');
+            }
+          });
+        });
+    </script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

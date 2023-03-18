@@ -54,7 +54,7 @@ return back();
 @if(count($rootCat->children) > 0) submenu-caret @endif
 {{ $loop->first ? '' : 'collapsed'}}
 
-
+$top_navbar_color = App\Header::where('status',0)->first()->top_header_color;
 
 
 
