@@ -9,6 +9,6 @@
         }
         $data->delete();
 
-        Toastr::success('Category Delete successfully :)','Success');
+        Toastr::success(('Category Delete successfully :)','Success');
         return back();
     }
