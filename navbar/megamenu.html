@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+         .mega-menu {
+    color: #000;
+    position: absolute;
+    background: #ffffff;
+    box-shadow: 0 0 4px #5555555c;
+    width: 1164px;
+    padding: 25px 29px;
+    left: 94px;
+    height: auto;
+    top: 69px;
+    z-index: 999999;
+    transition: .3s;
+    display: none;
+  }
+
+   .mega-parent:hover .mega-menu {
+    display: block;
+    transition: .3s;
+  }
+  .mega-menu:after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 370px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    z-index: 999999;
+    transform: rotate(45deg);
+    border-top: 1px solid #5555555c;
+    border-left: 1px solid #5555555c;
+  }
+ .mega-menu a {
+    border-right: none;
+    line-height: 32px;
+    color: #555555;
+    font-size: 16px;
+    transition: .5s;
+  }
+ .mega-menu a:hover {
+    color: #000;
+    transition: .5s;
+  }
+.mega-menu h5:hover {
+    background: #9999993c;
+    transition: .5s;
+  }
+ .mega-menu a {
+    border-right: none;
+  }
+  .cat-menu h5{
+      margin:0;
+      padding: 2px 0;
+  }
+  .cat-menu a {
+    font-weight: 500!important;
+  }
+
+    @media (max-width: 968px){
+    .show {
+            display: block;
+            color: #4E4F51;
+            font-size: 16px;
+            padding: 0 5px;
+            line-height: 24px;
+            cursor: pointer;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+         .mega-menu {
+            width: auto !important;
+            top: 44px !important;
+            left: -10px !important;
+        }
+    }
+
+    </style>
+
+</head>
+<body>
+
+                        <li class="mega-parent effect-one nav-items">
+                            <!--<label for="btn-9" class="show">Our Products +</label>-->
+                            <a class="nav-link" href="#" class="{{Request::path() =='categories' || Request::is('*/products') || Request::is('products/*') ? 'active' : ''}}">Our Products <i class="fa fa-caret-down" style="font-size:20px"></i></a>
+                            <!--<input type="checkbox" id="btn-9">-->
+                            <div class="mega-menu">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-12 col-xs-12 cat-menu">
+                                            @php
+                                                $i=0;
+                                            @endphp
+                                            @foreach($getCategories as $data)
+                                                @php
+                                                    $i++;
+                                                @endphp
+                                                @if($i <= 6)
+                                                    <h5><a href="{{route('categories.show',$data->slug)}}">{{$data->title}}</a></h5>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 col-xs-12 cat-menu">
+                                            @php
+                                                $i=0;
+                                            @endphp
+                                            @foreach($getCategories as $data)
+                                                @php
+                                                    $i++;
+                                                @endphp
+                                                @if($i > 6 && $i <= 12)
+                                                    <h5><a href="{{route('categories.show',$data->slug)}}">{{$data->title}}</a></h5>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 col-xs-12 cat-menu">
+                                            @php
+                                                $i=0;
+                                            @endphp
+                                            @foreach($getCategories as $data)
+                                                @php
+                                                    $i++;
+                                                @endphp
+                                                @if($i > 12)
+                                                    <h5><a href="{{route('categories.show',$data->slug)}}">{{$data->title}}</a></h5>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          </li>
+
+</body>
+</html>
