@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .goback {
+            color: #f5f4f4;
+            background: #161212;
+            padding: 4px 13px;
+            border-radius: 13px;
+        }
+        .goback-button{
+            position: fixed;
+            bottom: 62px;
+            right: 34px;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            z-index:1024;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- style-1 -->
+    <div class="goback-button">
+        <button onclick="goBack()" class="goback"><i class="fa fa-arrow-left"></i></button>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back()
+        }
+    </script>
+
+<!-- style-2 -->
+    <button id="back">Back</button>
+
+    <script>
+        document.getElementById('back')
+            .addEventListener('click', function() {
+                history.back();
+            })
+    </script>
+
+
+
+</body>
+</html>
+

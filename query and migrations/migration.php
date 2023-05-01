@@ -16,7 +16,7 @@ class CreateAgentsTable extends Migration
         Schema::create('agents', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->text('father_name');
+            $table->string('father_name');
             $table->date('date_of_birth');
             $table->string('education');
             $table->text('permanent_address');
@@ -24,11 +24,19 @@ class CreateAgentsTable extends Migration
             $table->string('district');
             $table->text('present_address');
             $table->string('mobile');
-            $table->text('email');
-            $table->text('passport_image');
-            $table->text('nid_front_part');
-            $table->text('nid_back_part');
+            $table->string('email');
+            $table->string('email')->unique();
+            $table->string('passport_image');
+            $table->string('nid_front_part');
+            $table->string('nid_back_part');
             $table->text('message');
+            $table->longText('description')->nullable();
+            $table->string('display')->default('none');
+            $table->string('image')->default('photo.jpg');
+            $table->longText('video')->nullable();
+            $table->integer('status')->default(0);
+
+            $table->timestamp('failed_at')->useCurrent();
             $table->timestamps();
         });
     }
