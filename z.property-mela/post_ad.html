@@ -1,3 +1,34 @@
+@extends('layouts.frontend')
+
+@section('title')
+    Post Your Ad
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('assets/css/custom/ad-post.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+@endsection
+
+@section('content')
+<!----top title banner---->
+<section class="inner-section single-banner" style="background-image: url('{{ asset('assets/images/bg/title-banner.jpg') }}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="single-content">
+                    <h2>Flat sale ad posting</h2>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+                        <li class="breadcrumb-item " ><a href="#">Flat Sale</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Post Ad</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!----/end title banner---->
+
   <section class="adpost-part">
         <div class="container">
             <div class="row">
@@ -5,128 +36,351 @@
                     <form class="adpost-form">
                         <div class="adpost-card">
                             <div class="adpost-title">
-                                <h3>Ad Information</h3>
+                                <div class="adpost">
+                                    <h3>Fill in the details</h3>
+                                     <button type="button" class="adposting-rules" data-toggle="modal" data-target="#addpostingrules">
+                                        <p>See our posting rules</p>
+                                    </button>
+                                </div>
                             </div>
                             <div class="row">
+                                <!-- property type -->
                                 <div class="col-lg-12">
-                                    <div class="form-group"><label class="form-label">Product Title</label><input type="text" class="form-control" placeholder="Type your product title here"></div>
+                                    <div class="form-group">
+                                        <label class="form-label">Property Type</label>
+                                        <div class="custom-control custom-checkbox property-type">
+                                            <div class="checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="building">
+                                                <label class="custom-control-label" for="building">Building</label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="factory">
+                                                <label class="custom-control-label" for="factory">Factory/Mill</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="hotel">
+                                                <label class="custom-control-label" for="hotel">Hotel</label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="Office">
+                                                <label class="custom-control-label" for="Office">Office</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="restaurant">
+                                                <label class="custom-control-label" for="restaurant">Restaurant</label>
+                                            </div>
+
+                                            <div class="checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="shop">
+                                                <label class="custom-control-label" for="shop">Shop</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="warehouse">
+                                                <label class="custom-control-label" for="warehouse">Warehouse</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="other">
+                                                <label class="custom-control-label" for="other">Other</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group"><label class="form-label">product image</label><input type="file" class="form-control"></div>
-                                </div>
+
+                                <!-- city or division -->
                                 <div class="col-lg-6">
-                                    <div class="form-group"><label class="form-label">Product Category</label><select class="form-control custom-select">
-                                            <option selected>Select Category</option>
-                                            <option value="1">property</option>
-                                            <option value="2">electronics</option>
-                                            <option value="3">automobiles</option>
-                                        </select></div>
+                                    <div class="form-group">
+                                        <label class="form-label">City Or Division</label>
+                                        <select class="form-control ">
+                                            <option  value="" selected disabled>Select your city or division</option>
+                                            <option value="dhaka">Dhaka</option>
+                                            <option value="khulna">Khulna</option>
+                                            <option value="barisan">Barisan</option>
+                                            <option value="rajshahi">Rajshahi</option>
+                                            <option value="rangpur">Rangpur</option>
+                                            <option value="sylhet">Sylhet</option>
+                                            <option value="chattogram">Chattogram</option>
+                                            <option value="mymensingh">Mymensingh</option>
+                                        </select>
+                                    </div>
                                 </div>
+                                <!-- local area -->
                                 <div class="col-lg-6">
-                                    <div class="form-group"><label class="form-label">Price</label><input type="number" class="form-control" placeholder="Enter your pricing amount"></div>
-                                </div>
-                                <div class="col-md-4 col-lg-4">
                                     <div class="form-group">
-                                        <ul class="form-check-list">
-                                            <li><label class="form-label">price condition</label></li>
-                                            <li><input type="checkbox" class="form-check" id="fix-check"><label for="fix-check" class="form-check-text">fixed</label></li>
-                                            <li><input type="checkbox" class="form-check" id="nego-check"><label for="nego-check" class="form-check-text">negotiable</label></li>
-                                            <li><input type="checkbox" class="form-check" id="day-check"><label for="day-check" class="form-check-text">daily</label></li>
-                                            <li><input type="checkbox" class="form-check" id="week-check"><label for="week-check" class="form-check-text">weekly</label></li>
-                                            <li><input type="checkbox" class="form-check" id="month-check"><label for="month-check" class="form-check-text">monthly</label></li>
-                                            <li><input type="checkbox" class="form-check" id="year-check"><label for="year-check" class="form-check-text">yearly</label></li>
-                                        </ul>
+                                        <label class="form-label">Local Area</label>
+                                        <select class="form-control ">
+                                            <option  value="" selected disabled>Select a local area within</option>
+                                            <option value="Mirpur">Mirpur</option>
+                                            <option value="Uttara">Uttara</option>
+                                            <option value="Mohammadpur">Mohammadpur</option>
+                                            <option value="Savar">Savar</option>
+                                            <option value="Jatrabari">Jatrabari</option>
+                                            <option value="Bonani">Bonani</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-lg-4">
-                                    <div class="form-group">
-                                        <ul class="form-check-list">
-                                            <li><label class="form-label">ad category</label></li>
-                                            <li><input type="checkbox" class="form-check" id="sale-check"><label for="sale-check" class="flat-badge sale">sale</label></li>
-                                            <li><input type="checkbox" class="form-check" id="rent-check"><label for="rent-check" class="flat-badge rent">rent</label></li>
-                                            <li><input type="checkbox" class="form-check" id="book-check"><label for="book-check" class="flat-badge booking">booking</label></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-lg-4">
-                                    <div class="form-group">
-                                        <ul class="form-check-list">
-                                            <li><label class="form-label">product condition</label></li>
-                                            <li><input type="checkbox" class="form-check" id="use-check"><label for="use-check" class="form-check-text">used</label></li>
-                                            <li><input type="checkbox" class="form-check" id="new-check"><label for="new-check" class="form-check-text">new</label></li>
-                                        </ul>
-                                    </div>
-                                </div>
+
+                                <!-- full address -->
                                 <div class="col-lg-12">
-                                    <div class="form-group"><label class="form-label">ad description</label><textarea class="form-control" placeholder="Describe your message"></textarea></div>
+                                    <div class="form-group">
+                                        <label class="form-label">Full Address (optional)</label>
+                                        <input type="text" class="form-control" placeholder="Type your full address">
+                                    </div>
                                 </div>
+
+                                <!-- flat size -->
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Flat Size</label>
+                                        <input type="number" class="form-control" placeholder="Enter your flat size">
+                                    </div>
+                                </div>
+                                <!-- Unit size -->
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Unit size</label>
+                                        <select class="form-control ">
+                                            <option  value="" selected disabled>Select unit size</option>
+                                            <option value="sqft">Sqft</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Bedrooms -->
+                                <div class="col-lg-6">
+                                    <div class="form-group"><label class="form-label">Bedrooms</label><select class="form-control">
+                                            <option value="" selected disabled>Select total bedrooms </option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10+">10+</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Bathrooms -->
+                                <div class="col-lg-6">
+                                    <div class="form-group"><label class="form-label">Bathrooms</label><select class="form-control">
+                                            <option value="" selected disabled>Select total bedrooms </option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10+">10+</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Balconey/Varanda -->
+                                <div class="col-lg-6">
+                                    <div class="form-group"><label class="form-label">Balconey/Varanda</label><select class="form-control">
+                                            <option value="" selected disabled>Select stored building</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="10">None</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Facing -->
+                                <div class="col-lg-6">
+                                    <div class="form-group"><label class="form-label">Facing</label><select class="form-control">
+                                            <option value="" selected disabled>Select facing</option>
+                                            <option value="1st">South Facing</option>
+                                            <option value="2nd">North Facing</option>
+                                            <option value="3rd">East Facing</option>
+                                            <option value="4th">West Facing</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Stored Building -->
+                                <div class="col-lg-6">
+                                    <div class="form-group"><label class="form-label">Stored Building</label><select class="form-control">
+                                            <option value="" selected disabled>Select stored building</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Floor -->
+                                <div class="col-lg-6">
+                                    <div class="form-group"><label class="form-label">Floor</label><select class="form-control">
+                                            <option value="" selected disabled>Select floor</option>
+                                            <option value="1st">1st</option>
+                                            <option value="2nd">2nd</option>
+                                            <option value="3rd">3rd</option>
+                                            <option value="4th">4th</option>
+                                            <option value="5th">5th</option>
+                                            <option value="6th">6th</option>
+                                            <option value="7th">7th</option>
+                                            <option value="8th">8th</option>
+                                            <option value="9th">9th</option>
+                                            <option value="10th">10th</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Gas -->
                                 <div class="col-lg-12">
-                                    <div class="form-group"><label class="form-label">ad tag</label><textarea class="form-control" placeholder="Maximum of 15 keywords"></textarea></div>
+                                    <div class="form-group form-check-inline">
+                                        <label class="form-label">Gas: </label>
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" value="available">
+                                                <label class="custom-control-label" for="customRadioInline1">Available</label>
+                                            </div>
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" value="notavailable">
+                                                <label class="custom-control-label" for="customRadioInline2">Not Available</label>
+                                            </div>
+                                    </div>
+                                </div>
+
+                                <!-- Ad Title -->
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="form-label">Ad Title</label>
+                                        <input type="text" class="form-control" placeholder="Type your property title here (keep it short!)">
+                                    </div>
+                                </div>
+                                <!-- description -->
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="form-label">description </label>
+                                        <textarea class="form-control" id="summernote" name="description" ></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Price (TK) -->
+                                <div class="col-lg-7">
+                                    <div class="form-group">
+                                    <label class="form-label">Price (TK)</label>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                        <div class="input-group-text">৳</div>
+                                        </div>
+                                         <input type="number" name="" class="form-control" placeholder="how much do you want to sale your property?">
+                                    </div>
+                                    </div>
+                                </div>
+                                <!-- Unit -->
+                                <div class="col-lg-5">
+                                    <div class="form-group">
+                                        <label class="form-label">Unit</label>
+                                        <select class="form-control ">
+                                            <option  value="" selected disabled>Select total unit price</option>
+                                            <option value="sqft">Per Sqft</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Negotiable -->
+                                <div class="col-lg-6">
+                                    <div class="custom-control custom-checkbox form-group">
+                                        <input type="checkbox" class="custom-control-input" name="negotiable" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">Negotiable</label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="adpost-card">
-                            <div class="adpost-title">
-                                <h3>Author Information</h3>
-                            </div>
+
+                            <hr/>
+
+                            <!-- Add image -->
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <div class="form-group"><label class="form-label">Name</label><input type="text" class="form-control" placeholder="Your Name"></div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-control" placeholder="Your Email"></div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group"><label class="form-label">Number</label><input type="number" class="form-control" placeholder="Your Number"></div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group"><label class="form-label">Address</label><input type="text" class="form-control" placeholder="Your Address"></div>
+                                    <div class="form-group"><label class="form-label">Add image [maximum 5 images]</label><input type="file" class="form-control"></div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="adpost-card">
-                            <div class="adpost-title">
-                                <h3>Plan Information</h3>
+
+                            <hr/>
+
+                            <!-- Contact Information -->
+                            <div class="author_information">
+                                <div class="adpost-title">
+                                    <h3>Contact Information</h3>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="form-group"><label class="form-label">Name</label><input type="text" class="form-control" placeholder="Your Name"></div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-control" placeholder="Your Email"></div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="form-group"><label class="form-label">Number</label><input type="number" class="form-control" placeholder="Your Number"></div>
+                                    </div>
+                                </div>
                             </div>
-                            <ul class="adpost-plan-list">
-                                <li>
-                                    <div class="adpost-plan-content">
-                                        <h6>Free Plan - <span>Submit 5 Ad Listings</span></h6>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit Delectus minus Eaque corporis accusantium incidunt officiis deleniti.</p>
-                                    </div>
-                                    <div class="adpost-plan-meta">
-                                        <h3>$00.00</h3><button class="btn btn-outline"><span>Select</span></button>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="adpost-plan-content">
-                                        <h6>Standerd Plan - <span>Submit 10 Ad Listings</span></h6>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit Delectus minus Eaque corporis accusantium incidunt officiis deleniti.</p>
-                                    </div>
-                                    <div class="adpost-plan-meta">
-                                        <h3>$23.00</h3><button class="btn btn-outline"><span>Select</span></button>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="adpost-plan-content">
-                                        <h6>Premium Plan - <span>Unlimited Ad Listings</span></h6>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit Delectus minus Eaque corporis accusantium incidunt officiis deleniti.</p>
-                                    </div>
-                                    <div class="adpost-plan-meta">
-                                        <h3>$43.00</h3><button class="btn btn-outline"><span>Select</span></button>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="adpost-card pb-2">
+                            <!-- check -->
                             <div class="adpost-agree">
                                 <div class="form-group"><input type="checkbox" class="form-check"></div>
-                                <p>Send me Trade Email/SMS Alerts for people looking to buy mobile handsets in www By clicking "Post", you agree to our <a href="#">Terms of Use</a>and <a href="#">Privacy Policy</a>and acknowledge that you are the rightful owner of this item and using Trade to find a genuine buyer.</p>
+                                <p>I have read and accept the  <a href="#"> Terms and Conditions </a> and <a href="#"> Privacy Policy </a> and acknowledge that you are the rightful owner of this item and using Trade to find a genuine buyer.</p>
                             </div>
-                            <div class="form-group text-right"><button class="btn btn-inline"><i class="fas fa-check-circle"></i><span>published your ad</span></button></div>
+
+                            <div class="form-group text-right">
+                                <button type="submit" class="btn btn-inline"><i class="fas fa-check-circle"></i><span>published your ad</span></button>
+                            </div>
                         </div>
                     </form>
+
+                     <!-- ad posting rules modal  -->
+                     <div class="modal fade" id="addpostingrules">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4>All ads posted on Property Mela must follow our rules:</h4><button class="fas fa-times" data-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <ul  class="rules">
+                                        <li>Make sure you post in the correct category.</li>
+                                        <li>Do not post the same ad more than once or repost an ad within 7 days</li>
+                                        <li>Do not upload pictures with watermarks.</li>
+                                        <li>Do not post ads containing multiple items unless it's a package deal.</li>
+                                        <li>Do not put your email or phone numbers in the title or description.</li>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </section>
+@endsection
+
+@section('js')
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#summernote').summernote({
+                height: 250,
+            });
+        });
+
+    </script>
+@endsection
