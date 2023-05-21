@@ -33,7 +33,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <form class="adpost-form">
+                    <form class="adpost-form" action="#" method="" enctype="multipart/form-data">
                         <div class="adpost-card">
                             <div class="adpost-title">
                                 <div class="adpost">
@@ -47,7 +47,7 @@
                                 <!-- property type -->
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label class="form-label">Property Type</label>
+                                        <label class="form-label">Property Type <span>*</span></label>
                                         <div class="custom-control custom-checkbox property-type">
                                             <div class="checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="building">
@@ -91,8 +91,8 @@
                                 <!-- city or division -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-label">City Or Division</label>
-                                        <select class="form-control ">
+                                        <label class="form-label">City Or Division <span>*</span></label>
+                                        <select class="form-control " required>
                                             <option  value="" selected disabled>Select your city or division</option>
                                             <option value="dhaka">Dhaka</option>
                                             <option value="khulna">Khulna</option>
@@ -108,8 +108,8 @@
                                 <!-- local area -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-label">Local Area</label>
-                                        <select class="form-control ">
+                                        <label class="form-label">Local Area <span>*</span></label>
+                                        <select class="form-control " required>
                                             <option  value="" selected disabled>Select a local area within</option>
                                             <option value="Mirpur">Mirpur</option>
                                             <option value="Uttara">Uttara</option>
@@ -132,15 +132,15 @@
                                 <!-- flat size -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-label">Flat Size</label>
-                                        <input type="number" class="form-control" placeholder="Enter your flat size">
+                                        <label class="form-label">Flat Size <span>*</span></label>
+                                        <input type="number" class="form-control" name="" placeholder="Enter your flat size" required >
                                     </div>
                                 </div>
                                 <!-- Unit size -->
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-label">Unit size</label>
-                                        <select class="form-control ">
+                                        <label class="form-label">Unit size <span>*</span></label>
+                                        <select class="form-control" name="" required>
                                             <option  value="" selected disabled>Select unit size</option>
                                             <option value="sqft">Sqft</option>
                                         </select>
@@ -149,7 +149,7 @@
 
                                 <!-- Bedrooms -->
                                 <div class="col-lg-6">
-                                    <div class="form-group"><label class="form-label">Bedrooms</label><select class="form-control">
+                                    <div class="form-group"><label class="form-label">Bedrooms <span>*</span></label><select class="form-control" required>
                                             <option value="" selected disabled>Select total bedrooms </option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -166,7 +166,7 @@
                                 </div>
                                 <!-- Bathrooms -->
                                 <div class="col-lg-6">
-                                    <div class="form-group"><label class="form-label">Bathrooms</label><select class="form-control">
+                                    <div class="form-group"><label class="form-label">Bathrooms <span>*</span></label><select class="form-control" required>
                                             <option value="" selected disabled>Select total bedrooms </option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -184,7 +184,8 @@
 
                                 <!-- Balconey/Varanda -->
                                 <div class="col-lg-6">
-                                    <div class="form-group"><label class="form-label">Balconey/Varanda</label><select class="form-control">
+                                    <div class="form-group"><label class="form-label">Balconey/Varanda <span>*</span></label>
+                                        <select class="form-control" required>
                                             <option value="" selected disabled>Select stored building</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -202,7 +203,8 @@
                                 </div>
                                 <!-- Facing -->
                                 <div class="col-lg-6">
-                                    <div class="form-group"><label class="form-label">Facing</label><select class="form-control">
+                                    <div class="form-group"><label class="form-label">Facing <span>*</span></label>
+                                        <select class="form-control" required>
                                             <option value="" selected disabled>Select facing</option>
                                             <option value="1st">South Facing</option>
                                             <option value="2nd">North Facing</option>
@@ -214,7 +216,8 @@
 
                                 <!-- Stored Building -->
                                 <div class="col-lg-6">
-                                    <div class="form-group"><label class="form-label">Stored Building</label><select class="form-control">
+                                    <div class="form-group"><label class="form-label">Stored Building <span>*</span></label>
+                                        <select class="form-control" required>
                                             <option value="" selected disabled>Select stored building</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -231,7 +234,7 @@
                                 </div>
                                 <!-- Floor -->
                                 <div class="col-lg-6">
-                                    <div class="form-group"><label class="form-label">Floor</label><select class="form-control">
+                                    <div class="form-group"><label class="form-label">Floor <span>*</span></label><select class="form-control" required>
                                             <option value="" selected disabled>Select floor</option>
                                             <option value="1st">1st</option>
                                             <option value="2nd">2nd</option>
@@ -250,13 +253,13 @@
                                 <!-- Gas -->
                                 <div class="col-lg-12">
                                     <div class="form-group form-check-inline">
-                                        <label class="form-label">Gas: </label>
+                                        <label class="form-label">Gas: <span>*</span></label>
                                             <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" value="available">
+                                                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" value="available" required>
                                                 <label class="custom-control-label" for="customRadioInline1">Available</label>
                                             </div>
                                             <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" value="notavailable">
+                                                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" value="notavailable" required>
                                                 <label class="custom-control-label" for="customRadioInline2">Not Available</label>
                                             </div>
                                     </div>
@@ -265,14 +268,14 @@
                                 <!-- Ad Title -->
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label class="form-label">Ad Title</label>
-                                        <input type="text" class="form-control" placeholder="Type your property title here (keep it short!)">
+                                        <label class="form-label">Ad Title <span>*</span></label>
+                                        <input type="text" class="form-control" placeholder="Type your property title here (keep it short!)" required>
                                     </div>
                                 </div>
                                 <!-- description -->
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label class="form-label">description </label>
+                                        <label class="form-label">description <span>*</span></label>
                                         <textarea class="form-control" id="summernote" name="description" ></textarea>
                                     </div>
                                 </div>
@@ -280,20 +283,20 @@
                                 <!-- Price (TK) -->
                                 <div class="col-lg-7">
                                     <div class="form-group">
-                                    <label class="form-label">Price (TK)</label>
+                                    <label class="form-label">Price (TK) <span>*</span></label>
                                     <div class="input-group mb-2">
                                         <div class="input-group-prepend">
                                         <div class="input-group-text">৳</div>
                                         </div>
-                                         <input type="number" name="" class="form-control" placeholder="how much do you want to sale your property?">
+                                         <input type="number" name="" class="form-control" placeholder="how much do you want to sale your property?" required>
                                     </div>
                                     </div>
                                 </div>
                                 <!-- Unit -->
                                 <div class="col-lg-5">
                                     <div class="form-group">
-                                        <label class="form-label">Unit</label>
-                                        <select class="form-control ">
+                                        <label class="form-label">Unit <span>*</span></label>
+                                        <select class="form-control" required>
                                             <option  value="" selected disabled>Select total unit price</option>
                                             <option value="sqft">Per Sqft</option>
                                         </select>
@@ -313,7 +316,10 @@
                             <!-- Add image -->
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <div class="form-group"><label class="form-label">Add image [maximum 5 images]</label><input type="file" class="form-control"></div>
+                                    <div class="form-group">
+                                        <label class="form-label">Add image [maximum 5 images] <span>*</span>
+                                        </label><input type="file" name="image[]" class="form-control" required>
+                                    </div>
                                 </div>
                             </div>
 
@@ -326,19 +332,28 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-8">
-                                        <div class="form-group"><label class="form-label">Name</label><input type="text" class="form-control" placeholder="Your Name"></div>
+                                        <div class="form-group">
+                                            <label class="form-label">Name <span>*</span></label>
+                                            <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                                        </div>
                                     </div>
                                     <div class="col-lg-8">
-                                        <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-control" placeholder="Your Email"></div>
+                                        <div class="form-group">
+                                            <label class="form-label">Email <span>*</span></label>
+                                            <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                                        </div>
                                     </div>
                                     <div class="col-lg-8">
-                                        <div class="form-group"><label class="form-label">Number</label><input type="number" class="form-control" placeholder="Your Number"></div>
+                                        <div class="form-group">
+                                            <label class="form-label">Contact Number <span>*</span></label>
+                                            <input type="number" class="form-control" placeholder="Your Number" required>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- check -->
                             <div class="adpost-agree">
-                                <div class="form-group"><input type="checkbox" class="form-check"></div>
+                                <div class="form-group"><input type="checkbox" class="form-check" required></div>
                                 <p>I have read and accept the  <a href="#"> Terms and Conditions </a> and <a href="#"> Privacy Policy </a> and acknowledge that you are the rightful owner of this item and using Trade to find a genuine buyer.</p>
                             </div>
 
