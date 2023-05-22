@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <style>
+
+        /* dropdown */
+        .dropbtn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ddd;
+            width: 173px;
+            box-shadow: 3px 3px 12px 0px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+
+        .dropdown-content a{
+            color: black;
+            padding: 8px 16px;
+            text-decoration: none;
+            width:173px;
+            display: block;
+            border-bottom: 1px solid #d6c5c5;
+            border-right: 1px solid #d6c5c5;
+        }
+
+        .dropdown-content li:hover {
+            background-color: #d0d0d0;
+        }
+
+        .dropdown-content.subcat {
+            left: 149px;
+            top: 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            margin-left: 24px;
+        }
+
+
+        .dropdown-content .subcat {
+            display: none;
+            /* Hide the submenus by default */
+        }
+
+        .dropdown-content li.dropdown:hover .subcat {
+            display: block;
+            position: absolute;
+            left: 173px;
+            top: 0;
+            background: #ddd;
+        }
+
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+
+    </style>
+</head>
+<body>
+                <div class="header-right dropdown d-none d-md-none d-sm-none d-lg-block">
+                    <a href="#" class="btn btn-inline post-btn dropdbtn"><span>POST YOUR AD </span><i class="fas fa-plus-circle"></i></a>
+
+                    <ul class="dropdown-content">
+                        <li class="dropdown"><a href="#">Property sale</a>
+                            <ul class="subcat">
+                                <li><a href="{{ route('land-sale') }}">Land sale</a></li>
+                                <li><a href="{{ route('flat-sale') }}">Flat sale</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#">Property rentals</a>
+                            <ul class="subcat">
+                                <li><a href="{{ route('land-sale') }}">Land sale</a></li>
+                                <li><a href="{{ route('flat-sale') }}">Flat sale</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+</body>
+</html>
