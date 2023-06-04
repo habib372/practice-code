@@ -22,6 +22,9 @@ Str::random(10),
 
 {!! (Illuminate\Support\Str::limit($coach->about, 300, $end="")) !!}
 
+{{ Str::limit($ads->ad_title, 60) }}
+
+
 {{$product->product_name??''}}
 
 {{$product->product_name??'Null'}}
