@@ -48,3 +48,8 @@ FooterBottom::where('id',$request->id)->update([
 {{App\Page::where('parent',28)->first()->page_name}}
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+{{ $ads->updated_at->diffForHumans();}}
+
+{{ App\Helpers\Helper::engToBn($adprices->price)}}
+<input type="number" class="form-control" step="any" name="land_size" value="{{old('land_size') ?? (@$data ? $data->land_size : '')}}" placeholder="Enter your land size" required>
