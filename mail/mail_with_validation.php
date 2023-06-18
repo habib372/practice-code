@@ -36,7 +36,7 @@ $data = [
 ];
 \Mail::send('email.contact_email', array( 'data' => $data), function ($message) use ($request) {
     $message->from($request->email);
-    $message->to('info@aamlbd.com')->subject('Customer message');
+    $message->to('')->subject('Customer message');
 });
 
 // \Mail::to(config('app.admin_email'))->send(new \App\Mail\PayMail($data));

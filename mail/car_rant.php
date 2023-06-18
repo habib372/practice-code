@@ -66,7 +66,7 @@ array(
 ), function($message) use ($request,$sourceofFile)
 {
 $message->from($request->email);
-$message->to([$request->email,'habibsoft792@gmail.com'])->subject('Customer Message');
+$message->to([$request->email,''])->subject('Customer Message');
 $message->attach($sourceofFile);
 });
 
@@ -125,7 +125,7 @@ array(
 // $message->to([$request->email,'bdrentacar.com@gmail.com'])->subject('Customer Message');
 
 $message->from($request->email);
-$message->to([$request->email,'habibsoft792@gmail.com'])->subject('Customer Message');
+$message->to([$request->email,' '])->subject('Customer Message');
 });
 
 
@@ -217,7 +217,7 @@ array(
 {
 
 $message->from($request->email);
-$message->to('info@bdrentacar.com')->subject('Customer Message for Reservation');
+$message->to(' ')->subject('Customer Message for Reservation');
 });
 
 

@@ -38,7 +38,7 @@ public function send_message(Request $request)
              ), function($message) use ($request)
                {
                   $message->from($request->email);
-                  $message->to([$request->email,'uitdeveloper2021@gmail.com'])->subject('Customer Message');;
+                  $message->to([$request->email,' '])->subject('Customer Message');;
                });
 
         return back()->with('success','Message Sent Successfully');

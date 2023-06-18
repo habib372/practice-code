@@ -57,7 +57,7 @@ public function reservationsend(Request $request){
 
             \Mail::send('email.reserve', array( 'data' => $data), function ($message) use ($request) {
             $message->from($request->email);
-            $message->to('info@bdrentacar.com')->subject('Customer Reservation message');
+            $message->to('')->subject('Customer Reservation message');
 
          });
 
