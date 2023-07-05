@@ -215,6 +215,42 @@
         });
     </script>
 
+
+ <script>
+         $(document).ready(function(){
+            $(window).on("scroll",function(){
+            var wn = $(window).scrollTop();
+            // console.log(wn);
+            if(wn > 100){
+                $('.bottomnavThree').addClass('nav-scroll');
+            }
+            else{
+                $('.bottomnavThree').removeClass('nav-scroll');
+            }
+          });
+        });
+        AOS.init();
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
+            $(window).on("scroll", function() {
+                var wn = $(window).scrollTop();
+                // console.log(wn);
+                if (wn > 100) {
+                    $('.bottomnavThree').addClass('nav-scroll');
+                    $('.topnav-sourcing').addClass('nav-top');    //mobile menu
+
+                } else {
+                    $('.bottomnavThree').removeClass('nav-scroll');
+                    $('.topnav-sourcing').removeClass('nav-top');
+                }
+            });
+        });
+    </script>
+
+
 <!-- scroll navbar color change 2-->
     <script>
         $(document).ready(function(){
