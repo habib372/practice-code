@@ -1,7 +1,7 @@
 <!-- web.php -->
 Route::get('/services/{slug}', 'FrontendController@servicesdetails');
 
-<!-- controller:   -->
+<!-- controller: style-1  -->
 public function servicesdetails($slug){
     $page_name = str_replace("-", " ",$slug);
     $page = Page::where('page_name', $page_name)->first();
@@ -9,7 +9,16 @@ public function servicesdetails($slug){
     return view('frontend.page',compact('page','color'));
 }
 
-<!-- demo-1 -->
+<!-- controller: style-2  -->
+public function about_pages($slug)
+    {
+        $slug = Str::of($slug)->replace('-', ' ');
+        $pages = Page::where('page_name',$slug)->first();
+        return view('frontend.page_details',compact('pages'));
+    }
+
+
+<!-- controller: style-3  -->
  public function blog_details($slug)
     {
         $blog_name = str_replace("-", " ",$slug);
@@ -39,7 +48,7 @@ $page = App\Page::where('parent_id', 14)->get();
     <input type="checkbox" id="btn-2-services">
     <ul style="background-color: {{$color->color_code}};">
         @foreach($page as $sub_data)
-        <li><a href="{{url('services/')}}/{{strtolower(str_replace(" ", "-",$sub_data->page_name))}}">{{$sub_data->page_name}}</a></li>
+        <li><a href="{{url('services/')}}/{{strtolower(str_replace(" ", "-",$->page_name))}}">{{$sub_data->page_name}}</a></li>
         @endforeach
     </ul>
 </li>
@@ -51,3 +60,4 @@ $page = App\Page::where('parent_id', 14)->get();
 </li>
 @endforeach
 
+sub_data
