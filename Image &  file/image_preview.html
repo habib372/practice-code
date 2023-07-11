@@ -1,38 +1,24 @@
-<script type='text/javascript'>
-    function preview_image(event) {
-        var reader = new FileReader();
-        reader.onload = function() {
-            var output = document.getElementById('output_image');
-            output.src = reader.result;
-        }
-        reader.readAsDataURL(event.target.files[0]);
-    }
-</script>
-<script type="text/javascript">
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                $('#profile-img-tag').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    $("#profile-img").change(function() {
-        readURL(this);
-    });
-</script>
-
-<!-- create -->
+<!-- img -01 -->
 <div class="form-group">
-    <label>Image</label>
+    <label>Header Logo</label>
     <div class="custom-file">
         <input type="file" class="custom-file-input" id="customFile" name="image" id="profile-img" onchange="preview_image(event)" />
         <label class="custom-file-label" for="customFile">Choose file</label>
+        <img src="" id="output_image" width="200px" style="padding-top: 5px;" />
     </div>
-    <img src="" id="output_image" width="200px" style="padding-top: 5px;" />
 </div>
+
+<!-- img -02 -->
+<div class="form-group">
+    <label>Header Logo</label>
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" id="customFile" name="image1" id="profile-img" onchange="preview_image1(event)" />
+        <label class="custom-file-label" for="customFile">Choose file</label>
+        <img src="" id="output_image1" width="200px" style="padding-top: 5px;" />
+    </div>
+</div>
+
+
 
 <!-- edit -->
 <div class="form-group">
@@ -43,3 +29,32 @@
         <img src="{{asset('uploads/header')}}/{{$header->favicon}}" id="output_image" width="50px" style="padding-top: 5px;" />
     </div>
 </div>
+
+
+<!-- img -01 -->
+<script type='text/javascript'>
+function preview_image(event)
+{
+ var reader = new FileReader();
+ reader.onload = function()
+ {
+  var output = document.getElementById('output_image');
+  output.src = reader.result;
+ }
+ reader.readAsDataURL(event.target.files[0]);
+}
+</script>
+
+<!-- img -02 -->
+<script type='text/javascript'>
+function preview_image1(event)
+{
+ var reader = new FileReader();
+ reader.onload = function()
+ {
+  var output = document.getElementById('output_image1');
+  output.src = reader.result;
+ }
+ reader.readAsDataURL(event.target.files[0]);
+}
+</script>
