@@ -51,3 +51,8 @@ class CreateAgentsTable extends Migration
         Schema::dropIfExists('agents');
     }
 }
+// specific file migrate
+
+php artisan migrate --path=/database/migrations/test.php
+
+C:\xampp\htdocs\web-development\Fightingcancerbd.com\tsrhealth/C:/Program Files/Git/database/migrations/test/2023_07_12_113336_create_admanagers_table.php'

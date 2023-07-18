@@ -1,0 +1,39 @@
+                 @isset( $sp_ads1)
+                    <div class="advertise-img-size">
+                        <a href="{{ $sp_ads1->ad_link }}" target="_blank">
+                            <img src="images/advertise/{{ $sp_ads1->ad_image }}" alt="">
+                        </a>
+                    </div>
+                @endisset
+                @empty($sp_ads1)
+                    <div class="advertise-img-size">
+                        <img src="advertise/default-homepage-ad.png" alt="">
+                    </div>
+                @endempty
+
+
+
+
+     @php
+        $article_ads = App\Models\Admanager::where('status','active')->where('ad_type', 'article-ad')->get();
+        $show_ads = true;
+    @endphp
+
+        @foreach($article_ads as $ads)
+            @if($ads->article_id == $article->id )
+                <div class="content-ad-img-size text-center">
+                    <a href="{{ $ads->ad_link }}">
+                        <img src="{{ asset('images/advertise') }}/{{ $ads->ad_image }}" alt="">
+                    </a>
+                </div>
+                @php $show_ads = false; @endphp;
+            @endif
+        @endforeach
+
+     @if($show_ads)
+        <div class="content-ad-img-size text-center ">
+            <a href="">
+                <img src="{{ asset('advertise/default-article-ad.png') }}" alt="">
+            </a>
+        </div>
+    @endif
