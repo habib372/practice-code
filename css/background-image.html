@@ -1,1 +1,38 @@
     <section id="paralex-commitment" style="background:linear-gradient(to left, #000000cc , #111211d1 100%), url({{asset('uploads/aboutus/'.$datas->client_bg_img)}});">
+
+
+
+<!-- Center Image Vertical and Horizontal and button-->
+   <style>
+        .bg-img{
+            background: url('images/homepage/patient-care-centre.png') no-repeat 0 0;
+            background-position: center;
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+
+        html,body,.bg-img { /* so that the #dv can fill up the page */
+            width:100%;
+            height:100%;
+        }
+
+        .button-main{
+            top:50%;
+            left:50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+    </style>
+
+    <div class="bg-img">
+        <div class="button-main">
+            <button class="btn btn-primary"> Admin Login</button>
+            <button class="btn btn-info"> Doctor Login</button>
+        </div>
+    </div>
+
+
