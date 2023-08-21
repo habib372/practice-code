@@ -36,7 +36,6 @@ class fileController extends Controller
 
     {
         $fileName = time().'.'.$request->file->extension();
-
         $request->file->move(public_path('uploads'), $fileName);
 
         DB::insert("insert into file_uplod(name)values('$fileName')");

@@ -16,7 +16,7 @@
 </div>
 <!--radio item-2 -->
 <div class="col-md-3">
-    <p class="pregnancy_status">Pregnancy Status {{ $patientVisit->pregnency_status }}</p>
+    <p class="pregnancy_status">Pregnancy Status </p>
     <input type="radio" name="visit_pregnency_status" id="yes" value="yes" {{ $patientVisit->pregnency_status === 'yes' ? 'checked' : '' }}>
     <label for="yes">Yes</label>&nbsp;&nbsp;&nbsp;
     <input type="radio" name="visit_pregnency_status" id="no" value="no" {{ $patientVisit->pregnency_status === 'no' ? 'checked' : '' }}>

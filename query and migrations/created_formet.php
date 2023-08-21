@@ -2,4 +2,7 @@
 
 {{ $data->created_at->format('j F, Y') }} <!---20 Feb, 2023--->
 
+$temp['date'] = \Carbon\Carbon::parse($item->visit_date)->format('j F, Y'); //21 September, 23
+$temp['date'] = \Carbon\Carbon::parse($item->visit_date)->format('j M, Y'); //21 Sept, 23
+
 <td>Trans Date: {{$invoice->created_at->toFormattedDateString()}} ({{$invoice->created_at->diffForHumans()}})</td> <!---20 Feb, 2023 (3 hours from now )--->
