@@ -5,39 +5,131 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .img{
-            float:left;
-            margin:0 30px 10px 0;
-        }
-    </style>
+<style>
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="img">
-                    <img src="asset/img/1.png" class="img-fluid" alt="">
-                </div>
-                <div class="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi semper vestibulum purus in ornare. Vestibulum luctus, nisl a finibus sollicitudin, justo lectus egestas ante, eget porta ante orci ut elit. Integer accumsan massa vel massa volutpat, sed tincidunt massa aliquet. Vivamus vel velit imperdiet quam egestas faucibus. Nullam urna mauris, vulputate eget tortor a, venenatis consectetur massa. Suspendisse tortor erat, accumsan vitae magna vel, porta scelerisque elit. Donec nibh nunc, hendrerit quis lacus non, sagittis vestibulum quam.</p>
-
-                    <span>Quisque eget erat pretium, semper dui sed, blandit ante. Morbi maximus nunc in mi scelerisque vehicula. Aliquam condimentum ex et malesuada euismod. Sed finibus quam eu dui hendrerit consectetur. Praesent mollis in urna ac interdum. Nam a erat in nisl bibendum mollis lobortis sed metus. Etiam placerat lorem lectus, nec laoreet sapien dictum nec. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In tincidunt, urna id efficitur mattis, ligula augue maximus mauris, ut congue mauris velit ac turpis. Quisque quam diam, auctor in sapien vitae, posuere tristique augue. Pellentesque placerat elit tellus. Vivamus diam odio, consequat interdum dignissim vel, luctus ut dolor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed laoreet arcu sed euismod varius. Curabitur eu ipsum nunc.</span>
-
-                    <p>Cras ornare fringilla augue eget molestie. Mauris quis leo gravida, pellentesque risus vitae, sodales urna. Morbi a semper purus. Curabitur dictum pharetra sodales. Sed vel fermentum risus, sed scelerisque sem. Nullam sodales sit amet odio at malesuada. In hac habitasse platea dictumst. Integer at enim gravida, convallis libero sit amet, consectetur sem. Fusce ornare metus id risus cursus, sit amet volutpat dolor facilisis. Quisque in tempor nibh. Morbi vel ultricies dui. Ut eget arcu facilisis, porta nisl sodales, blandit dolor.</p>
-
-                    Cras ornare fringilla augue eget molestie. Mauris quis leo gravida, pellentesque risus vitae, sodales urna. Morbi a semper purus. Curabitur dictum pharetra sodales. Sed vel fermentum risus, sed scelerisque sem. Nullam sodales sit amet odio at malesuada. In hac habitasse platea dictumst. Integer at enim gravida, convallis libero sit amet, consectetur sem. Fusce ornare metus id risus cursus, sit amet volutpat dolor facilisis. Quisque in tempor nibh. Morbi vel ultricies dui. Ut eget arcu facilisis, porta nisl sodales, blandit dolor.
-
-                   <p> Cras ornare fringilla augue eget molestie. Mauris quis leo gravida, pellentesque risus vitae, sodales urna. Morbi a semper purus. Curabitur dictum pharetra sodales. Sed vel fermentum risus, sed scelerisque sem. Nullam sodales sit amet odio at malesuada. In hac habitasse platea dictumst. Integer at enim gravida, convallis libero sit amet, consectetur sem. Fusce ornare metus id risus cursus, sit amet volutpat dolor facilisis. Quisque in tempor nibh. Morbi vel ultricies dui. Ut eget arcu facilisis, porta nisl sodales, blandit dolor.</p>
-                    Cras ornare fringilla augue eget molestie. Mauris quis leo gravida, pellentesque risus vitae, sodales urna. Morbi a semper purus. Curabitur dictum pharetra sodales. Sed vel fermentum risus, sed scelerisque sem. Nullam sodales sit amet odio at malesuada. In hac habitasse platea dictumst. Integer at enim gravida, convallis libero sit amet, consectetur sem. Fusce ornare metus id risus cursus, sit amet volutpat dolor facilisis. Quisque in tempor nibh. Morbi vel ultricies dui. Ut eget arcu facilisis, porta nisl sodales, blandit dolor.
-
-                    Cras ornare fringilla augue eget molestie. Mauris quis leo gravida, pellentesque risus vitae, sodales urna. Morbi a semper purus. Curabitur dictum pharetra sodales. Sed vel fermentum risus, sed scelerisque sem. Nullam sodales sit amet odio at malesuada. In hac habitasse platea dictumst. Integer at enim gravida, convallis libero sit amet, consectetur sem. Fusce ornare metus id risus cursus, sit amet volutpat dolor facilisis. Quisque in tempor nibh. Morbi vel ultricies dui. Ut eget arcu facilisis, porta nisl sodales, blandit dolor.
+   <!-- Styles -->
 
 
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+
+<!-- Chart code -->
+<script>
+am5.ready(function() {
+
+// Create root element
+// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://www.amcharts.com/docs/v5/concepts/themes/
+root.setThemes([
+  am5themes_Animated.new(root)
+]);
+
+// Create chart
+// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+var chart = root.container.children.push(am5percent.PieChart.new(root, {
+  radius: am5.percent(90),
+  innerRadius: am5.percent(50),
+  layout: root.horizontalLayout
+}));
+
+// Create series
+// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+var series = chart.series.push(am5percent.PieSeries.new(root, {
+  name: "Series",
+  valueField: "sales",
+  categoryField: "country"
+}));
+
+// Set data
+// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+series.data.setAll([{
+  country: "Lithuania",
+  sales: 501.9
+}, {
+  country: "Czechia",
+  sales: 301.9
+}, {
+  country: "Ireland",
+  sales: 201.1
+}, {
+  country: "Germany",
+  sales: 165.8
+}, {
+  country: "Australia",
+  sales: 139.9
+}, {
+  country: "Austria",
+  sales: 128.3
+}, {
+  country: "UK",
+  sales: 99
+}, {
+  country: "Belgium",
+  sales: 60
+}, {
+  country: "The Netherlands",
+  sales: 50
+}]);
+
+// Disabling labels and ticks
+series.labels.template.set("visible", false);
+series.ticks.template.set("visible", false);
+
+// Adding gradients
+series.slices.template.set("strokeOpacity", 0);
+series.slices.template.set("fillGradient", am5.RadialGradient.new(root, {
+  stops: [{
+    brighten: -0.8
+  }, {
+    brighten: -0.8
+  }, {
+    brighten: -0.5
+  }, {
+    brighten: 0
+  }, {
+    brighten: -0.5
+  }]
+}));
+
+// Create legend
+// https://www.amcharts.com/docs/v5/charts/percent-charts/legend-percent-series/
+var legend = chart.children.push(am5.Legend.new(root, {
+  centerY: am5.percent(50),
+  y: am5.percent(50),
+  layout: root.verticalLayout
+}));
+// set value labels align to right
+legend.valueLabels.template.setAll({ textAlign: "right" })
+// set width and max width of labels
+legend.labels.template.setAll({
+  maxWidth: 140,
+  width: 140,
+  oversizedBehavior: "wrap"
+});
+
+legend.data.setAll(series.dataItems);
+
+
+// Play initial series animation
+// https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+series.appear(1000, 100);
+
+}); // end am5.ready()
+</script>
+
+<!-- HTML -->
+<div id="chartdiv"></div>
 </body>
 </html>
