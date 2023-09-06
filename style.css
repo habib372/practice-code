@@ -1,0 +1,29 @@
+.color {
+    color: #66CDAA #FFA07A #FF6347 #32CD32 #2E8B57 #808000
+    #556B2F #00FFFF #66CDAA #008B8B #DB7093
+}
+
+
+if (auth()->user()->userRole->name=='co-ordinator'){
+$disStartDate = ( !empty($request->dis_start_date)) ? $request->dis_start_date : $defaultStartDate;
+$disEndDate = ( !empty($request->dis_end_date)) ? $request->dis_end_date : date('Y-m-d');
+$patientServedByDisType = PatientVisit::select('disease_id', 'dis.name_en', DB::raw('COUNT(DISTINCT(patient_visits.patient_id)) patient_served'))->join('patients as p', 'p.id', '=', 'patient_visits.patient_id')->join('diseases as dis', 'dis.id', '=', 'patient_visits.disease_id')->where('patient_visits.service_provider_id', auth()->user()->service_provider_id)->whereBetween('visit_date', [$disStartDate, $disEndDate])->groupBy('disease_id')->orderBy('patient_served', 'DESC')->take(10)->get();
+}
+
+if (auth()->user()->userRole->name=='co-ordinator') {
+    $disStartDate=( !empty($request->dis_start_date)) ? $request->dis_start_date: $defaultStartDate;
+    $disEndDate=( !empty($request->dis_end_date)) ? $request->dis_end_date: date('Y-m-d');
+
+    $patientServedByDisType=PatientVisit: :select('disease_id', 'dis.name_en', DB::raw('COUNT(DISTINCT(patient_visits.patient_id)) as patient_served')) ->join('patients as p', 'p.id', '=', 'patient_visits.patient_id') ->join('diseases as dis', 'dis.id', '=', 'patient_visits.disease_id') ->where('patient_visits.service_provider_id', auth()->user()->service_provider_id) ->whereBetween('visit_date', [$disStartDate, $disEndDate]) ->groupBy('disease_id', 'dis.name_en') ->orderBy('patient_served', 'DESC') ->take(10) ->get();
+}
+
+
+if (auth()->user()->userRole->name=='co-ordinator') {
+    $disStartDate = ( !empty($request->dis_start_date)) ? $request->dis_start_date: $defaultStartDate;
+    $disEndDate = ( !empty($request->dis_end_date)) ? $request->dis_end_date: date('Y-m-d');
+
+    $diseaseIds = explode(',', patient_visits.disease_id);
+
+    $patientServedByDisType=PatientVisit: :select('disease_id', 'dis.name_en', DB::raw('COUNT(DISTINCT(patient_visits.patient_id)) as patient_served')) ->join('patients as p', 'p.id', '=', 'patient_visits.patient_id') ->join('diseases as dis', 'dis.id', '=', 'patient_visits.disease_id') ->where('patient_visits.service_provider_id', auth()->user()->service_provider_id) ->whereIn('patient_visits.disease_id', $diseaseIds) // Use `whereIn` to match any of the disease IDs
+        ->whereBetween('visit_date', [$disStartDate, $disEndDate]) ->groupBy('disease_id', 'dis.name_en') ->orderBy('patient_served', 'DESC') ->take(10) ->get();
+}
