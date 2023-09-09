@@ -17,3 +17,13 @@
     background-attachment: fixed;
     background-size: cover;
 }
+
+/* background blur */
+.board-header {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    background: var(--board-header-background-color);
+}
+.body-dark-board-background {
+    --board-header-background-color: #0000003d;
+}
