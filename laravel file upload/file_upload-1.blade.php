@@ -109,3 +109,12 @@ public function update(Request $request, $id)
             return redirect()->route('tsr-admin.branch-type.index')->with('error', 'Failed to update Service Provider Type');
         }
     }
+<!-- delete -->
+ public function destroy($id)
+    {
+        $data = ServiceProviderType::find($id);
+        if ($data->delete()) {
+            @unlink(public_path() . "/images/serviceprovidertype/" . $data->logo);
+            return back()->with('success', 'Branch Type has been deleted');
+        }
+    }
