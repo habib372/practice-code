@@ -1,92 +1,54 @@
-<!-- route -->
-Route::get('get-disease-list/{id}', 'PatientController@getDisease');
-<!--PatientController-->
- public function getDisease($id){
-        $diseases =  Disease::where('disease_type_id', $id)->select('name_en', 'id')->get();
-            return response()->json($diseases);
-    }
 
-<!-- create page -->
-<div class="col-md-4">
-    <label for="patient_disease_type_id">
-        Disease Type<span class="text-danger">*</span>
-    </label>
-    {!! Form::select('patient_disease_type_id', $diseases_type, null, ['class' => 'form-control m-input select2', 'id' => 'patient_disease_type_id']) !!}
-    @error('patient_disease_type_id')
-    <span class="text-danger">{{$message}}</span>
-    @enderror
+<div class="form-group m-form__group row" id="show_service_provider_type" style="display:none;" ;>
+    <div class="col-lg-6">
+        <label for="service_provider_type_id">Select Service Provider <span class="text-danger">*</span></label>
+        {!! Form::select('service_provider_type_id', $serviceProviderTypes, null, ['class' => 'form-control m-input m-select2 m_select2_1', 'id' => 'service_provider_type_id', 'style="width:100%;"']) !!}
+        @error('service_provider_type_id')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
+    </div>
+    <div class="col-lg-6" id="show_service_provider" style="display:none;" ;>
+        <label for="role">Select Branch <span class="text-danger">*</span></label>
+        {!! Form::select('service_provider_id', $serviceProviders, null, ['class' => 'form-control m-input m-select2 m_select2_1', 'id' => 'service_provider_id', 'style="width:100%;"']) !!}
+        @error('service_provider_id')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
+    </div>
 </div>
 
-<div class="col-md-4">
-    <label for="patient_disease_id">
-        Disease <span class="text-danger">*</span>
-    </label>
-    {!! Form::select('patient_disease_id', $diseases, null, ['class' => 'form-control m-input select2', 'id' => 'patient_disease_id']) !!}
-    @error('patient_disease_id')
-    <span class="text-danger">{{$message}}</span>
-    @enderror
-</div>
 
-<div class="col-md-4" id="stage_id">
-    <label for="patient_stage_id">
-        Stage
-    </label>
-    {!! Form::select('patient_stage_id', $stages, null, ['class' => 'form-control m-input select2', 'id' => 'patient_stage_id']) !!}
-    @error('patient_stage_id')
-    <span class="text-danger">{{$message}}</span>
-    @enderror
-</div>
+<!-- type 1 -->
+<script>
+    $(document).on('change', '#user_role_id' , function(){
+        var user_role = $("#user_role_id").val();
 
- <script>
-
-    // show / hide
-	$(document).ready(function() {
-    $('#stage_id').hide();
-
-		$(document).on('change', '#patient_disease_type_id', function() {
-			var disease = $(this).val();
-
-			if (disease == '1') {
-				$('#stage_id').show('slow');
-			} else {
-
-				$('#stage_id').hide('slow');
-			}
-
-
-		});
-	});
-
-    // disease type wise show
-	$('#patient_disease_type_id').change(function(){
-		var countryID = $(this).val();
-
-		if(countryID){
-			$.ajax({
-			type:"GET",
-			url:"{{url('tsr-admin/get-disease-list') }}"+"/"+countryID,
-			data : {"_token":"{{ csrf_token() }}"},
-			dataType: "json",
-			success:function(res){
-				console.log(res);
-			if(res){
-				$("#patient_disease_id").empty();
-				$("#patient_disease_id").append('<option value=""> --Select Disease-- </option>');
-				$.each(res,function(key,value){
-				$("#patient_disease_id").append('<option value="'+value.id+'">'+value.name_en+'</option>');
-				});
-
-			}else{
-				$("#patient_disease_id").empty();
-			}
-			}
-			});
-		}else{
-			$("#patient_disease_id").empty();
-			$("#patient_disease_id").append('<option value=""> --Select Disease-- </option>');
-
-		}
-  	});
-
-
+        if(user_role==2 || user_role==3 || user_role==7)
+        {
+            $('#show_service_provider').show('slow');
+        }else{
+            $('#show_service_provider').hide('slow');
+        }
+    });
 </script>
+
+<!-- type 2 -->
+ <script>
+        $(document).on('change', '#user_role_id', function () {
+            var user_role = $("#user_role_id").val();
+            var superRoles = [4, 5, 6, 8];
+            var generalRoles = [2, 3, 7, 9, 10];
+
+            if (superRoles.includes(parseInt(user_role)))
+            {
+                $('#show_service_provider_type').show('slow');
+                $('#show_service_provider').hide('slow');
+            } else if (generalRoles.includes(parseInt(user_role)))
+            {
+                $('#show_service_provider_type').show('slow');
+                $('#show_service_provider').show('slow');
+            } else {
+                $('#show_service_provider_type').hide('slow');
+                $('#show_service_provider').hide('slow');
+            }
+        });
+    </script>
