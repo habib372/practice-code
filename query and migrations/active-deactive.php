@@ -9,6 +9,9 @@
 </td>
 
 
+@if($user->status == 'active') <span class="badge user-badge badge-success">Active</span> @else <span class="badge user-badge badge-danger">Inactive</span> @endif
+
+
 @php if($basic->gender==1){ echo "Male"; }else{ echo "Female"; } @endphp
 
 

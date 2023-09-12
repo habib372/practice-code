@@ -53,7 +53,6 @@ Route::get('get-disease-list/{id}', 'PatientController@getDisease');
 				$('#stage_id').hide('slow');
 			}
 
-
 		});
 	});
 

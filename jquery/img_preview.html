@@ -1,0 +1,21 @@
+<!-- insert -->
+<img src="" id="output_image" width="200px" style="padding-top: 5px;" />
+
+<!-- update -->
+ <img src="{{asset('uploads/header')}}/{{$header->favicon}}" id="output_image" width="50px" style="padding-top: 5px;" />
+
+<script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#output_image').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#profile-img").change(function(){
+            readURL(this);
+        });
+</script>
