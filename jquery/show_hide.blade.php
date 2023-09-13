@@ -28,6 +28,21 @@
 </div>
 <!--end-->
 
+<!-- type 1 -->
+<script>
+    $(document).on('change', '#user_role_id' , function(){
+        var user_role = $("#user_role_id").val();
+
+        if(user_role==2 || user_role==3 || user_role==7)
+        {
+            $('#show_service_provider').show('slow');
+        }else{
+            $('#show_service_provider').hide('slow');
+        }
+    });
+</script>
+
+
 
 <!-- when select user role in [4, 5, 6, 8], then show only service_provider_type_id otherwise show all -->
 <script>
@@ -36,7 +51,7 @@
         var superRoles = [4, 5, 6, 8];
         var generalRoles = [2, 3, 7, 9, 10];
 
-        if (!$.isEmptyObject(user_role)) {
+        if (user_role !== '') {
             $('#show_service_provider_type').show('slow');
             if (generalRoles.includes(user_role)) {
                 $('#show_service_provider').show('slow');
@@ -60,13 +75,13 @@
         var superRoles = [4, 5, 6, 8];
         var generalRoles = [2, 3, 7, 9, 10];
 
-        if (!$.isEmptyObject(user_role) || !$.isEmptyObject(service_provider_type)) {
+        if (user_role !== '' || service_provider_type !== '') {
             $('#show_service_provider_type').show('slow');
-            if (generalRoles.includes(parseInt(user_role))) {
-                $('#show_service_provider').show('slow');
-            } else {
-                $('#show_service_provider').hide('slow');
-            }
+                if (generalRoles.includes(parseInt(user_role))) {
+                    $('#show_service_provider').show('slow');
+                } else {
+                    $('#show_service_provider').hide('slow');
+                }
         } else {
             $('#show_service_provider_type').hide('slow');
             $('#show_service_provider').hide('slow');
@@ -88,7 +103,9 @@
                 // If user_role is 1, hide all elements
                 $('#show_service_provider_type').hide('slow');
                 $('#show_service_provider').hide('slow');
-            } else if (!$.isEmptyObject(user_role) || !$.isEmptyObject(service_provider_type)) {
+                $('#show_service_provider_type').val();
+                $('#show_service_provider').val();
+            } else if (user_role !== '' || service_provider_type !== '') {
                 // If user_role is not 1 and either user_role or service_provider_type is selected, show the appropriate elements
                 $('#show_service_provider_type').show('slow');
                 if (generalRoles.includes(parseInt(user_role))) {
