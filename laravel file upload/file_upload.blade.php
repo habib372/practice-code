@@ -34,6 +34,8 @@ use File;
 
         return redirect()->back()->withInput();
     }
+
+
     <!-- Update-->
  public function update(Update $request, ServiceProviderType $serviceProviderType)
     {
@@ -51,6 +53,8 @@ use File;
 
         return redirect()->back()->withInput()->with('errors', 'Somthing is wrong');
     }
+
+
     <!-- method 1 function for single resize image-->
     public function uploadImages($image, $width)
     {
@@ -67,6 +71,8 @@ use File;
         })->save($path.'/'.$originalName);
 
     }
+
+
     <!-- method 1 function for multiple resize image-->
     public function uploadImages($image, $width)
     {
@@ -91,9 +97,9 @@ use File;
     public function store(Request $request)
     {
         <!--validate-->
-        $this->validate($request, [
+        {{-- $this->validate($request, [
             'logo' => 'mimes:jpg,jpeg,png,gif|required'
-        ]);
+        ]); --}}
 
         $filename = null;
         if ($request->hasFile('logo')) {

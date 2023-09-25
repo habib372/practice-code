@@ -20,6 +20,8 @@
         $featureImage = $ModifiedFileNameWithExtension;
         return $featureImage;
     }
+
+
     function multiImage($title, $files, $location, $id)
     {
         $i = 2;

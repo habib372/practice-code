@@ -1,6 +1,7 @@
+<?php
 
 
-<!-- create -->
+// <!-- create -->
 public function store(Request $request)
     {
         // $this->validate($request, [
@@ -55,7 +56,7 @@ public function store(Request $request)
 
     }
 
-<!-- updated -->
+// <!-- updated -->
 public function update(Request $request, $id)
     {
         $data = ServiceProviderType::find($id);
@@ -109,7 +110,7 @@ public function update(Request $request, $id)
             return redirect()->route('tsr-admin.branch-type.index')->with('error', 'Failed to update Service Provider Type');
         }
     }
-<!-- delete -->
+// <!-- delete -->
  public function destroy($id)
     {
         $data = ServiceProviderType::find($id);

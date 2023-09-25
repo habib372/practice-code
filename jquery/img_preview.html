@@ -4,22 +4,44 @@
 <!-- update -->
  <img  src="{{asset('uploads/header')}}/{{$header->favicon}}" id="output_image" width="50px" style="padding-top: 5px;" />
 
+ <!-- single image preview -->
 <script type="text/javascript">
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    $('#output_image').attr('src', e.target.result);
+                    $('#output_image').attr('src', e.target.result);  // id = "output_image"
                 }
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        $("#profile-img").change(function(){
+        $("#profile-img").change(function(){    // name = "profile-img"
             readURL(this);
         });
 </script>
 
+
+ <!-- Multi image preview -->
+ <script type="text/javascript">
+        function readURL(input, target) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $(target).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#logo").change(function(){          // name = "logo"
+            readURL(this, '#preview_logo');    // id = "preview_logo"
+        });
+
+        $("#featured_image").change(function(){     // name = "featured_image"
+            readURL(this, '#featured_img');         // id = "featured_img"
+        });
+    </script>
 
  ->join('service_provider_types as spt', 'sp.service_provider_type_id', '=', 'spt.id')
 

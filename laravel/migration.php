@@ -35,6 +35,13 @@ class CreateAgentsTable extends Migration
             $table->string('image')->default('photo.jpg');
             $table->longText('video')->nullable();
             $table->integer('status')->default(0);
+            $table->enum('is_active', ['active', 'inactive'])->default('active');
+            $table->tinyInteger('featured')->nullable()->default(0);
+
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamp('failed_at')->useCurrent();
             $table->timestamps();
