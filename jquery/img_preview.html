@@ -4,6 +4,13 @@
 <!-- update -->
  <img  src="{{asset('uploads/header')}}/{{$header->favicon}}" id="output_image" width="50px" style="padding-top: 5px;" />
 
+ <div class="col-lg-2">
+    @if (file_exists('images/doctors/'. $doctor->id.'_large_'.$doctor->doctor_image))
+        <img class="preview_logo" src="/images/doctors/{{ $doctor->id }}_large_{{$doctor->doctor_image}}" alt="{{ $doctor->title_en }}">
+    @endif
+</div>
+
+
  <!-- single image preview -->
 <script type="text/javascript">
         function readURL(input) {
