@@ -58,6 +58,14 @@ return datatables()->of($data)->editColumn('doctor.name_en', function ($row) {
 <div class="form-group m-form__group row" id="show_service_provider" @if(old('user_role_id')) style="display:block;" @else style="display:none;"; @endif>
 
 
+
+    {!! Str::limit($item->description, 600, '.. <br/><a class="learn_more" href="/service-provider/'.$item->featuredServiceProviderType->slug.'/'.$item->slug.'">'.trans("text.learn_more").' <i class="fa fa-angle-double-right"></i></a>') !!}
+
+    {!! Str::limit($item->description, 600) !!}
+    <a class="learn_more" href="/service-provider/{{ $item->featuredServiceProviderType->slug }}/{{ $item->slug }}">{{ trans("text.learn_more") }} <i class="fa fa-angle-double-right"></i></a>
+
+
+
 // array data
  public function patient_bp_rbs1($id)
     {
