@@ -79,6 +79,7 @@ public function uploadImages($image, $width)
         }
 
         $image->move($path, time() . '_' . $originalName);
+        return $photo_name;
 
     }
 

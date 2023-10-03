@@ -65,6 +65,18 @@ return datatables()->of($data)->editColumn('doctor.name_en', function ($row) {
     <a class="learn_more" href="/service-provider/{{ $item->featuredServiceProviderType->slug }}/{{ $item->slug }}">{{ trans("text.learn_more") }} <i class="fa fa-angle-double-right"></i></a>
 
 
+     @if ($loop->index == 0)
+                                        <i class="fa fa-hospital-o"></i>
+                                    @elseif ($loop->index == 1)
+                                        <i class="fa fa-flask"></i>
+                                    @elseif ($loop->index == 2)
+                                        <i class="fa fa-medkit"></i>
+                                    @elseif ($loop->index == 3)
+                                        <i class="fas fa-prescription"></i>
+                                    @elseif ($loop->index == 4)
+                                        <i class="fa fa-user-md"></i>
+                                    @endif
+
 
 // array data
  public function patient_bp_rbs1($id)
