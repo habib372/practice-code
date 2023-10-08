@@ -101,3 +101,14 @@ public function uploadImages($image)
     // Move the new image
     $image->move($path, time() . '_' . $originalName);
 }
+
+
+// with resize
+public function uploadImages($image){
+        $originalName = $image->getClientOriginalName();
+        $photo_name = strtotime("now").'_'.$originalName;
+
+        $image = Image::make($image);
+        $image->resize(200, 200)->save(public_path() . "/images/patients/".$photo_name);
+        return $photo_name;
+    }
