@@ -1,65 +1,34 @@
-<?php
+<div class="owl-carousel">
+    <div class="owl-stage-outer">
+        <div class="single-clients">
+            <img src="/images/partner/15_large.jpg" alt="Japan Bangladesh Friendship Hospital (JBFH)">
+        </div>
 
-namespace App\Http\Controllers\Admin;
+        <div class="single-clients">
+            <img src="/images/partner/16_large.jpg" alt="Australia Bangladesh Comprehensive Cancer Centre">
+        </div>
+        <div class="single-clients">
+            <img src="/images/partner/15_large.jpg" alt="Japan Bangladesh Friendship Hospital (JBFH)">
+        </div>
+        <div class="single-clients">
+            <img src="/images/partner/14_large.jpg" alt="TSR Health Services (Australia) Pty Ltd.">
+        </div>
+        <div class="owl-item cloned" style="width: 210px; margin-right: 15px;">
+            <div class="single-clients">
+                <img src="/images/partner/12_large.jpg" alt="Japan Bangladesh Friendship Hospital (JBFH)">
+            </div>
+        </div>
+    </div>
 
-use Illuminate\Http\Response;
-
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Patient\Store;
-use App\Http\Requests\Admin\Patient\Update;
-use Intervention\Image\Facades\Image;
-use App\Models\Patient;
-use App\Models\Stage;
-use App\Models\Disease;
-use App\Models\Country;
-use App\Models\District;
-use App\Models\Doctor;
-use App\Models\ServiceProvider;
-use App\Models\Service;
-use App\Models\PatientVisit;
-use App\Models\VisitAttachment;
-use App\Models\Carer;
-use App\Models\MedicalBoard;
-use App\Models\PatientVisitCarer;
-use App\Models\PatientVisitAttribute;
-use App\Models\AttributeDisease;
-use App\Models\Appointment;
-use App\Models\DiseaseType;
-use App\Models\DoctorServiceProvider;
-use Illuminate\Http\Request;
-use DB;
-use Hash;
-use File;
-use Validator;
-// use App\Helpers\Custom;
+    <div class="owl-controls">
+        <div class="owl-nav">
+            <div class="owl-prev" style="display: none;">prev</div>
+            <div class="owl-next" style="display: none;">next</div>
+        </div>
+        <div class="owl-dots" style="display: none;"></div>
+    </div>
+</div>
 
 
 
-class PatientController extends Controller{
 
-
-
-$patients = Patient::with(['serviceProvider', 'district', 'country'])->select('*');
-
-return datatables()->of($patients)->addColumn('diseases', function ($row) {
-    $diseaseIds = explode(',', $row->disease_id);
-    $diseaseNames = Disease::whereIn('id', $diseaseIds)->pluck('name_en')->implode(', ');
-    return $diseaseNames;
-})->addColumn('action', function ($row) {
-    // ... Your existing action column code ...
-})->editColumn('district.name', function ($row) {
-    return (!empty($row->district->name)) ? $row->district->name : '';
-})->editColumn('service_provider.name_en', function ($row) {
-    return (!empty($row->serviceProvider->name_en)) ? $row->serviceProvider->name_en : '';
-})->rawColumns(['action'])->make(true);
-
-
-{data: 'diseases',  name: 'diseases',searchable: search_by_all,sortable: false,
-    defaultContent: 'N/A',
-},
-
-$patient = Patient::with(['disease', 'stage', 'chemotherapies' => function ($query) {
-    $query->orderBy('date_of_admission', 'desc');
-}])->findOrFail($id);
-$diseaseIds = explode(',', $patient->disease_id);
-$diseaseNames = Disease::whereIn('id', $diseaseIds)->pluck('name_en')->implode(',');}

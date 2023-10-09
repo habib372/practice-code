@@ -43,6 +43,20 @@ return datatables()->of($data)->editColumn('doctor.name_en', function ($row) {
     return view('admin.specialist.index');
 }
 
+{{-- latest, take --}}
+//$upcomingCourseEvents = CourseEvent::whereDate('start_date','>',now())->take(5)->get();
+        $upcomingCourseEvents = News::latest()->where('type','training')->take(4)->get();
+        $currentCourses = Course::all();
+        $news = News::latest()->where('type','training')->get();
+
+
+ {{-- random order --}}
+$articles = Content::select(['id','title_'.config('app.locale').' as title', 'description_'.config('app.locale').' as description', 'slug', 'images', 'content_category_id', 'created_at'])
+            ->where('content_category_id', 17)->where('featured','yes')->where('status','active')
+            ->inRandomOrder()
+            ->take(2)
+            ->get();
+
 
 @section('page_title')
     Primary Care Centre - PCC | All Appointment List
