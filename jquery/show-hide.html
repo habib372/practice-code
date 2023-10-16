@@ -31,3 +31,21 @@
     });
 </script>
 
+
+
+<script>
+$(document).ready(function() {
+		$('#stage_id').hide();
+
+		$(document).on('change', '#patient_type', function() {
+			var patient_type = $('#patient_type').val();
+
+			if (patient_type === 'cancer-patient') {
+				$('#stage_id').show('slow');
+			} else {
+				$('#stage_id').val('');
+				$('#stage_id').hide('slow');
+			}
+		});
+	});
+</script>

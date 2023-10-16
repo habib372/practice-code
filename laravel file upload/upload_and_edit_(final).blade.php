@@ -1,4 +1,5 @@
 
+ {{-- controller update  --}}
  public function updateProfile(Request $request)
 {
     $photo_name = '';
@@ -29,16 +30,23 @@
 
 
     <!--File upload function -->
-    public function uploadImages($image){
+    public function uploadImages($image)
+    {
         $originalName = $image->getClientOriginalName();
         $photo_name = strtotime("now").'_'.$originalName;
 
         $image = Image::make($image);
         $image->resize(200, 200)->save(public_path() . "/images/patients/".$photo_name);
         return $photo_name;
-
-        {{-- without resize
-        $image->move(public_path() . "/images/patients/".$photo_name);
-        return $photo_name;--}}
     }
 
+    <!--File upload function -->
+    public function uploadImages($image)
+    {
+        $originalName = $image->getClientOriginalName();
+        $filename = strtotime("now") . '_' . $originalName;
+
+        $image = Image::make($image);
+        $image->save(public_path() . "/images/membership/" . $filename);
+        return $filename;
+    }

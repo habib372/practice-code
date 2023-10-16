@@ -18,3 +18,7 @@ $temp['date'] = \Carbon\Carbon::parse($item->visit_date)->format('j M, Y'); //21
 
 <p>Date : {{date("jS M, Y", strtotime($lastVisit->visit_date))}}</p>
 <!-- Date : 4th Oct, 2023 -->
+
+
+{{ date('Y-m-d h:i A', strtotime($appointment->appointment_start_time)) }}
+<!-- 2023-10-15 07:00 PM -->

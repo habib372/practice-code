@@ -15,6 +15,7 @@ class CreateAgentsTable extends Migration
     {
         Schema::create('agents', function (Blueprint $table) {
             $table->increments('id');
+            $table->id();
             $table->string('name');
             $table->string('father_name');
             $table->date('date_of_birth');
@@ -23,8 +24,8 @@ class CreateAgentsTable extends Migration
             $table->string('upazila');
             $table->string('district');
             $table->text('present_address');
-            $table->string('mobile');
-            $table->string('email');
+            $table->string('mobile', 20)->nullable();
+            $table->string('phone', 20)->nullable();
             $table->string('email')->unique();
             $table->string('passport_image');
             $table->string('nid_front_part');
@@ -35,12 +36,20 @@ class CreateAgentsTable extends Migration
             $table->string('image')->default('photo.jpg');
             $table->longText('video')->nullable();
             $table->integer('status')->default(0);
-            $table->enum('is_active', ['active', 'inactive'])->default('active');
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->tinyInteger('featured')->nullable()->default(0);
+            $table->unsignedBigInteger('district_id')->nullable();
+            $table->unsignedBigInteger('country_id')->nullable();
 
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('updated_by')->nullable();
+            $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
+
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamp('failed_at')->useCurrent();

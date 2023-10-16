@@ -1,0 +1,23 @@
+<div class="col-lg-6 col-md-6 col-12">
+    <div class="form-group">
+        <label for="patient_date_of_birth">Date of Birth <span class="text-danger">*</span></label>
+        <input name="patient_date_of_birth" class="datepicker" id="patient_date_of_birth" type="text" value="{{auth('patient')->user()->date_of_birth}}">
+    </div>
+</div>
+
+
+var date = new Date();
+  date.setDate(date.getDate() - 1);
+
+  $(".datepicker").datepicker({
+    autoclose: true,
+    format: "yyyy-mm-dd",
+    minDate: new Date(),
+    orientation: "bottom left",
+    templates: {
+      leftArrow: '<i class="la la-angle-left"></i>',
+      rightArrow: '<i class="la la-angle-right"></i>',
+    },
+});
+
+
