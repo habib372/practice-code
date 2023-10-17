@@ -6,6 +6,8 @@ if (!auth('doctor')->check() && (in_array(auth()->user()->user_role_id, [1, 2, 3
 
 if(auth()->user()->user_role_id == 5){}
 
+if (!auth('doctor')->check() && auth()->user()->user_role_id != 5){}
+
  if (! in_array(auth()->user()->user_role_id, [6, 7])) {}
 
 if (in_array(auth()->user()->user_role_id, [6,7])){}
