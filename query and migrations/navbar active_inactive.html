@@ -12,4 +12,7 @@
 <li class="{{request()->is('wholesale/products') ? 'active' : ''}}"><a href="{{url('/wholesale/products')}}"><span></span>Wholesale</a></li>
 
 
-                            <li class="{{request()->is('buying-house/products*') || request()->is('buying-house/product/*') ? 'active' : ''}}">
+<li class="{{request()->is('buying-house/products*') || request()->is('buying-house/product/*') ? 'active' : ''}}">
+
+
+    {{ Request::is('tsr-admin/discount-partner*')? 'm-menu__item--open' : '' }}
