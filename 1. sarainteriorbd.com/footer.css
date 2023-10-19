@@ -1,0 +1,38 @@
+ .bg{
+    /* background-color:#353d3c; */
+    background-color:#6d6f78;
+     margin:0px;
+     padding:0px;
+ }
+
+ /*Footer-section*/
+ .footer-content,
+ .footer-head {
+     color: white;
+     margin: 0px;
+     padding: 0px;
+ }
+
+ .footer-head {
+     font-size: large;
+ }
+
+ .footer-ul {
+     list-style: none;
+     color: white;
+     margin: 0px;
+     padding: 0px;
+ }
+
+ .footer-content {
+     display: block;
+     line-height: 30px;
+     font-size: small;
+ }
+
+ .footer-icon {
+     display: inline;
+     margin-right: 15px;
+     color: white;
+ }
+
