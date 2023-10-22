@@ -2,23 +2,23 @@
  {{-- controller update  --}}
  public function updateProfile(Request $request)
 {
-    $photo_name = '';
+    $filename = '';
         if($request->hasFile('photo')){
-           $photo_name = $this->uploadImages($request->file('photo'));
+           $filename = $this->uploadImages($request->file('photo'));
         }
 
     $patient = Patient::findOrFail(auth('patient')->id());
         $patient->name = $request->patient_name;
         $patient->mobile = $request->patient_mobile;
         $patient->email = $request->patient_email;
-        if (!empty($photo_name)) {
+        if (!empty($filename)) {
             if ($patient->photo) {
                 $oldPhotoPath = public_path('/images/patients/') . $patient->photo;
                 if (file_exists($oldPhotoPath)) {
                     @unlink($oldPhotoPath);
                 }
             }
-            $patient->photo = $photo_name;
+            $patient->photo = $filename;
         }
 
      if($patient->save()){
@@ -29,15 +29,15 @@
 }
 
 
-    <!--File upload function -->
+    <!--File upload function with resize-->
     public function uploadImages($image)
     {
         $originalName = $image->getClientOriginalName();
-        $photo_name = strtotime("now").'_'.$originalName;
+        $filename = strtotime("now").'_'.$originalName;
 
         $image = Image::make($image);
-        $image->resize(200, 200)->save(public_path() . "/images/patients/".$photo_name);
-        return $photo_name;
+        $image->resize(200, 200)->save(public_path() . "/images/patients/".$filename);
+        return $filename;
     }
 
     <!--File upload function -->
@@ -50,3 +50,23 @@
         $image->save(public_path() . "/images/membership/" . $filename);
         return $filename;
     }
+
+
+    <!--Multiple File upload function -->
+    public function uploadImages($images) {
+
+        $filenames = [];
+
+        foreach ($images as $image) {
+            $originalName = $image->getClientOriginalName();
+            $filename = strtotime("now") . '_' . $originalName;
+
+            $image = Image::make($image);
+            $image->save(public_path() . "/images/membership/" . $filename);
+
+            $filenames[] = $filename;
+        }
+
+        return $filenames;
+    }
+

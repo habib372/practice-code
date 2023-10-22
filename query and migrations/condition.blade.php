@@ -15,6 +15,10 @@ if (in_array(auth()->user()->user_role_id, [6,7])){}
 if ($row->status == 'Requested' || $row->status == 'Scheduled') {}
 
 
+auth('patient')->user()->name
+auth('patient')->id()
+
+
 {{ (request()->is('page*')) ? 'active' : '' }}
 {{(request()->is('buying-house') ? 'Buying House' : 'Factory')}}
 {{ Request::is('tsr-admin/discount-partner*')? 'm-menu__item--open' : '' }}
