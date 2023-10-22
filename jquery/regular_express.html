@@ -1,0 +1,35 @@
+<div class="content">Upto 10% discount</div>
+<div class="content">Save 5% today</div>
+<div class="content">20% off on selected items</div>
+<div class="content">Limited time offer: 15% off</div>
+<div class="content">Special deal: 8% discount</div>
+
+
+<!--all  % value will be bold -->
+
+<script>
+    // single % value
+		$(document).ready(function() {
+			var contentElement = $(".discount");
+
+			contentElement.html(function(_, html) {
+				return html.replace(/(\d+%)/g, '<b>$1</b>');
+			});
+		});
+
+
+        // multiple % value
+		$(document).ready(function() {
+			// Select all elements with class "content"
+			$(".content").each(function() {
+				var content = $(this).text();
+
+				// Use a regular expression to make percentage values bold
+				var modifiedContent = content.replace(/(\d+%)/g, '<b>$1</b>');
+
+				// Update the content of the element
+				$(this).html(modifiedContent);
+			});
+		});
+
+</script>
