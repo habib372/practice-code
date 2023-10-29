@@ -12,7 +12,7 @@
                 </span>
                 <span class="m-accordion__item-mode"></span>
             </div>
-            <div class="m-accordion__item-body collapse" id="m_accordion_{{ $chemotherapy->id }}_item_{{ $chemotherapy->id }}_body" role="tabpanel" aria-labelledby="m_accordion_{{ $chemotherapy->id }}_item_{{ $chemotherapy->id }}_head" data-parent="#chemo_accordion_{{ $chemotherapy->id }}" style="">
+            <div class="m-accordion__item-body collapse" id="m_accordion_{{ $chemotherapy->id }}_item_{{ $chemotherapy->id }}_body" role="tabpanel" aria-labelledby="m_accordion_{{ $chemotherapy->id }}_item_{{ $chemotherapy->id }}_head" data-parent="#chemo_accordion_{{ $chemotherapy->id }}"  >
                 <div class="m-accordion__item-content">
                     <table class="table table-bordered m-table">
                         <tbody>

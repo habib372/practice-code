@@ -15,13 +15,12 @@ if (in_array(auth()->user()->user_role_id, [6,7])){}
 if ($row->status == 'Requested' || $row->status == 'Scheduled') {}
 
 
-auth('patient')->user()->name
-auth('patient')->id()
-
-
 {{ (request()->is('page*')) ? 'active' : '' }}
 {{(request()->is('buying-house') ? 'Buying House' : 'Factory')}}
 {{ Request::is('tsr-admin/discount-partner*')? 'm-menu__item--open' : '' }}
+{{ Request::is('patient/')? 'active' : '' }}
+
+
 
 <!-- date time format -->
 <!-- Updated by: Habibur Rahman  -->
@@ -80,6 +79,17 @@ $articles = Content::select(['id','title_'.config('app.locale').' as title', 'de
 
 <div class="form-group m-form__group row" id="show_service_provider" @if(old('user_role_id')) style="display:block;" @else style="display:none;"; @endif>
 
+
+    @if(auth('patient')->check() && in_array(request()->url(), [
+        URL::to('patient/dashboard'), URL::to('patient/apply-for-sponsorship'), URL::to('patient/medical-history'), URL::to('patient/appointments'), URL::to('patient/chemotherapy-history'), URL::to('patient/attachments'), URL::to('patient/carers') ]))
+
+        @include('frontend.partials.carer-dashboard-menu')
+     @else
+        @include('frontend.partials.mainmenu')
+    @endif
+
+{{-- or --}}
+    @if(auth('patient')->check() && (request()->url() == URL::to('patient/dashboard') || (request()->url() == URL::to('patient/apply-for-sponsorship')) || (request()->url() == URL::to('patient/medical-history')) || (request()->url() == URL::to('patient/appointments')) || (request()->url() == URL::to('patient/chemotherapy-history')) || (request()->url() == URL::to('patient/atachments')) || (request()->url() == URL::to('patient/carers')) ))
 
 
     {!! Str::limit($item->description, 600, '.. <br/><a class="learn_more" href="/service-provider/'.$item->featuredServiceProviderType->slug.'/'.$item->slug.'">'.trans("text.learn_more").' <i class="fa fa-angle-double-right"></i></a>') !!}
