@@ -1,105 +1,144 @@
-public function store(Request $request)
-    {
-// dd($request);
-        $rules = [
-            'patient_name' => 'required',
-            'patient_password' => 'required',
-            'patient_mobile' => 'required|unique:patients,mobile',
-            'patient_username' => 'required|unique:patients,username',
-            'patient_disease_id' => 'required',
-            'patient_type' => 'required'
-        ];
+<section class="sponsorship-apply-form">
+    <div class="container">
+        <!-- webflow -->
+        <div class="row">
+            <div class="col-md-11 webflow">
+                <div class="mb-4 signup-steps-panel" id="myTab" role="tablist">
+                    <div class="signup-step-logo is-active">
+                        <div class="mb-2">Apply</div>
+                        <a data-toggle="tab" href="#step-1" role="tab">
+                            <div class="step-circle">
+                                <div class="index-text">1</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="signup-step-logo">
+                        <div class="mb-2">Review</div>
+                        <a data-toggle="tab" href="#step-2" role="tab">
+                            <div class="step-circle">
+                                <div class="index-text">2</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="signup-step-logo">
+                        <div class="mb-2">Recommend</div>
+                        <a data-toggle="tab" href="#step-3" role="tab">
+                            <div class="step-circle">
+                                <div class="index-text">3</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="signup-step-logo">
+                        <div class="mb-2">Approve</div>
+                         <a data-toggle="tab" href="#step-4" role="tab">
+                            <div class="step-circle">
+                                <div class="index-text">4</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/End webflow -->
 
-        $messages = [
-            'patient_disease_id.required' => 'Disease must be selected!',
-            'patient_type.required' => 'Patient type must be selected!'
-        ];
+        <!-- sponsorship form -->
+        <div class="row tab-pane" id="step-1">
+            <div class="col-md-11 sponsorship_form">
+                <h5 class="sponsorship_title">Please fill it carefully. You can't' edit after submission.</h5>
+                <div class="sponsorship_form_body">
+                    <!--begin::Form-->
+                    <form class="m-form" action="{{ route('patient.sponsorship_save') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="patient_form_body">
+                            <!---Patient info--->
+                            <p class="form_title">Patient Information <span class="text-danger">*</span></p>
+                            <div class="patient_info">
+                                <div class="form-group m-form__group">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-12">
+                                            <label for="patient_name">
+                                                Patient Name <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" class="form-control m-input" name="patient_name" id="patient_name" aria-describedby="patient_name" placeholder="" value="{{ old('patient_name') }}">
+                                            @error('patient_name')
+                                            <span class="text-danger">{{$message}}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-4 col-sm-12">
+                                            <label for="patient_mobile">
+                                                Mobile <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" class="form-control m-input" name="patient_mobile" id="patient_mobile" aria-describedby="patient_mobile" placeholder="" value="{{ old('patient_mobile') }}">
+                                            @error('patient_mobile')
+                                            <span class="text-danger">{{$message}}</span>
+                                            @enderror
+                                        </div>
 
+                                        <div class="col-md-4 col-sm-12">
+                                            <label for="patient_email">
+                                                Email  <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" class="form-control m-input" name="patient_email" id="patient_email" aria-describedby="patient_email" placeholder="" value="{{ old('patient_email') }}">
+                                            @error('patient_email')
+                                            <span class="text-danger">{{$message}}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-        $rowNo = 1;
+                        <div class="m-form__actions">
+                            <button type="submit" class="btn btn-primary">
+                                Submit
+                            </button>
+                            <button type="button" class="btn btn-secondary">
+                                <a href="{{route('patient.dashboard')}}">Cancel </a>
+                            </button>
+                        </div>
+                    </form><!--end::Form-->
+                </div>
+            </div>
+        </div>
+        <!--/End sponsorship form -->
 
-        foreach ($request->attachs as $key => $attach) {
-            if(!empty($attach['title']) || ($request->hasfile('attachs.'.$key))) {
+        <!--Step-2 form -->
+        <div class="row tab-pane " id="step-2">
+            <div class="col-md-11 sponsorship_form">
+                <h5 class="sponsorship_title">We have received your application and reviewing our Specialist Doctor </h5>
+                <div class="sponsorship_form_body">
+                    <p>Note:
+                        1. Please allow at least 3 weeks to review and process your application.
+                        2. Your application will be reviewed by very experienced oncologists and clinicians based in Bangladesh and Australia. Applications will be considered for funding only upon their positive recommendation.
+                        3. We have limited funds available. Hence, although the application is genuine and urgent, we may be able to fund all applications.
+                        4. We do not entertain any requests over phone, email, or </p>
+                </div>
+            </div>
+        </div>
+         <!--/End Step-2 form -->
 
-                $rules['attachs.'.$key.'.title'] = 'required';
-                $rules['attachs.'.$key.'.file'] = 'required|mimes:doc,pdf,docx,jpeg,jpg,png|max:10240';
-                $messages['attachs.'.$key.'.title.required'] = 'Attachmet title required in row no '.$rowNo;
-                $messages['attachs.'.$key.'.file.required'] = 'Attachmet file required in row no '.$rowNo;
-                $messages['attachs.'.$key.'.file.mimes'] = 'Attachmet file type must be {mimes} in row no '.
+         <!--Step-3 form -->
+        <div class="row tab-pane " id="step-3">
+            <div class="col-md-11 sponsorship_form">
+                <h5 class="sponsorship_title">Your application is being reviewed by our board members</h5>
+                <div class="sponsorship_form_body">
+                    <p>Our board memeber review and investigate your information. </p>
+                </div>
+            </div>
+        </div>
+         <!--/End Step-3 form -->
 
-                $rowNo;
-            }
+          <!--Step-4 form -->
+        <div class="row tab-pane " id="step-4">
+            <div class="col-md-11 sponsorship_form">
+                <h5 class="sponsorship_title">Congratulation! You have own a sponsorship</h5>
+                <div class="sponsorship_form_body">
+                    <p>Note:
+                      We are approve your applications </p>
+                </div>
+            </div>
+        </div>
+         <!--/End Step-4 form -->
 
-            $rowNo++;
-        }
-
-        // Form validation
-        $this->validate($request, $rules, $messages);
-
-        $photo_name = '';
-        if($request->hasFile('photo')){
-           $photo_name = $this->uploadImages($request->file('photo'));
-        }
-
-        DB::transaction(function () use ($request, $photo_name) {
-
-            // dd($request);
-            $patient = Patient::create([
-                'service_provider_id' => (auth()->user()->userRole->name == 'admin') ? $request->patient_service_provider_id : auth()->user()->service_provider_id,
-                'name' => $request->patient_name,
-                'email' => $request->patient_email,
-                'mobile' => $request->patient_mobile,
-                'username' => $request->patient_username,
-                'phone' => $request->patient_phone,
-                'patient_type' => $request->patient_type,
-                'disease_type_id' => $request->patient_disease_type_id,
-                'disease_id' => $request->patient_disease_id ? implode(',', $request->patient_disease_id) : '',
-                'staged_id' => $request->patient_stage_id,
-                'address' => $request->patient_address,
-                'district_id' => $request->patient_district_id,
-                'country_id' => $request->patient_country_id,
-                'profession' => $request->patient_profession,
-                'date_of_birth' => $request->patient_date_of_birth,
-                'marriage_anniversary' => $request->patient_marriage_anniversary,
-                'allergies' => $request->patient_allergies,
-                'password' => Hash::make($request->patient_password),
-                'referral_source' => $request->patient_referral_source,
-                'referral_doctor_id' => $request->patient_referral_doctor_id,
-                'gender' => $request->patient_gender,
-                'religion' => $request->patient_religion,
-                'marital_status' => $request->patient_marital_status,
-                'spouse_name' => $request->patient_spouse_name,
-                'status' => 'active',
-                'photo' => empty($photo_name) ? null : $photo_name
-            ]);
-
-
-                if(!empty($request->file('attachs'))) {
-
-                    $path = public_path().'/uploads/visit-attachments';
-
-                    foreach($request->file('attachs') as $key => $file){
-
-                        if(!empty($file)){
-                            $originalName = $file['file']->getClientOriginalName();
-
-                            $fileName = time().rand(0, 1000).'.'.$file['file']->getClientOriginalExtension();
-
-                            if ($file['file']->move($path, $fileName)) {
-                                // save file name in the database
-                                VisitAttachment::create([
-                                    'patient_visit_id' => $visit->id,
-                                    'title' => $request['attachs'][$key]['title'],
-                                    'file_name' => $fileName,
-                                    'file_original_name' => $originalName
-                                ]);
-                            }
-                        }
-                    }
-                }
-
-        });
-
-        return redirect()->route('patient.apply_sponsorship')->with('success', 'Sponsorship Application submitted successfully!');
-
-    }
+    </div>
+</section>
