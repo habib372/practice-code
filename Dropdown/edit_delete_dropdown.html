@@ -1,0 +1,15 @@
+
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-${table.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Actions
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-${table.id}">
+        <a class="dropdown-item" href="{{ url('tsr-admin/sponsorship')}}/${table.id}/" title="View details">View</a>
+        <a class="dropdown-item" href="{{ url('tsr-admin/sponsorship')}}/${table.id}/edit" title="Edit details">Edit</a>
+        <form style="display:inline" id="deleteForm-${table.id}" action="{{ url('tsr-admin/sponsorship') }}/${table.id}" method="POST">
+            @method('delete')
+            @csrf
+            <a href="javascript:void(0)" data-id="${table.id}" class="dropdown-item btn-delete" title="Delete">Delete</a>
+        </form>
+    </div>
+</div>

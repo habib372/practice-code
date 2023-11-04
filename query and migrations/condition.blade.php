@@ -21,6 +21,11 @@ if ($row->status == 'Requested' || $row->status == 'Scheduled') {}
 {{ Request::is('patient/')? 'active' : '' }}
 
 
+$diseases = Disease::where('status', 'active')->orderBy('id', 'ASC')->pluck('name_en', 'id')->toArray();
+$existingDisease = !(empty($patient->disease_id)) ? explode(',', $patient->disease_id) : null;
+
+$diseases = Disease::where('status', 'active')->orderBy('id', 'ASC')->pluck('name_en', 'id')->toArray();
+$diseaseNames = Disease::whereIn('id', $diseaseIds)->pluck('name_' . config('app.locale'))->implode(', ');
 
 <!-- date time format -->
 <!-- Updated by: Habibur Rahman  -->

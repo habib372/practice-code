@@ -8,7 +8,7 @@ $temp['date'] = \Carbon\Carbon::parse($item->visit_date)->format('j M, Y'); //21
 <td>Trans Date: {{$invoice->created_at->toFormattedDateString()}} ({{$invoice->created_at->diffForHumans()}})</td> <!---20 Feb, 2023 (3 hours from now )--->
 
 
-<!-- date time format -->
+<!--*** date time format ***-->
 
 <!-- Updated by: Habibur Rahman  -->
 <strong>Last Updated By</strong> : {{ $user->updatedBy->name??'' }}<br />
@@ -19,6 +19,26 @@ $temp['date'] = \Carbon\Carbon::parse($item->visit_date)->format('j M, Y'); //21
 <p>Date : {{date("jS M, Y", strtotime($lastVisit->visit_date))}}</p>
 <!-- Date : 4th Oct, 2023 -->
 
-
 {{ date('Y-m-d h:i A', strtotime($appointment->appointment_start_time)) }}
 <!-- 2023-10-15 07:00 PM -->
+
+
+<!--** number format **-->
+{{ number_format($data->total_treatment_cost, 0, '.', ',') ?? '' }}
+<!-- 00,000,000 -->
+
+<strong>Total Estimate Cost of Treatment: </strong>: <br />
+{{ formatNumber($data->total_treatment_cost) ?? '' }}
+
+
+<!--  app/helpers.php -->
+if (!function_exists('formatNumber')) {
+    function formatNumber($number) {
+        return number_format($number, 0, '.', ',');
+    }
+}
+
+<!-- composer.json -->
+    "autoload": {
+        "files": ["app/helpers.php"]
+    }

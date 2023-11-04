@@ -22,6 +22,7 @@
         $currentCourses = Course::all();
         $news = News::latest()->where('type','training')->get();
 
+        $news = Image::where('type','slider')->where('id', [86,,87])->get();
 
          @foreach($writer->skip(15)->take(5) AS $item)
 
