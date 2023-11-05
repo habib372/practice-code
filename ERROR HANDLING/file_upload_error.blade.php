@@ -6,7 +6,7 @@
         "name_en" => "Mohammad"
         "name_bn" => "কো"
         "description_en" => "<p>d</p>"
-<!--    "files" => null                     //if it is null, check in <form enctype="multipart/form-data">  </form> -->
+<!--    "files" => null  //if it is null, check in <form enctype="multipart/form-data">  </form> -->
         "description_bn" => "<p>d</p>"
         "featured" => "no"
         "order" => "1"
