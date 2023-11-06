@@ -150,6 +150,13 @@
                     }
                 }
             }
+
+            if ($patient->id) {
+                SponsorshipVerify::create([
+                    'sponsorship_id' => $patient->id,
+                ]);
+            }
+
         });
 
         return redirect()->route('patient.apply_sponsorship')->with('success', 'Sponsorship Application submitted successfully!');
