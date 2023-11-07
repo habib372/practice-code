@@ -33,12 +33,57 @@ $temp['date'] = \Carbon\Carbon::parse($item->visit_date)->format('j M, Y'); //21
 
 <!--  app/helpers.php -->
 if (!function_exists('formatNumber')) {
-    function formatNumber($number) {
-        return number_format($number, 0, '.', ',');
-    }
+function formatNumber($number) {
+return number_format($number, 0, '.', ',');
+}
 }
 
 <!-- composer.json -->
-    "autoload": {
-        "files": ["app/helpers.php"]
-    }
+"autoload": {
+"files": ["app/helpers.php"]
+}
+
+convert 2023-11-01 - today date = number
+
+
+public static function calculateAgeToday($date){
+
+//Take patient's dob and return age today
+if(empty($date)){
+return '';
+}
+
+$datetime1 = new DateTime($date);
+$datetime2 = new DateTime(date('Y-m-d'));
+$interval = $datetime1->diff($datetime2);
+return $interval->format('%yY %mM');
+
+}
+
+
+
+public function sponsorshipApply()
+{
+$sponsorshipData = Sponsorship::with(['district', 'country', 'patient', 'disease', 'stage'])->where('patient_id', auth('patient')->id())->latest()->first();
+$daysDifference = $this->calculateDaysDifference($sponsorshipData->created_at);
+$verification = SponsorshipVerify::where('sponsorship_id', $sponsorshipData->id)->first();
+
+return view('frontend.patient.sponsorship_form', compact('sponsorshipData', 'verification', 'daysDifference'));
+}
+
+function calculateDaysDifference($specifiedDate)
+{
+// Convert the specified date to a Carbon instance
+$specifiedDate = Carbon::parse($specifiedDate);
+
+// Get today's date as a Carbon instance
+$todayDate = now();
+
+// Calculate the number of days
+$daysDifference = $specifiedDate->diffInDays($todayDate);
+
+return $daysDifference;
+}
+
+
+{{ $daysDifference > 7 ? 'is-active' : 'done' }}

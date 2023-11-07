@@ -257,116 +257,20 @@ final_status_message
 
 when #doctor_verify_status  selected == 'recommend', then #doctor_recommend_message is removeClass 'd-none' and when #doctor_verify_status  selected == 'reject' then  #doctor_reject_message is removeClass 'd-none', when #investigation_status  selected == 'recommend', then #investigation_recommend_message is removeClass 'd-none' and when #investigation_status  selected == 'reject' then  #investigation_reject_message is removeClass 'd-none'
 
-<script>
-        $(document).ready(function () {
-            $('input[name="doctor_verify_status"]').change(function () {
-                if ($(this).val() === 'recommend') {
-                    $('#doctor_recommend_message').removeClass('d-none');
-                    // $('#doctor_reject_message').addClass('d-none');
-                } else($(this).val() === 'reject') {
-                    // $('#doctor_recommend_message').addClass('d-none');
-                    $('#doctor_reject_message').removeClass('d-none');
-                }
-            });
 
-            $('input[name="investigation_status"]').change(function () {
-                if ($(this).val() === 'recommend') {
-                    $('#investigation_recommend_message').removeClass('d-none');
-                    // $('#investigation_reject_message').addClass('d-none');
-                } else ($(this).val() === 'reject') {
-                    // $('#investigation_recommend_message').addClass('d-none');
-                    $('#investigation_reject_message').removeClass('d-none');
-                }
-            });
-
-        });
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            // Get the old value of investigation_status
-            var oldInvestigationStatus = "{{ old('investigation_status', $verify->investigation_status) }}";
-
-            // Set the initial value based on old value
-            if (oldInvestigationStatus === 'recommend') {
-                $('#investigation_recommend_message').removeClass('d-none');
-                $('#investigation_reject_message').addClass('d-none');
-            } else if (oldInvestigationStatus === 'reject') {
-                $('#investigation_recommend_message').addClass('d-none');
-                $('#investigation_reject_message').removeClass('d-none');
-            } else {
-                $('#investigation_recommend_message').addClass('d-none');
-                $('#investigation_reject_message').addClass('d-none');
-            }
-
-            $('input[name="investigation_status"]').change(function () {
-                if ($(this).val() === 'recommend') {
-                    $('#investigation_recommend_message').removeClass('d-none');
-                    $('#investigation_reject_message').addClass('d-none');
-                } else if ($(this).val() === 'reject') {
-                    $('#investigation_recommend_message').addClass('d-none');
-                    $('#investigation_reject_message').removeClass('d-none');
-                } else {
-                    $('#investigation_recommend_message').addClass('d-none');
-                    $('#investigation_reject_message').addClass('d-none');
-                }
-            });
-        });
-    </script>
-
-    <script>
-    $(document).ready(function () {
-        // Get the initial values of doctor and investigation status
-        var initialDoctorStatus = "{{ $verify->doctor_verify_status }}";
-        var initialInvestigationStatus = "{{ $verify->investigation_status }}";
-
-        // Handle doctor status change
-        $('input[name="doctor_verify_status"]').change(function () {
-            var selectedStatus = $(this).val();
-
-            if (selectedStatus === 'recommend') {
-                $('#doctor_recommend_message').removeClass('d-none');
-                $('#doctor_reject_message').addClass('d-none');
-            } else if (selectedStatus === 'reject') {
-                $('#doctor_reject_message').removeClass('d-none');
-                $('#doctor_recommend_message').addClass('d-none');
-            } else {
-                $('#doctor_recommend_message').addClass('d-none');
-                $('#doctor_reject_message').addClass('d-none');
-            }
-        });
-
-         // Set the initial visibility based on the initial values
-        if (initialDoctorStatus === 'recommend') {
-            $('#doctor_recommend_message').removeClass('d-none');
-            $('#doctor_reject_message').addClass('d-none');
-        } else if (initialDoctorStatus === 'reject') {
-            $('#doctor_reject_message').removeClass('d-none');
-            $('#doctor_recommend_message').addClass('d-none');
-        }
-
-        // Handle investigation status change
-        $('input[name="investigation_status"]').change(function () {
-            var selectedStatus = $(this).val();
-
-            if (selectedStatus === 'recommend') {
-                $('#investigation_recommend_message').removeClass('d-none');
-                $('#investigation_reject_message').addClass('d-none');
-            } else if (selectedStatus === 'reject') {
-                $('#investigation_reject_message').removeClass('d-none');
-                $('#investigation_recommend_message').addClass('d-none');
-            } else {
-                $('#investigation_recommend_message').addClass('d-none');
-                $('#investigation_reject_message').addClass('d-none');
-            }
-        });
-
-        if (initialInvestigationStatus === 'recommend') {
-            $('#investigation_recommend_message').removeClass('d-none');
-            $('#investigation_reject_message').addClass('d-none');
-        } else if (initialInvestigationStatus === 'reject') {
-            $('#investigation_reject_message').removeClass('d-none');
-            $('#investigation_recommend_message').addClass('d-none');
-        }
-    });
-</script>
+{
+						field: "status",
+						title: "Status",
+						width: 75,
+						template: function(table) {
+							if(table.verify.final_status == 'approve'){
+								return '<span class="m-badge bg-success m-badge--custom"> Approve </span>';
+							} else if(table.verify.final_status == 'reject'){
+								return '<span class="m-badge bg-danger m-badge--custom"> Reject </span>';
+							} else if (table.verify.doctor_verify_status != null) {
+								return '<span class="m-badge bg-warning m-badge--custom"> Pending </span>';
+							} else {
+								return '<span class="m-badge m-badge--brand m-badge--custom"> New </span>';
+							}
+						}
+					},

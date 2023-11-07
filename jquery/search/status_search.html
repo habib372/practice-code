@@ -1,0 +1,58 @@
+<div class="form-group m-form__group row align-items-center">
+    <div class="col-md-3">
+        <label>Status:</label>
+        <select class="form-control m-bootstrap-select" id="m_form_status">
+            <option value="">All</option>
+            <option value="approve">Approve</option>
+            <option value="reject">Reject</option>
+            <option value="pending">Pending</option>
+            <option value="new">New</option>
+        </select>
+    </div>
+</div>
+
+{
+						field: "status",
+						title: "Status",
+						width: 75,
+						template: function(table) {
+							if(table.verify.final_status == 'approve'){
+								return '<span class="m-badge bg-success m-badge--custom"> Approve </span>';
+							} else if(table.verify.final_status == 'reject'){
+								return '<span class="m-badge bg-danger m-badge--custom"> Reject </span>';
+							} else if (table.verify.doctor_verify_status != null) {
+								return '<span class="m-badge bg-warning m-badge--custom"> Pending </span>';
+							} else {
+								return '<span class="m-badge m-badge--brand m-badge--custom"> New </span>';
+							}
+						}
+					},
+
+<script>
+    $("#m_form_status").on("change", function() {
+        var selectedStatus = $(this).val();
+        t.search(selectedStatus, "status");
+    });
+</script>
+
+
+
+{
+    field: "status",
+    title: "Status",
+    width: 75,
+    template: function(table) {
+        var statusValue;
+        if (table.verify.final_status == 'approve') {
+            statusValue = 'approve';
+        } else if (table.verify.final_status == 'reject') {
+            statusValue = 'reject';
+        } else if (table.verify.doctor_verify_status != null) {
+            statusValue = 'pending';
+        } else {
+            statusValue = 'new';
+        }
+
+        return '<span class="m-badge bg-success m-badge--custom" data-status="' + statusValue + '"> Approve </span>';
+    }
+}

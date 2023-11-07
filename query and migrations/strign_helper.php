@@ -15,7 +15,7 @@ Str::random(10),
 {!! Str::limit($item->description, 600) !!}
 <a class="learn_more" href="/service-provider/{{ $item->featuredServiceProviderType->slug }}/{{ $item->slug }}">{{ trans("text.learn_more") }} <i class="fa fa-angle-double-right"></i></a>
 
-
+{{ $daysDifference > 7 ? 'is-active' : 'done' }}
 
 
 <!-- no limit -->

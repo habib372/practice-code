@@ -1,0 +1,16 @@
+public function sponsorshipApply()
+    {
+        $patient = Patient::findOrFail(auth('patient')->id());
+        $diseases = Disease::where('status', 'active')->orderBy('id', 'ASC')->pluck('name_en', 'id')->toArray();
+        $existingDisease = !(empty($patient->disease_id)) ? explode(',', $patient->disease_id) : null;
+        $diseases = Disease::where('status', 'active')->orderBy('id', 'ASC')->pluck('name_en', 'id')->toArray();
+        $stages = ['' => '-- Select Stage --'] + Stage::pluck('stage_en', 'id')->toArray();
+        $countries = Country::pluck('name', 'id')->toArray();
+        $districts = ['' => '-- Select District --'] + District::orderBy('name', 'ASC')->pluck('name', 'id')->toArray();
+        $treatmentType = ['' => '-- Select Treatment Type --', 'chemotherapy ' => 'Chemotherapy ', 'radiotherapy_imaging' => 'Radiotherapy/Imaging', 'immunotherapy' => 'Immunotherapy', 'surgery ' => 'Surgery ', 'others ' => 'Others',];
+
+        $sponsorshipData = Sponsorship::with(['district', 'country', 'patient', 'disease', 'stage'])->where('patient_id', auth('patient')->id())->latest()->first();
+        $verification = SponsorshipVerify::where('sponsorship_id', $sponsorshipData->id)->first();
+
+        return view('frontend.patient.sponsorship_form', compact('patient', 'existingDisease', 'countries', 'districts', 'diseases', 'stages', 'treatmentType', 'sponsorshipData', 'verification'));
+    }

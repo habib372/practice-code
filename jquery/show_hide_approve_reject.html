@@ -1,0 +1,232 @@
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+       <form action="#" method="">
+            @csrf
+			@method('PUT')
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Verify Sponsorship Application</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="verify_modal">
+                <div class="verify_modal_form m-portlet mb-0">
+                    @if(in_array(auth()->user()->user_role_id, [1, 12]))
+                        <!-- final review -->
+                        <h5>Doctor Verification</h5>
+                        <div class="verify_section">
+                            <input type="hidden" name="sponsorship_id" id="sponsorship_id" value="{{ $verify->sponsorship_id }}">
+                            <!-- Doctor Review Status -->
+                            <div class="row"  id="doctor_verify_status">
+                                <div class="col-md-12" id="doctor_verify_status">
+                                    <p class="form_label">Doctor Verify Status <span class="text-danger">*</span></p>
+                                    {!! Form::radio('doctor_verify_status', 'approve', ($verify->doctor_verify_status == 'approve'), ['id' => 'status_approve']) !!}
+                                    {!! Form::label('status_approve', 'Approve') !!}&nbsp;&nbsp;&nbsp;
+
+
+                                    {!! Form::radio('doctor_verify_status', 'recommend', ($verify->doctor_verify_status == 'recommend'), ['id' => 'status_recommend']) !!}
+                                    {!! Form::label('status_recommend', 'Recommend') !!}&nbsp;&nbsp;&nbsp;
+
+                                    {!! Form::radio('doctor_verify_status', 'reject', ($verify->doctor_verify_status == 'reject'), ['id' => 'status_reject']) !!}
+                                    {!! Form::label('status_reject', 'Reject') !!}
+                                </div>
+                            </div>
+
+                            <!-- doctor recommend message -->
+                            <div class="row m--margin-top-20 d-none" id="doctor_recommend_message">
+                                <div class="col-md-12">
+                                    <label for="doctor_recommend" class="form_label">Doctor Recommend Message <span class="text-danger">*</span></label>
+                                    <textarea name="doctor_recommend_message" class="form-control m-input{{ $errors->has('doctor_recommend_message') ? ' border-danger' : '' }}" id="doctor_recommend" rows="10">{{ old('doctor_recommend_message', $verify->doctor_recommend_message??'') }}</textarea>
+                                    @error('doctor_recommend_message')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <!-- doctor reject message -->
+                            <div class="row m--margin-top-20 d-none"  id="doctor_reject_message">
+                                <div class="col-md-12">
+                                    <label for="doctor_reject" class="form_label">Why Reject this Application <span  class="text-danger">*</span></label>
+                                    <textarea name="doctor_reject_message" class="form-control m-input{{ $errors->has('doctor_reject_message')? ' border-danger' : '' }}" id="doctor_reject" rows="10">{{ old('doctor_reject_message', $verify->doctor_reject_message??'')}}</textarea>
+                                    @error('doctor_reject_message')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if(auth()->user()->user_role_id == 1)
+                        <!-- investigation -->
+                        <h5>Staff Investigation</h5>
+                        <div class="verify_section">
+                            <!-- Staff Investigation Status -->
+                            <div class="row">
+                                <div class="col-md-12" id="investigation_status">
+                                    <p class="form_label">Staff Investigation Status <span  class="text-danger">*</span></p>
+                                    {!! Form::radio('investigation_status', 'approve', ($verify->investigation_status == 'approve'), ['id' => 'investigation_approve']) !!}
+                                    {!! Form::label('investigation_approve', 'Approve') !!}&nbsp;&nbsp;&nbsp;
+
+                                    {!! Form::radio('investigation_status', 'recommend', ($verify->investigation_status == 'recommend'), ['id' =>
+                                    'investigation_recommend']) !!}
+                                    {!! Form::label('investigation_recommend', 'Recommend') !!}&nbsp;&nbsp;&nbsp;
+
+                                    {!! Form::radio('investigation_status', 'reject', ($verify->investigation_status == 'reject'), ['id' => 'investigation_reject']) !!}
+                                    {!! Form::label('investigation_reject', 'Reject') !!}
+                                </div>
+                            </div>
+
+                            <!-- investigation recommend message -->
+                            <div class="row m--margin-top-20 d-none" id="investigation_recommend_message">
+                                <div class="col-md-12">
+                                    <label for="investigation_recommend_message" class="form_label">Investigation Recommend Message <span class="text-danger">*</span></label>
+                                    <textarea name="investigation_recommend_message" class="form-control m-input{{ $errors->has('investigation_recommend_message')? ' border-danger' : '' }}" id="investigation_recommend_message" rows="10">{{ old('investigation_recommend_message', $verify->investigation_recommend_message??'') }}</textarea>
+                                    @error('investigation_recommend_message')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <!-- investigation reject message -->
+                            <div class="row m--margin-top-20 d-none"  id="investigation_reject_message">
+                                <div class="col-md-12">
+                                    <label for="investigation_reject_message" class="form_label">Why Reject this Application <span  class="text-danger">*</span></label>
+                                    <textarea name="investigation_reject_message" class="form-control m-input{{ $errors->has('investigation_reject_message')? ' border-danger' : '' }}" id="investigation_reject_message" rows="10">{{ old('investigation_reject_message', $verify->investigation_reject_message??'')}}</textarea>
+                                    @error('investigation_reject_message')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- final review -->
+                         <h5>Final Verification</h5>
+                        <div class="verify_section">
+                            <!-- final review status -->
+                            <div class="row"  id="final_review_status">
+                                <div class="col-md-12" id="final_status">
+                                        <p class="form_label">Final Approval <span  class="text-danger">*</span></p>
+                                        {!! Form::radio('final_status', 'approve', ($verify->final_status == 'approve'), ['id' => 'final_approve']) !!}
+                                        {!! Form::label('final_approve', 'Approve') !!}&nbsp;&nbsp;&nbsp;
+
+                                        {!! Form::radio('final_status', 'reject', ($verify->final_status == 'reject'), ['id' => 'final_reject']) !!}
+                                        {!! Form::label('final_reject', 'Reject') !!}
+                                </div>
+                            </div>
+
+                            <!-- Final verify message -->
+                            <div class="row m--margin-top-20 d-none"  id="final_status_message">
+                                <div class="col-md-12">
+                                    <label for="final_message" class="form_label">Write a Congratulations Message<span  class="text-danger">*</span></label>
+                                    <textarea name="final_status_message" class="form-control m-input{{ $errors->has('final_status_message')? ' border-danger' : '' }}" id="final_message" rows="10">{{ old('final_status_message', $verify->final_status_message??'')}}</textarea>
+                                    @error('final_status_message')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <!-- Final verify message -->
+                            <div class="row m--margin-top-20 d-none"  id="final_reject_message">
+                                <div class="col-md-12">
+                                    <label for="final_reject" class="form_label">Why Reject this Application<span  class="text-danger">*</span></label>
+                                    <textarea name="final_reject_message" class="form-control m-input{{ $errors->has('final_reject_message')? ' border-danger' : '' }}" id="final_reject" rows="10">{{ old('final_reject_message', $verify->final_reject_message??'')}}</textarea>
+                                    @error('final_reject_message')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                    @endif
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary ml-2" data-dismiss="modal">Close</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+        $(document).ready(function () {
+            // Get the initial values of doctor and investigation status
+            var initialDoctorStatus = "{{ $verify->doctor_verify_status }}";
+            var initialInvestigationStatus = "{{ $verify->investigation_status }}";
+            var initialFinalStatus = "{{ $verify->final_status }}";
+
+            // Handle doctor status change
+            $('input[name="doctor_verify_status"]').change(function () {
+                var selectedStatus = $(this).val();
+
+                if (selectedStatus === 'recommend') {
+                    $('#doctor_recommend_message').removeClass('d-none');
+                    $('#doctor_reject_message').addClass('d-none');
+                } else if (selectedStatus === 'reject') {
+                    $('#doctor_reject_message').removeClass('d-none');
+                    $('#doctor_recommend_message').addClass('d-none');
+                } else {
+                    $('#doctor_recommend_message').addClass('d-none');
+                    $('#doctor_reject_message').addClass('d-none');
+                }
+            });
+            //  Handle doctor status for old value
+            if (initialDoctorStatus === 'recommend') {
+                $('#doctor_recommend_message').removeClass('d-none');
+                $('#doctor_reject_message').addClass('d-none');
+            } else if (initialDoctorStatus === 'reject') {
+                $('#doctor_reject_message').removeClass('d-none');
+                $('#doctor_recommend_message').addClass('d-none');
+            }
+
+            // Handle investigation status change
+            $('input[name="investigation_status"]').change(function () {
+                var selectedStatus = $(this).val();
+
+                if (selectedStatus === 'recommend') {
+                    $('#investigation_recommend_message').removeClass('d-none');
+                    $('#investigation_reject_message').addClass('d-none');
+                } else if (selectedStatus === 'reject') {
+                    $('#investigation_reject_message').removeClass('d-none');
+                    $('#investigation_recommend_message').addClass('d-none');
+                } else {
+                    $('#investigation_recommend_message').addClass('d-none');
+                    $('#investigation_reject_message').addClass('d-none');
+                }
+            });
+			// Handle investigation status for old value
+            if (initialInvestigationStatus === 'recommend') {
+                $('#investigation_recommend_message').removeClass('d-none');
+                $('#investigation_reject_message').addClass('d-none');
+            } else if (initialInvestigationStatus === 'reject') {
+                $('#investigation_reject_message').removeClass('d-none');
+                $('#investigation_recommend_message').addClass('d-none');
+            }
+
+			// Handle final status change
+            $('input[name="final_status"]').change(function () {
+                var selectedStatus1 = $(this).val();
+
+                if (selectedStatus1 === 'approve') {
+                    $('#final_status_message').removeClass('d-none');
+                    $('#final_reject_message').addClass('d-none');
+                } else if (selectedStatus1 === 'reject') {
+                    $('#final_reject_message').removeClass('d-none');
+                    $('#final_status_message').addClass('d-none');
+                } else {
+                    $('#final_status_message').addClass('d-none');
+                    $('#final_reject_message').addClass('d-none');
+                }
+            });
+			// Handle final status for old value
+            if (initialFinalStatus === 'approve') {
+                $('#final_status_message').removeClass('d-none');
+                $('#final_reject_message').addClass('d-none');
+            } else if (initialFinalStatus === 'reject') {
+                $('#final_reject_message').removeClass('d-none');
+                $('#final_status_message').addClass('d-none');
+            }
+        });
+    </script>

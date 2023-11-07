@@ -1,0 +1,27 @@
+public function sponsorshipApply()
+{
+
+    $sponsorshipData = Sponsorship::with(['district', 'country', 'patient', 'disease', 'stage'])->where('patient_id', auth('patient')->id())->latest()->first();
+    $daysDifference = $this->calculateDaysDifference ($sponsorshipData->created_at);
+
+    return view('frontend.patient.sponsorship_form', compact('sponsorshipData', 'daysDifference'))
+}
+
+
+<!-- date to number convert -->
+function calculateDaysDifference($specifiedDate)
+{
+    // Convert the specified date to a Carbon instance
+    $specifiedDate = Carbon::parse($specifiedDate);
+
+    // Get today's date as a Carbon instance
+    $todayDate = now();
+
+    // Calculate the number of days
+    $daysDifference = $specifiedDate->diffInDays($todayDate);
+
+    return $daysDifference;
+}
+
+<!--output:-->
+<!-- 2023-11-01 - 2023-11-05 = 4 -->
