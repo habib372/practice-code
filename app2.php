@@ -78,3 +78,136 @@ $apply_display = '';
             $staff_approve_message = 'hide';
             $staff_recommend_message = 'hide';
             $staff_reject_message = 'hide';
+
+
+    @php
+        if (($sponsorshipData != null) && ($daysDifference < 7) && ($verification->investigation_status === 'approve') &&  ($verification->final_status === null)) {
+            $apply_activeOrDone = 'approve';
+            $doctor_activeOrDone = 'approve';
+            $staff_activeOrDone = 'approve';
+            $final_activeOrDone = 'is-active';
+            if ($verification->final_status === 'approve') {
+                $final_activeOrDone = 'approve';
+            } else {
+                $final_activeOrDone = 'reject';
+            }
+        } else if(($sponsorshipData != null) && ($daysDifference < 7) &&  ($verification->doctor_verify_status === 'approve')){
+           if(($verification->investigation_status === null)){
+
+           }elseif ($verification->doctor_verify_status === 'approve') {
+                $apply_activeOrDone = 'approve';
+                $doctor_activeOrDone = 'approve';
+                $staff_activeOrDone = 'is-active';
+                $final_activeOrDone = '';
+            } else if($verification->doctor_verify_status === 'recommend'){
+                $apply_activeOrDone = 'approve';
+                $doctor_activeOrDone = 'is-active';
+                $staff_activeOrDone = '';
+                $final_activeOrDone = '';
+            } else{
+                $apply_activeOrDone = 'approve';
+                $doctor_activeOrDone = 'reject';
+                $staff_activeOrDone = '';
+                $final_activeOrDone = '';
+            }
+        }else if(($sponsorshipData != null) && ($daysDifference < 7) && ($verification->investigation_status === null)){
+           if ($verification->doctor_verify_status === null) {
+                $apply_activeOrDone = 'approve';
+                $doctor_activeOrDone = 'is-active';
+                $staff_activeOrDone = '';
+                $final_activeOrDone = '';
+            } else if($verification->doctor_verify_status === 'approve'){
+                $apply_activeOrDone = 'approve';
+                $doctor_activeOrDone = 'approve';
+                $staff_activeOrDone = '';
+                $final_activeOrDone = '';
+            } else{
+                $apply_activeOrDone = 'approve';
+                $doctor_activeOrDone = 'reject';
+                $staff_activeOrDone = '';
+                $final_activeOrDone = '';
+            }
+        }else{
+            $apply_activeOrDone = 'is-active';
+            $apply_display = '';
+        }
+    @endphp
+
+
+@php
+        if (($sponsorshipData != null) && ($daysDifference < 7)){
+        //final status
+           if(($verification->investigation_status === 'approve') && ($verification->final_status === null)) {
+                $apply_activeOrDone = 'approve';
+                $doctor_activeOrDone = 'approve';
+                $staff_activeOrDone = 'approve';
+                $final_activeOrDone = 'is-active';
+           }else if(($verification->investigation_status === 'approve') && ($verification->final_status != null)){
+                if ($verification->final_status === 'approve') {
+                    $apply_activeOrDone = 'approve';
+                    $doctor_activeOrDone = 'approve';
+                    $staff_activeOrDone = 'approve';
+                    $final_activeOrDone = 'approve';
+                } else {
+                    $apply_activeOrDone = 'approve';
+                    $doctor_activeOrDone = 'approve';
+                    $staff_activeOrDone = 'approve';
+                    $final_activeOrDone = 'reject';
+                }
+        //investigation status
+           } else if(($verification->doctor_verify_status === 'approve') && ($verification->investigation_status === null)) {
+                $apply_activeOrDone = 'approve';
+                $doctor_activeOrDone = 'approve';
+                $staff_activeOrDone = 'is-active';
+                $final_activeOrDone = '';
+           }else if(($verification->doctor_verify_status === 'approve') && ($verification->investigation_status != null)){
+                if ($verification->investigation_status === 'approve') {
+                    $apply_activeOrDone = 'approve';
+                    $doctor_activeOrDone = 'approve';
+                    $staff_activeOrDone = 'approve';
+                    $final_activeOrDone = 'is-active';
+                } else if ($verification->investigation_status === 'recommend'){
+                    $apply_activeOrDone = 'approve';
+                    $doctor_activeOrDone = 'approve';
+                    $staff_activeOrDone = 'approve';
+                    $final_activeOrDone = '';
+                }else{
+                    $apply_activeOrDone = 'approve';
+                    $doctor_activeOrDone = 'approve';
+                    $staff_activeOrDone = 'reject';
+                    $final_activeOrDone = '';
+                }
+        //doctor status
+           }else if($verification->doctor_verify_status === null) {
+                $apply_activeOrDone = 'approve';
+                $doctor_activeOrDone = 'is-active';
+                $staff_activeOrDone = '';
+                $final_activeOrDone = '';
+           }else if($verification->doctor_verify_status != null){
+                if ($verification->doctor_verify_status === 'approve') {
+                    $apply_activeOrDone = 'approve';
+                    $doctor_activeOrDone = 'approve';
+                    $staff_activeOrDone = 'is-active';
+                    $final_activeOrDone = '';
+                } else if ($verification->doctor_verify_status === 'recommend'){
+                    $apply_activeOrDone = 'approve';
+                    $doctor_activeOrDone = 'is-active';
+                    $staff_activeOrDone = '';
+                    $final_activeOrDone = '';
+                }else{
+                    $apply_activeOrDone = 'approve';
+                    $doctor_activeOrDone = 'reject';
+                    $staff_activeOrDone = '';
+                    $final_activeOrDone = '';
+                }
+           }
+        // apply status
+        } else{
+            $apply_activeOrDone = 'is-active';
+            $doctor_activeOrDone = '';
+            $staff_activeOrDone = '';
+            $final_activeOrDone = '';
+        }
+    @endphp
+
+
