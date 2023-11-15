@@ -39,6 +39,15 @@ MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=null
 MAIL_FROM_NAME="${APP_NAME}"
 
+<!-- success for gmail-->
+MAIL_MAILER=smtp
+MAIL_HOST=mail.ulterious.com [ cpanel-> email accoutn-> Connect Device ]
+MAIL_PORT=465
+MAIL_USERNAME=admin@ulterious.com
+MAIL_PASSWORD='Tsrenp123#'
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS=null
+MAIL_FROM_NAME="${APP_NAME}"
 
 
 On the device or in the app, enter smtp.gmail.com as the server address.
