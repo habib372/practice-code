@@ -40,7 +40,7 @@ public function uploadImages($image, $width)
     }
 
     $image = Image::make($image);
-    $image->resize($width, null, function ($constraint) {
+    $image->resize(auto, 450, function ($constraint) {
         $constraint->aspectRatio();
     })->save($path . "/" . $originalName);
 }
