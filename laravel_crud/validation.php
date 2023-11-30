@@ -27,6 +27,7 @@ $data = $request->validate([
 
 // rulse -2
 
+
 // dd($request);
 $rules = [
     'patient_name' => 'required',
@@ -103,3 +104,12 @@ foreach ($request->attachs as $key => $attach) {
 
 // Form validation
 $this->validate($request, $rules, $messages);
+
+// or
+
+$validator = Validator::make($request->all(), $rules, $messages);
+
+if ($validator->fails()) {
+
+    return redirect()->back()->withErrors($validator);
+}

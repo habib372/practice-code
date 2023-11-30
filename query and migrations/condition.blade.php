@@ -17,6 +17,8 @@ if ($row->status == 'Requested' || $row->status == 'Scheduled') {}
 @if (auth('doctor')->check()){}
 @if(auth('patient')->check()){}
 
+{{auth('doctor')->user()->name_en  }}
+
 $patient = Patient::findOrFail(auth('patient')->id());
 
 @if(auth('patient')->check() && (request()->url() == URL::to('patient/dashboard') ))
