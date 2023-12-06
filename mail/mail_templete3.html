@@ -1,0 +1,34 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div class="containter">
+            <strong>Dear {{ $patient_name }},</strong><br/><br/>
+
+            MediRoaming has send a meeting link for Video Consultaiton with doctor<br/><br/>
+
+            Video Consultation Link: {{ $url }}<br/><br/>
+
+            <p>Sincerely,</p>
+            <p><b>MediRoaming</b> - Internationl Roaming of your Health Care</p><br/>
+
+            <i><b>(This is an auto-generated email from TSR-EnP Hospital Management Software. Do not reply to this email as the mailbox is not monitored.)</b></i>
+        </div>
+    </body>
+</html>
+
+
+
+<!--folder:  email/contact_email.blade.php -->
+<h2>Hello Admin,</h2><br>
+    You received an email from : {{ $name }}<br>
+    Here are the details:<br>
+    <b>Name:</b> {{ $name }}<br>
+    <b>Email:</b> {{ $email }}<br>
+    <b>Phone Number:</b> {{ $phone }}<br>
+    <b>Message:</b> {{ $user_message }}<br>
+Thank You
+
+
+

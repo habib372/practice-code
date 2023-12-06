@@ -9,6 +9,30 @@ Here are the details:<br>
 <b>Message:</b> {{ $user_message }}<br>
 Thank You
 
+
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div class="containter">
+            <strong>Dear Dr. {{ $referral_doctor_name }},</strong><br><br>
+
+            {{-- {{ $doctor_name }}  has referred a patient to you in relation to the following appointment:<br> --}}
+           Dr. {{ $consultant_doctor_name }} has referred a patient to you in relation to the following appointment:<br>
+
+            Patient Name: {{ $patient_name  }}<br>
+            Consultation Date: {{ $consultation_date }}<br><br>
+
+            {!! $patient_history !!}<br><br/>
+
+            <p>Sincerely,</p>
+           <p>Dr. {{ $consultant_doctor_name }}</p>
+
+            <i><b>(This is an auto-generated email from TSR EMR and PAS. Do not reply to this email as the mailbox is not monitored.)</b></i>
+        </div>
+    </body>
+</html>
 <!-- controller@store -->
 public function send_message(Request $request)
     {
@@ -45,4 +69,26 @@ public function send_message(Request $request)
 
     }
 
+
+ public function send_referral(Request $request)
+    {
+
+        \Mail::send(
+            'emails.referral_send',
+            array(
+                'referral_doctor_name' => $request->referral_doctor_name,
+                'referral_doctor_email' => $request->referral_doctor_email,
+                'patient_name' => $request->patient_name,
+                'consultation_date' => $request->consultation_date,
+                'patient_history' => $request->patient_history,
+                'consultant_doctor_name' => $request->consultant_doctor_name,
+            ),
+            function ($message) use ($request) {
+                $message->from('admin@enp.ulterious.com');
+                $message->to($request->referral_doctor_email)->subject('You have a referral patient from Primary Care Centre - PCC');
+            }
+        );
+
+        return back()->with('success', 'Mail Sent Successfully');
+    }
 
