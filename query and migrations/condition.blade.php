@@ -14,8 +14,12 @@ if ($row->status == 'Requested' || $row->status == 'Scheduled') {}
 
 
 @if (auth()->user()->user_role_id == 1)
+@if (auth()->user()->userRole()->name == 'admin')
+@if(auth()->user()->userRole->name == 'super-consultant')
 @if (auth('doctor')->check()){}
 @if(auth('patient')->check()){}
+
+@if (Custom::getAuth()->doctor_image)
 
 {{auth('doctor')->user()->name_en  }}
 
@@ -28,6 +32,14 @@ $patient = Patient::findOrFail(auth('patient')->id());
 {{(request()->is('buying-house') ? 'Buying House' : 'Factory')}}
 {{ Request::is('tsr-admin/discount-partner*')? 'm-menu__item--open' : '' }}
 {{ Request::is('patient/')? 'active' : '' }}
+
+@if(auth()->user()->userRole->name == 'super-consultant')
+	Dashboard | <span class="user-role-title"> Super Consultant</span>
+@elseif(auth()->user()->userRole->name == 'super-co-ordinator')
+	Dashboard | <span class="user-role-title"> Master Coordinator</span>
+@else
+	Dashboard | <span class="user-role-title"> Coordinator</span>
+@endif
 
 
 $diseases = Disease::where('status', 'active')->orderBy('id', 'ASC')->pluck('name_en', 'id')->toArray();
