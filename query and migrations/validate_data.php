@@ -1,6 +1,11 @@
 <?php
 
 $data = $request->validate([
+    'name_en' => 'required|unique:services,name_en',
+    'name_bn' => 'required|unique:services,name_bn',
+    'service_type_id' => 'required',
+    'standard_fees' => 'required',
+    'status' => 'required|in:active,inactive',
     'title' => 'required|max:255',
     'tag' => 'nullable|max:1000',
     'code' => 'required|max:255',

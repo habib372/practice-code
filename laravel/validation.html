@@ -1,6 +1,11 @@
 
 
 $data = $request->validate([
+    'name_en' => 'required|unique:services,name_en',
+    'name_bn' => 'required|unique:services,name_bn',
+    'service_type_id' => 'required',
+    'standard_fees' => 'required',
+    'status' => 'required|in:active,inactive',
     'title' => 'required|max:255',
     'tag' => 'nullable|max:1000',
     'code' => 'required|max:255',
@@ -24,6 +29,7 @@ $data = $request->validate([
     'other_images' => 'required',
     'other_images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|dimensions:max_width=1920|max:1024',
     ' images.*' => 'required|mimes:doc,pdf,docx,jpeg,jpg,png|max:10240';
+
 ]);
 
 
