@@ -84,6 +84,7 @@ $upcomingCourseEvents = News::latest()->where('type','training')->take(4)->get()
 $currentCourses = Course::all();
 $news = News::latest()->where('type','training')->get();
 
+{{ trans('text.learn_more') }}
 
 {{-- random order --}}
 $articles = Content::select(['id','title_'.config('app.locale').' as title', 'description_'.config('app.locale').' as
@@ -288,3 +289,22 @@ when #doctor_verify_status  selected == 'recommend', then #doctor_recommend_mess
 							}
 						}
 					},
+
+
+
+
+
+$allData = SponsorshipContent::select([
+    'id', 'd_de_title_' . config('app.locale') . ' as d_de_title', 'd_de_message_' . config('app.locale') . ' as d_de_message', 'd_rec_title_' . config('app.locale') . ' as d_rec_title', 'd_rec_message_' . config('app.locale') . ' as d_rec_message', 'd_rej_title_' . config('app.locale') . ' as d_rej_title', 'd_rej_message_' . config('app.locale') . ' as d_rej_message', 'i_de_title_' . config('app.locale') . ' as i_de_title',
+    'i_de_message_' . config('app.locale') . ' as i_de_message',
+    'i_rec_title_' . config('app.locale') . ' as i_rec_title',
+    'i_rec_message_' . config('app.locale') . ' as i_rec_message',
+    'i_rej_title_' . config('app.locale') . ' as i_rej_title',
+    'i_rej_message_' . config('app.locale') . ' as i_rej_message',
+    'f_de_title_' . config('app.locale') . ' as f_de_title',
+    'f_de_message_' . config('app.locale') . ' as f_de_message',
+    'f_con_title_' . config('app.locale') . ' as f_con_title',
+    'f_con_message_' . config('app.locale') . ' as f_con_message',
+    'f_rej_title_' . config('app.locale') . ' as f_rej_title',
+    'f_rej_message_' . config('app.locale') . ' as f_rej_message',
+])->first();
