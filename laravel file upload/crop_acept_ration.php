@@ -1,7 +1,8 @@
-
+<?php
 
 // single image upload function
-    function singleImage($file, $title, $path) {
+    function singleImage($file, $title, $path)
+    {
         $fileNameWithExtension = $file->getClientOriginalName();
         $modifiedFileNameWithoutExtension = Helper::bn_slug($title, '-') . '_' . time();
         $fileExtension = pathinfo($fileNameWithExtension, PATHINFO_EXTENSION);
@@ -12,19 +13,19 @@
         });
         $image->orientate();
         $pathWithFileName = $path . $modifiedFileNameWithExtension;
-    
+
         if (!file_exists($path)) {
             mkdir($path, 0777, true);
         }
-    
+
         // Save the image without specifying the quality (default quality)
         $image->save($pathWithFileName);
-    
+
         $featureImage = $modifiedFileNameWithExtension;
         return $featureImage;
     }
-    
-    
+
+
 
     // multi-image
     function multiImage($title, $files, $location, $id)
@@ -63,4 +64,16 @@
         }
 
         return true;
+    }
+
+
+    //  <!--File upload function -->
+    function uploadImages($image)
+    {
+        $originalName = $image->getClientOriginalName();
+        $photo_name = strtotime("now").'_'.$originalName;
+
+        $image = Image::make($image);
+        $image->resize(200, 200)->save(public_path() . "/images/patients/".$photo_name);
+        return $photo_name;
     }

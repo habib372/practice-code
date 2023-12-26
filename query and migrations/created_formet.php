@@ -71,19 +71,20 @@ $verification = SponsorshipVerify::where('sponsorship_id', $sponsorshipData->id)
 return view('frontend.patient.sponsorship_form', compact('sponsorshipData', 'verification', 'daysDifference'));
 }
 
+
 function calculateDaysDifference($specifiedDate)
 {
-// Convert the specified date to a Carbon instance
-$specifiedDate = Carbon::parse($specifiedDate);
+    // Convert the specified date to a Carbon instance
+    $specifiedDate = Carbon::parse($specifiedDate);
 
-// Get today's date as a Carbon instance
-$todayDate = now();
+    // Get today's date as a Carbon instance
+    $todayDate = now();
 
-// Calculate the number of days
-$daysDifference = $specifiedDate->diffInDays($todayDate);
+    // Calculate the number of days
+    $daysDifference = $specifiedDate->diffInDays($todayDate);
 
-return $daysDifference;
+    return $daysDifference;
 }
 
 
-{{ $daysDifference > 7 ? 'is-active' : 'done' }}
+    {{ $daysDifference > 7 ? 'is-active' : 'done' }}
