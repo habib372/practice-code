@@ -140,6 +140,22 @@
                 {!! Form::label('drinker_no', 'No') !!}
             </div>
 
+
+                        <h6 class="custom_padding">Select Facilities <span class="text-danger">*</span></h6>
+							<div class="form-group m-form__group row facility_section">
+								@foreach ($facilities as $item)
+									@php $id = $item->id; @endphp
+									<div class="col-md-3">
+										<p class="facility_item">{{ $item->id.'. '.$item->title_en }}</p>
+										{!! Form::radio('facility_'.$id, 'active', ($item->facility_1== 'active'),['id' => 'facility_'.$id.'_active']) !!}
+										{!! Form::label('facility_'.$id.'_active', 'Yes') !!}&nbsp;&nbsp;&nbsp;
+										{!! Form::radio('facility_'.$id, 'inactive', ($item->facility_1 =='inactive'), ['id' => 'facility_'.$id.'_inactive']) !!}
+										{!! Form::label('facility_'.$id.'_inactive', 'No') !!}
+									</div>
+								@endforeach
+							</div>
+
+
             <div class="col-md-3">
                 @php
                 $data = explode(',', $patientVisit->vaccination_status);
