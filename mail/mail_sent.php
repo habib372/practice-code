@@ -84,7 +84,7 @@ public function send_message(Request $request)
                 'consultant_doctor_name' => $request->consultant_doctor_name,
             ),
             function ($message) use ($request) {
-                $message->from('admin@enp.ulterious.com');
+                $message->from('your_webmail');
                 $message->to($request->referral_doctor_email)->subject('You have a referral patient from Primary Care Centre - PCC');
             }
         );
