@@ -112,9 +112,8 @@ Primary Care Centre - PCC | All Appointment List
 
 
         @if(auth('patient')->check() && in_array(request()->url(), [
-        URL::to('patient/dashboard'), URL::to('patient/apply-for-sponsorship'), URL::to('patient/medical-history'),
-        URL::to('patient/appointments'), URL::to('patient/chemotherapy-history'), URL::to('patient/attachments'),
-        URL::to('patient/carers') ]))
+        URL::to('patient/dashboard'), URL::to('patient/apply'), URL::to('patient/attachments'),
+        URL::to('patient/carers') ]) || Str::startsWith(request()->path(), 'patient/membership-plan/checkout/'))
 
         @include('frontend.partials.carer-dashboard-menu')
         @else
