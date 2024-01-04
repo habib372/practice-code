@@ -1,6 +1,8 @@
 <?php
 // rulse -1
 $data = $request->validate([
+    'email' => 'nullable|email|max:191',
+    'mobile' => ['required', 'regex:/(\+){0,1}(88){0,1}01(3|4|5|6|7|8|9)(\d){8}/', 'min:11', 'max:15'],
     'title' => 'required|max:255',
     'tag' => 'nullable|max:1000',
     'code' => 'required|max:255',

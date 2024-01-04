@@ -84,3 +84,39 @@ return back()->with('success','You have successfully file uplaod.');
 		$('#success-alert').alert('close');
 	}, 5000);
 </script>
+
+
+
+<div class="col-md-4">
+	<label for="patient_country_id">
+		Country <span class="text-danger">*</span>
+	</label>
+	{!! Form::select('patient_country_id', $countries, $patient->country_id, ['class' => 'form-control m-input select2', 'id'
+	=> 'patient_country_id']) !!}
+	@error('patient_country_id')
+	<span class="text-danger">{{$message}}</span>
+	@enderror
+</div>
+<div class="col-md-4">
+	<label for="patient_district_id">District <span class="text-danger">*</span></label>
+	{!! Form::select('patient_district_id', $districts, $patient->district_id, ['class' => 'form-control m-input select2',
+	'id' => 'patient_district_id']) !!}
+	@error('patient_district_id')
+	<span class="text-danger">{{$message}}</span>
+	@enderror
+</div>
+
+<div class="col-lg-4">
+	<label for="title_en">Title (English) <span class="text-danger">*</span></label>
+	<input type="text" class="form-control m-input{{ $errors->has('title_en')? ' border-danger' : '' }}" name="title_en" id="title_en" aria-describedby="title_en" value="{{ old('title_en') }}" placeholder="Enter facility title in english">
+	@error('title_en')
+	<span class="text-danger">{{$message}}</span>
+	@enderror
+</div>
+<div class="col-lg-4">
+	<label for="title_bn">Title (Bangla) <span class="text-danger">*</span></label>
+	<input type="text" class="form-control m-input{{ $errors->has('title_bn')? ' border-danger' : '' }}" name="title_bn" id="title_bn" aria-describedby="title_bn" value="{{ old('title_bn') }}" placeholder="Enter facility title in bangla">
+	@error('title_bn')
+	<span class="text-danger">{{$message}}</span>
+	@enderror
+</div>

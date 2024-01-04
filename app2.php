@@ -1,5 +1,6 @@
 
  patient_id
+
  package_id
  payment_type
  phone_no
