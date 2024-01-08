@@ -36,6 +36,7 @@ class CreateAgentsTable extends Migration
             $table->string('image')->default('photo.jpg');
             $table->longText('video')->nullable();
             $table->integer('status')->default(0);
+            $table->dateTime('created_date')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->tinyInteger('featured')->nullable()->default(0);
             $table->unsignedBigInteger('district_id')->nullable();
