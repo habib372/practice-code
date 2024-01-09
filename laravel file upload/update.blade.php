@@ -44,3 +44,15 @@ public function uploadImages($image, $width)
         $constraint->aspectRatio();
     })->save($path . "/" . $originalName);
 }
+
+
+ $filename = $data->logo;
+        if ($request->hasFile('logo')) {
+            $filename = $this->uploadImages($request->file('logo'));
+            if ($data->logo) {
+                $oldPhotoPath = public_path('/images/membership/') . $data->logo;
+                if (file_exists($oldPhotoPath)) {
+                    @unlink($oldPhotoPath);
+                }
+            }
+        }

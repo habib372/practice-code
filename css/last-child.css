@@ -14,3 +14,13 @@
       right: 20px;
       transform: scaleX(0);
   }
+
+
+  /* if you have fewer than 6 columns, */
+  td:not(:nth-child(2n))
+
+ /*  if you have at least 6 columns and only want to exclude the 2nd and 4th,
+  and not every even column. */
+ td:not(:nth-child(2)):not(:nth-child(4));
+
+
