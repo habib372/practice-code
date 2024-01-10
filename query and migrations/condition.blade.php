@@ -18,6 +18,7 @@ if ($row->status == 'Requested' || $row->status == 'Scheduled') {}
 @if(auth()->user()->userRole->name == 'super-consultant')
 @if (auth('doctor')->check()){}
 @if(auth('patient')->check()){}
+auth('patient')->id()
 
 @if (Custom::getAuth()->doctor_image)
 
