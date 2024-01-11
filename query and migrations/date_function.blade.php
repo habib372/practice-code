@@ -66,6 +66,7 @@ function calculateDaysDifference($specifiedDate)
 
 ?>
 
+{{-- number to month conversion --}}
 @if(auth('patient')->check())
     @php
         $membership_payment_data = App\Models\MembershipPayment::with('membership')
