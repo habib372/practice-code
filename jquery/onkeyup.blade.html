@@ -1,0 +1,12 @@
+<script>
+
+	$(document).ready(function(){
+			$(document).on('keyup change', '#carer_mobile', function(){
+				$("#carer_username").val($("#carer_mobile").val());
+			});
+
+			$(document).on('keyup change', '#patient_mobile', function(){
+				$("#patient_username").val($("#patient_mobile").val());
+			});
+		})
+</script>
