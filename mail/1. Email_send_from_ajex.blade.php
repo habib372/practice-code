@@ -23,7 +23,7 @@
   });
   //email send function
   function emailSend(){
-    var url = "{{url('tsr-enp/meeting-link-sent')}}";
+    var url = "{{url('meeting-link-sent')}}";
     var patientName = "{{session()->get('patinet_name')}}" ;
     var patientEmail = "{{session()->get('patinet_email')}}" ;
     var linkUrl = $('#linkUrl').val();
@@ -48,12 +48,12 @@
   </script>
 
   {{-- route --}}
-  Route::post('tsr-enp/meeting-link-sent', 'MeetingController@meetingSent')->name('meetingSent');
+  Route::post('meeting-link-sent', 'MeetingController@meetingSent')->name('meetingSent');
 
   {{-- controller --}}
    public function meetingSent(Request $request)
     {
-        $username = $request->subject_username ?? 'Medi Roaming'; // Default to 'admin' if not provided
+        $username = $request->subject_username ?? ' Roaming'; // Default to 'admin' if not provided
 
         \Mail::send(
             'emails.meeting_sent',
