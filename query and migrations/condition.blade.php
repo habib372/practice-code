@@ -43,11 +43,25 @@ $patient = Patient::findOrFail(auth('patient')->id());
 @endif
 
 
+<!-- skip first data -->
+$memberships = ['' => '-- Select a membership --'] + Membership::where('status', 'active')->pluck('name_en', 'id')->slice(1)->toArray();
+
 $diseases = Disease::where('status', 'active')->orderBy('id', 'ASC')->pluck('name_en', 'id')->toArray();
 $existingDisease = !(empty($patient->disease_id)) ? explode(',', $patient->disease_id) : null;
 
 $diseases = Disease::where('status', 'active')->orderBy('id', 'ASC')->pluck('name_en', 'id')->toArray();
 $diseaseNames = Disease::whereIn('id', $diseaseIds)->pluck('name_' . config('app.locale'))->implode(', ');
+
+$countries =  ['' => '-- Select Country --'] + Country::pluck('name', 'id')->toArray();
+$districts = ['' => '-- Select District --'] + District::orderBy('name', 'ASC')->pluck('name', 'id')->toArray();
+
+$patients = ['' => '-- Search Member By ID/Name/Mobile Number --'] + Patient::select(DB::raw('CONCAT( \'FCB\', id, \' - \', name, \' - \', mobile) as name'), 'id')->pluck('name', 'id')->toArray();
+
+$memberships = ['' => '-- Select a membership --'] + Membership::where('status', 'active')->pluck('name_en', 'id')->slice(1)->toArray();
+
+$membershipName = ['' => '-- Select a membership --'] + Membership::where('status', 'active')->pluck('name_en', 'name_en')->toArray();
+
+$paymentMode = ['' => '-- Select mode of payment --', 'cash' => 'Cash', 'bkash' => 'Bkash', 'rocket' => 'Rocket', 'nagad' => 'Nagad', 'credit-card' => 'Credit Card', 'bank-account' => 'Bank Account'];
 
 <!-- date time format -->
 <!-- Updated by: Habibur Rahman  -->
