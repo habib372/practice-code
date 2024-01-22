@@ -122,3 +122,43 @@
 
 </script>
 <!--end-->
+
+
+    {{-- when value change, all value must null --}}
+        <script>
+            $(document).on('change', '#payment_mode', function(){
+                var paymentMode = $("#payment_mode").val();
+
+                // Set values to null when hiding
+                if(paymentMode != 'bkash' && paymentMode != 'rocket' && paymentMode != 'nagad' && paymentMode != 'credit-card') {
+                    $('#transactionId').hide('slow').find('input').val(null);
+                }
+                if(paymentMode != 'bank-account') {
+                    $('#account_holder_name').hide('slow').find('input').val(null);
+                    $('#bank_account_info').hide('slow').find('input').val(null);
+                }
+
+                // Show or hide based on the selected payment mode
+                if(paymentMode == 'bkash' || paymentMode == 'rocket' || paymentMode == 'nagad' || paymentMode == 'credit-card') {
+                    $('#transactionId').show('slow');
+                } else if(paymentMode == 'bank-account') {
+                    $('#account_holder_name').show('slow');
+                    $('#bank_account_info').show('slow');
+                }
+            });
+        </script>
+        {{-- or --}}
+        <script>
+            $(document).on('change', '#payment_mode', function(){
+                // Hide all sections and set input values to null
+                $('#transactionId, #account_holder_name, #bank_account_info').hide('slow').find('input').val(null);
+
+                // Show the relevant section based on the selected payment mode
+                var paymentMode = $("#payment_mode").val();
+                if(paymentMode == 'bkash' || paymentMode == 'rocket' || paymentMode == 'nagad' || paymentMode == 'credit-card') {
+                    $('#transactionId').show('slow');
+                } else if(paymentMode == 'bank-account') {
+                    $('#account_holder_name, #bank_account_info').show('slow');
+                }
+            });
+        </script>

@@ -63,6 +63,13 @@ $membershipName = ['' => '-- Select a membership --'] + Membership::where('statu
 
 $paymentMode = ['' => '-- Select mode of payment --', 'cash' => 'Cash', 'bkash' => 'Bkash', 'rocket' => 'Rocket', 'nagad' => 'Nagad', 'credit-card' => 'Credit Card', 'bank-account' => 'Bank Account'];
 
+$membership_payment_data = App\Models\MembershipPay::with('membership')
+            ->where('patient_id', auth('patient')->id())
+            ->whereIn('status', ['Complete', 'Paid'])
+            ->orderBy('id', 'DESC')
+            ->first();
+
+
 <!-- date time format -->
 <!-- Updated by: Habibur Rahman  -->
 <strong>Last Updated By</strong> : {{ $user->updatedBy->name??'' }}<br />

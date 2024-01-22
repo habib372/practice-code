@@ -71,14 +71,17 @@ function calculateDaysDifference($specifiedDate)
     @php
         $membership_payment_data = App\Models\MembershipPayment::with('membership')
             ->where('patient_id', auth('patient')->id())
-            ->where('status', 'Processing')
+            ->whereIn('status', ['Complete', 'Paid'])
             ->orderBy('id', 'DESC')
             ->first();
 
-        $numberOfMonths = $membership_payment_data->duration;
-        $apply_dateTime = \Carbon\Carbon::parse($membership_payment_data->apply_date);
-        $expire_date = $apply_dateTime->addMonths($numberOfMonths)->format('Y-m-d H:i:s');
+        $expire_date = null;
 
+        if ($membership_payment_data != null) {
+            $numberOfMonths = $membership_payment_data->duration;
+            $apply_dateTime = \Carbon\Carbon::parse($membership_payment_data->apply_date);
+            $expire_date = $apply_dateTime->addMonths($numberOfMonths)->format('Y-m-d H:i:s');
+        }
         $currentDateTime = new \DateTime();
         $todayDateTime = $currentDateTime->format('Y-m-d H:i:s');
 

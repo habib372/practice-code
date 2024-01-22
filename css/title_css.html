@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.72.0">
+  <title>title</title>
+
+  <style>
+      .text2::before {
+        content: attr(data-title);
+        display: none;
+        position: absolute;
+        transition: 0.5s linear linear;
+        padding: 10px;
+        margin-top: -160px;
+      }
+      .text2:hover::before {
+        background-color: wheat;
+        display: block;
+        transition: 0.5s linear linear;
+        color: black;
+      }
+    </style>
+
+
+</head>
+<body>
+
+
+    <h1 data-title="hello i am from box" class="text2">Hello i am text</h1>
+
+</body>
+</html>
