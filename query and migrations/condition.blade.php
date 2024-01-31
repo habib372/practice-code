@@ -70,6 +70,13 @@ $membership_payment_data = App\Models\MembershipPay::with('membership')
             ->first();
 
 
+ Appointment::where('id', $request->appointment_id)->update([
+                'bill_amount' => $request->payable_amount,
+                'discount_value' => $request->discount_value,
+                'discount_method' => $request->discount_type,
+                'payable_amount' => $request->fees
+            ]);
+
 <!-- date time format -->
 <!-- Updated by: Habibur Rahman  -->
 <strong>Last Updated By</strong> : {{ $user->updatedBy->name??'' }}<br />
