@@ -131,3 +131,13 @@ use File;
         }
     }
 <!--End method 2 -->
+
+
+
+{{-- image name edit --}}
+$imgName = time() . "_" . str_replace(' ', '-', $request->file('logo')->getClientOriginalName());
+$imgName = preg_replace("/[^a-zA-Z0-9_\-.]/", "", $imgName);
+$extension = $request->file('logo')->getClientOriginalExtension();
+$imgName = $imgName . "." . $extension;
+
+$data['logo'] = $imgName;
