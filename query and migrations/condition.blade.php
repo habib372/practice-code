@@ -46,11 +46,18 @@ $patient = Patient::findOrFail(auth('patient')->id());
 <!-- skip first data -->
 $memberships = ['' => '-- Select a membership --'] + Membership::where('status', 'active')->pluck('name_en', 'id')->slice(1)->toArray();
 
-$diseases = Disease::where('status', 'active')->orderBy('id', 'ASC')->pluck('name_en', 'id')->toArray();
-$existingDisease = !(empty($patient->disease_id)) ? explode(',', $patient->disease_id) : null;
 
-$diseases = Disease::where('status', 'active')->orderBy('id', 'ASC')->pluck('name_en', 'id')->toArray();
-$diseaseNames = Disease::whereIn('id', $diseaseIds)->pluck('name_' . config('app.locale'))->implode(', ');
+<!-- multiple disease by id -->
+ $patientVisit = PatientVisit::with(['patient.disease', 'patient.chemotherapies' => function($query){
+        $query->orderBy('date_of_admission', 'desc');
+    }])->findOrFail($id);
+
+$existingDisease = !empty($patientVisit->disease_id) ? explode(',', $patientVisit->disease_id) : explode(',', $patientVisit->patient->disease_id);
+$diseases = Disease::where('status', 'active')->orderBy('id', 'DESC')->pluck('name_en', 'id')->toArray();
+
+$chronicDisease = explode(',', $patientVisit->patient->disease_id);
+$diseaseNames = Disease::whereIn('id', $chronicDisease)->pluck('name_en')->implode(', ');
+
 
 $countries =  ['' => '-- Select Country --'] + Country::pluck('name', 'id')->toArray();
 $districts = ['' => '-- Select District --'] + District::orderBy('name', 'ASC')->pluck('name', 'id')->toArray();
@@ -62,6 +69,7 @@ $memberships = ['' => '-- Select a membership --'] + Membership::where('status',
 $membershipName = ['' => '-- Select a membership --'] + Membership::where('status', 'active')->pluck('name_en', 'name_en')->toArray();
 
 $paymentMode = ['' => '-- Select mode of payment --', 'cash' => 'Cash', 'bkash' => 'Bkash', 'rocket' => 'Rocket', 'nagad' => 'Nagad', 'credit-card' => 'Credit Card', 'bank-account' => 'Bank Account'];
+
 
 $membership_payment_data = App\Models\MembershipPay::with('membership')
             ->where('patient_id', auth('patient')->id())
