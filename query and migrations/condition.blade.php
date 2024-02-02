@@ -88,6 +88,21 @@ $membership_payment_data = App\Models\MembershipPay::with('membership')
 
  $blog = Blog::where('slug', 'LIKE','%'.$slug.'%')->first();
 
+ {{Illuminate\Support\Str::lower(Str::of($projecCategory->name)->replace(' ', '-') ??'')}}
+
+
+  public function projectDetails($slug) {
+        // Decode the URL parameter
+        $name = urldecode(str_replace("-", " ", $slug));
+
+        // Use parameter binding to handle special characters
+        $data = Project::with('projectimage')
+            ->where('name', $name)
+            ->first();
+
+        return view('website.page.projectDetails', compact('data'));
+    }
+
 
 <!-- date time format -->
 <!-- Updated by: Habibur Rahman  -->
