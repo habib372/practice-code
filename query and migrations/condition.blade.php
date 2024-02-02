@@ -85,6 +85,10 @@ $membership_payment_data = App\Models\MembershipPay::with('membership')
                 'payable_amount' => $request->fees
             ]);
 
+
+ $blog = Blog::where('slug', 'LIKE','%'.$slug.'%')->first();
+
+
 <!-- date time format -->
 <!-- Updated by: Habibur Rahman  -->
 <strong>Last Updated By</strong> : {{ $user->updatedBy->name??'' }}<br />
