@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet" type="text/css" />
+  </head>
+    <style>
+      body {
+        text-align: center;
+        padding: 40px 0;
+        background: #EBF0F5;
+      }
+        h1 {
+          color: #88B04B;
+          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+          font-weight: 900;
+          font-size: 40px;
+          margin-bottom: 20px;
+        }
+        p {
+          color: #404F5E;
+          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+          font-size:20px;
+          margin: 7px;
+        }
+      i {
+        color: #9ABC66;
+        font-size: 80px;
+        line-height: 200px;
+      }
+      .card {
+        background: white;
+        padding: 60px 40px;
+        border-radius: 4px;
+        box-shadow: 0 2px 3px #C8D0D8;
+        display: inline-block;
+        margin: 0 auto;
+      }
+      .check_btn{
+        border-radius:200px;
+        height:150px;
+        width:150px;
+        background: #F8FAF5;
+        margin:0 auto;
+        border: none;
+      }
+      .back_button{
+        color:white;
+        background-color: #1a76d1;
+        text-decoration: none;
+        padding:10px 15px;
+        margin-top:20px;
+        border-radius: 5px;
+        font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+      }
+    </style>
+    <body>
+        <div class="card">
+            <button type="button" class="check_btn">
+                <i class="fas fa-check"></i>
+            </button>
+            <h1>Payment Successfull!</h1>
+            <p>Thank you for upgrading your membership</p>
+            <p>Have a great day!</p><br/>
+            <a name="" id="" class="back_button" href="{{ route('patient.dashboard') }}" role="button"> Back to your dashboard</a>
+        </div>
+    </body>
+</html>
