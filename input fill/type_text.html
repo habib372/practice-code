@@ -1,0 +1,18 @@
+<!-- Agora Restful API  -->
+							<h6 class="restful-padding">Agora RESTFUL API (For video consultation) <span class="text-danger"></span></h6>
+							<div class="form-group m-form__group row restful_section">
+								<div class="col-lg-6">
+                                    <label for="key">APP KEY <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control m-input{{ $errors->has('key')? ' border-danger' : '' }}" name="key" id="key" aria-describedby="key" value="{{ old('key')??$serviceProvider->key  }}" placeholder="Enter agora restful key">
+                                    @error('key')
+                                        <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="secret">APP SECRET <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control m-input{{ $errors->has('secret')? ' border-danger' : '' }}" name="secret" id="secret" aria-describedby="secret" value="{{ old('secret')??$serviceProvider->secret  }}" placeholder="Enter agora restful secret">
+                                    @error('secret')
+                                        <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+							</div>
