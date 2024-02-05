@@ -1,0 +1,29 @@
+<!-- css -->
+ <style>
+    .custom-title::before {
+        content: attr(data-title);
+        display: none;
+        position: absolute;
+        transition: 0.9s;
+        padding: 10px;
+        margin-top: -130px;
+        border-radius: 5px;
+    }
+
+    .custom-title:hover::before {
+        background-color: #ededed;
+        display: block;
+        transition: 0.9s;
+        color: #000;
+    }
+ </style>
+
+<div class="col-lg-4" id="transactionId" style="display: none;">
+   <label for="transaction_id"> Transaction ID (SMS) <span data-title="Check message in your phone for mobile banking or card payment where in a TxnID. Just input this TxnID. For Example, TxnID: AL191XDK25" class="custom-title text-warning"><i class='fa fa-info-circle'></i></span></label>
+    <input type="text" class="form-control m-input{{ $errors->has('transaction_id')? ' border-danger' : '' }}" name="transaction_id" id="transaction_id" aria-describedby="transaction_id" value="{{ old('transaction_id') }}" placeholder=" AL191XXXXX">
+    @error('transaction_id')
+    <span class="text-danger">{{$message}}</span>
+    @enderror
+</div>
+
+
