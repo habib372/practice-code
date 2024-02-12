@@ -18,6 +18,14 @@ Str::random(10),
 {{ $daysDifference > 7 ? 'is-active' : 'done' }}
 
 
+
+<!-- Take and script -->
+@foreach($all_category->skip(5)->take(4) as $category)
+<li><a href="{{url('category_products')}}/{{$category->id}}">{{$category->category_name}}</a>
+</li>
+@endforeach
+
+
 <!-- no limit -->
 {!!$singleNews->excerpt!!}
 
