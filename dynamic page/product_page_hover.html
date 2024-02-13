@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.72.0">
+  <title>Album example · Bootstrap</title>
+
+  <link rel="canonical" href="https://v5.getbootstrap.com/docs/5.0/examples/album/">
+
+
+
+  <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+  <style>
+  /* === MAINPAGE - BOXES AT THE BOTTOM + MILO EFFECT === */
+
+    #section_home_new {
+        background: #d7d7d7;
+    }
+
+    .section_home_new {
+        max-width: 100%;
+        padding: 0px;
+        overflow: hidden;
+        width: 33.33%;
+        float: left;
+        position: relative;
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .section_home_new_readmorebtn {
+        display: inline-block;
+        padding: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+    }
+
+    .section_home_new_readmorebtn:hover {
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    .effect-milo {
+        position: relative;
+        overflow: hidden;
+        background: #000000;
+    }
+
+    .effect-milo img {
+        max-width: none;
+        width: 110%;
+        width: 110%;
+        opacity: 1;
+        -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+        transition: opacity 0.35s, transform 0.35s;
+        -webkit-transform: translate3d(-30px, 0, 0) scale(1.12);
+        transform: translate3d(-30px, 0, 0) scale(1.12);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    .effect-milo:hover img {
+        opacity: 0.5;
+        -webkit-transform: translate3d(0, 0, 0) scale(1);
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    .effect-milo .milo-text-content {
+        padding: 0 10px 0 0;
+        width: 75%;
+        border-right: 1px solid #ffffff;
+        text-align: right;
+        opacity: 0;
+        -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+        transition: opacity 0.35s, transform 0.35s;
+        -webkit-transform: translate3d(-40px, 0, 0);
+        transform: translate3d(-40px, 0, 0);
+    }
+
+    .effect-milo:hover .milo-text-content {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .milo-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 2em;
+        color: #ffffff;
+        backface-visibility: hidden;
+    }
+
+    .milo-text a {
+        color: #ffffff;
+    }
+
+
+  </style>
+
+
+</head>
+<body>
+
+    <div id="section_home_new">
+    <div class="section_home_new effect-milo">
+        <img src="https://www.naffco.com/templates/img/1-jabalomar.jpg" alt="sect 1">
+        <div class="milo-text">
+            <div class="milo-text-content">
+
+                <div id="casestudy14" class="section cms-casestudy1 cmsindex">
+                    <h2>Jabal Omar Towers, K.S.A.</h2>
+                    <p>The project involves construction of 4 hotel towers, out of which two 5 star hotel towers each
+                        comprising a ground floor and 41 additional floors, are connected by 6 podium levels offering
+                        total 1730 rooms, while the other two 4 star hotel towers comprising a ground floor and 32 additional floors connected by 10 podium levels offering in total 806 rooms.</p>
+                    <a href="projects#8_8">Read More</a>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section_home_new effect-milo">
+        <img src="https://www.naffco.com/templates/img/1-jabalomar.jpg" alt="sect 2">
+        <div class="milo-text">
+            <div class="milo-text-content">
+
+                <div id="casestudy25" class="section cms-casestudy2 cmsindex">
+                    <h2>IKEA Distribution Centre, Dubai</h2>
+                    <p>IKEA Group has announced a new regional distribution centre at Dubai World Central (DWC) as the company continues to expand its retail operations in the GCC. This will be the group's largest distribution centre in the Middle East.</p>
+                    <a href="projects#18_39">Read More</a>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section_home_new effect-milo">
+        <img src="https://www.naffco.com/templates/img/1-jabalomar.jpg" alt="sect 3">
+        <div class="milo-text">
+            <div class="milo-text-content">
+
+                <div id="casestudy36" class="section cms-casestudy3 cmsindex">
+                    <h2>Kempinski Hotel New Cairo, Egypt</h2>
+                    <p>Royal Maxim Palace Kempinski is home to a great selection of event spaces, named after the
+                        world’s most exclusive diamonds. Crowning the venues is the Excelsior ballroom, Egypt’s largest
+                        and most impressive ballroom.</p>
+                    <a href="projects#3_42">Read More</a>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+</body>
+
+</html>
