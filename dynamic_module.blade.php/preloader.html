@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .mainloader {
+        border-radius: 5px;
+        width: 120px;
+        height: 60px;
+        margin: 200px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        color: #2e40d4;
+        border: 1px solid #f6f3ef;
+      }
+
+      .loader-content {
+        width: 10px;
+        height: 10px;
+        border-radius: 50px;
+        background-color: #2e40d4;
+        margin: 5px;
+      }
+
+      .loader-content:nth-child(1) {
+        animation: 500ms loaderAnimation alternate infinite;
+      }
+      .loader-content:nth-child(2) {
+        animation: 550ms loaderAnimation alternate infinite;
+      }
+      .loader-content:nth-child(3) {
+        animation: 600ms loaderAnimation alternate infinite;
+      }
+
+      @keyframes loaderAnimation {
+        0% {
+          background-color: #2e40d4;
+        }
+        100% {
+          background-color: #f6f3ef;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="test_datatable_processing" class="dataTables_processing card">
+      <div class="mainloader">
+        <div class="loader-content"></div>
+        <div class="loader-content"></div>
+        <div class="loader-content"></div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    setInterval(() => {
+      document.querySelector(".dataTables_processing").style.display = "none";
+    }, 3000);
+  </script>
+</html>
