@@ -9,6 +9,33 @@
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.18.3/dist/css/uikit.min.css" />
 
+    <style>
+        .uk-position-relative.uk-visible-toggle.uk-light.uk-slideshow{
+            height:300px;
+        }
+        ul#uk-slideshow-1 {
+            height: 300px;
+        }
+        .uk-position-center-right svg, .uk-position-center-left svg {
+            color:black;
+        }
+        .custom_price{
+            font-size: 14px;
+            line-height: 13px;
+            color:black;
+            padding-bottom:12px;
+        }
+        .description h4{
+            font-size: 14px;
+            line-height: 15px;
+            color:black;
+            margin-bottom:10px;
+        }
+        .feature-content {
+            background: white;
+        text-align:center;
+        }
+    </style>
 </head>
 <body>
 
@@ -18,32 +45,63 @@
     <div class="row">
       <div class="col-md-8"></div>
       <div class="col-md-4">
+
+        <!-- system one -->
        <div class="uk-child-width-1-2@m" uk-grid>
-    <div>
-        <div class="uk-h3">Slide</div>
+            <div>
+                <!-- <div class="uk-h3">Slide</div> -->
 
-        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="autoplay: true; autoplay-interval: 2000;"> <!-- Set the autoplay-interval to the desired interval in milliseconds -->
+                <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="autoplay: true; autoplay-interval: 2000;"> <!-- Set the autoplay-interval to the desired interval in milliseconds -->
 
-            <ul class="uk-slideshow-items">
-                <li>
-                    <img src="http://www.fightingcancerbd.com/images/contents/1638443069164.png" alt="" uk-cover>
-                </li>
-                <li>
-                    <img src="https://demo.mediroaming.com/uploads/aboutus/65bb33830de4f_5.jpg" alt="" uk-cover>
-                </li>
-                <li>
-                    <img src="http://www.fightingcancerbd.com/images/contents/1638443069164.png" alt="" uk-cover>
-                </li>
-            </ul>
+                    <ul class="uk-slideshow-items">
+                        <li>
+                            <img src="http://www.fightingcancerbd.com/images/contents/1638443069164.png" alt="" uk-cover>
+                        </li>
+                        <li>
+                            <img src="https://demo.mediroaming.com/uploads/aboutus/65bb33830de4f_5.jpg" alt="" uk-cover>
+                        </li>
+                        <li>
+                            <img src="http://www.fightingcancerbd.com/images/contents/1638443069164.png" alt="" uk-cover>
+                        </li>
+                    </ul>
 
-            <a class="uk-position-center-left uk-position-small uk-hidden-hover" href uk-slidenav-previous uk-slideshow-item="previous"></a>
-            <a class="uk-position-center-right uk-position-small uk-hidden-hover" href uk-slidenav-next uk-slideshow-item="next"></a>
+                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href uk-slidenav-previous uk-slideshow-item="previous"></a>
+                    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href uk-slidenav-next uk-slideshow-item="next"></a>
 
+                </div>
+            </div>
+            <!-- Other items... -->
         </div>
-    </div>
-    <!-- Other items... -->
-</div>
 
+        <!-- system 2 -->
+        <div class="uk-child-width-1-1@m" uk-grid>
+                        <div>
+                            <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="autoplay: true; autoplay-interval: 3000;">
+
+                                <ul class="uk-slideshow-items">
+                                     @foreach($similarProducts as $sKey => $similarProduct)
+                                    <li>
+                                        <a href="{{route('products.show',[$similarProduct->id,$similarProduct->slug])}}">
+                                        <img src="{{asset('img/default.png')}}" data-src="{{asset('img/products/'.$similarProduct->image)}}" alt="{{$similarProduct->title}}" class="lazyload img-responsive" >
+                                         <div class="feature-content">
+                                            <div class="description">
+                                                <h4>{{ App\Helpers\Helper::readMore($similarProduct->title,40)}}</h4>
+                                            </div>
+                                            <div class="price custom_price">
+                                                <span>TK. {{$similarProduct->sale_price}}</span> @if($similarProduct->disc_amount >=1)<span class="old-price">TK. {{$similarProduct->reg_price}}</span>@endif
+                                            </div>
+                                        </div>
+                                        </a>
+                                    </li>
+                                    @endforeach
+                                </ul>
+
+                                <a class="uk-position-center-left uk-position-small uk-hidden-hover" href uk-slidenav-previous uk-slideshow-item="previous"></a>
+                                <a class="uk-position-center-right uk-position-small uk-hidden-hover" href uk-slidenav-next uk-slideshow-item="next"></a>
+
+                            </div>
+                        </div>
+                    </div>
       </div>
     </div>
   </div>
