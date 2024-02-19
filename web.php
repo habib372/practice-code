@@ -5,3 +5,13 @@ Route::prefix('company')->name('company.')->group(function () {
 
 
 
+
+<!------Registation off------>
+Auth::routes(['verify' => true, 'register' => false]);
+
+<!-- admin route / auto logout -->
+Route::prefix('admin')->group(function () {
+    Route::middleware(['auth'])->group(static function () {
+        <!-- all admin route here -->
+    });
+});
