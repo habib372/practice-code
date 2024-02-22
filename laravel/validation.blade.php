@@ -1,4 +1,5 @@
 
+<?php
 
 $data = $request->validate([
     'name_en' => 'required|unique:services,name_en',
@@ -33,20 +34,21 @@ $data = $request->validate([
 ]);
 
 
-$table->id();
-$table->integer('added_by')->nullable();
-$table->string('showroom_name')->nullable();
-$table->string('address')->nullable();
-$table->string('map_link')->nullable();
-$table->string('email')->nullable();
-$table->string('mobile')->nullable();
-$table->string('facebook')->nullable();
-$table->string('whatsapp')->nullable();
-$table->string('linkedin')->nullable();
-$table->string('youtube')->nullable();
-$table->string('image')->default('photo.jpg');
-$table->integer('status')->default(0);
-$table->timestamps();
+        // style 1
 
+        $rules = [
+            'patient_name' => 'required',
+            'patient_email' => 'email|unique:patients,email',
+            'patient_password' => 'required',
+            'patient_mobile' => 'required',
+            'patient_username' => 'required|unique:patients,username',
+            'patient_disease_id' => 'required'
+        ];
+
+        $messages = [
+            'patient_disease_id.required' => 'Disease must be selected!'
+        ];
+
+        $this->validate($request, $rules, $messages);
 
 

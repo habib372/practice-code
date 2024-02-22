@@ -54,6 +54,7 @@ class CreateAgentsTable extends Migration
 
             $table->timestamp('failed_at')->useCurrent();
             $table->timestamps();
+
         });
     }
 
@@ -67,8 +68,9 @@ class CreateAgentsTable extends Migration
         Schema::dropIfExists('agents');
     }
 }
+
+
 // specific file migrate
 
-php artisan migrate --path=/database/migrations/test.php
+// php artisan migrate --path=/database/migrations /create_admanagers_table.php
 
-C:\xampp\htdocs\web-development\Fightingcancerbd.com\tsrhealth/C:/Program Files/Git/database/migrations/test/2023_07_12_113336_create_admanagers_table.php'

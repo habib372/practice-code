@@ -1,4 +1,8 @@
 <?php
+$this->validate($request, [
+    'name' => 'required|unique:medicines,name',
+    'status' => 'required|in:active,inactive'
+]);
 
 $data = $request->validate([
     'name_en' => 'required|unique:services,name_en',
@@ -31,17 +35,3 @@ $data = $request->validate([
 ]);
 
 
-$table->id();
-$table->integer('added_by')->nullable();
-$table->string('showroom_name')->nullable();
-$table->string('address')->nullable();
-$table->string('map_link')->nullable();
-$table->string('email')->nullable();
-$table->string('mobile')->nullable();
-$table->string('facebook')->nullable();
-$table->string('whatsapp')->nullable();
-$table->string('linkedin')->nullable();
-$table->string('youtube')->nullable();
-$table->string('image')->default('photo.jpg');
-$table->integer('status')->default(0);
-$table->timestamps();

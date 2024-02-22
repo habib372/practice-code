@@ -18,6 +18,7 @@ if ($row->status == 'Requested' || $row->status == 'Scheduled') {}
 @if(auth()->user()->userRole->name == 'super-consultant')
 @if (auth('doctor')->check()){}
 @if(auth('patient')->check()){}
+{{auth('patient')->user()->name}}
 auth('patient')->id()
 
 @if (Custom::getAuth()->doctor_image)
@@ -33,6 +34,7 @@ $patient = Patient::findOrFail(auth('patient')->id());
 {{(request()->is('buying-house') ? 'Buying House' : 'Factory')}}
 {{ Request::is('tsr-admin/discount-partner*')? 'm-menu__item--open' : '' }}
 {{ Request::is('patient/')? 'active' : '' }}
+<li><a href="{{ url(request()->is('/') ? '#contact' : '/#contact') }}">Contact</a></li>
 
 @if(auth()->user()->userRole->name == 'super-consultant')
 	Dashboard | <span class="user-role-title"> Super Consultant</span>
