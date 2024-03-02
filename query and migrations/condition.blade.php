@@ -29,6 +29,7 @@ $patient = Patient::findOrFail(auth('patient')->id());
 
 @if(auth('patient')->check() && (request()->url() == URL::to('patient/dashboard') ))
 
+{{ $errors->has('username')? ' border-danger' : '' }}
 
 {{ (request()->is('page*')) ? 'active' : '' }}
 {{(request()->is('buying-house') ? 'Buying House' : 'Factory')}}
