@@ -46,6 +46,9 @@ $patient = Patient::findOrFail(auth('patient')->id());
 @endif
 
 
+{{ old('gender') == 'male' ? 'selected' : '' }}
+
+
 <!-- skip first data -->
 $memberships = ['' => '-- Select a membership --'] + Membership::where('status', 'active')->pluck('name_en', 'id')->slice(1)->toArray();
 
@@ -366,3 +369,25 @@ $allData = SponsorshipContent::select([
     'f_rej_title_' . config('app.locale') . ' as f_rej_title',
     'f_rej_message_' . config('app.locale') . ' as f_rej_message',
 ])->first();
+
+
+
+<select name="adult" id="adult">
+   @for ($i = 1; $i <= 10; $i++)
+    <option value="{{ $i }}" {{ old('adult') == $i ? 'selected' : '' }}>{{ $i }}</option>
+   @endfor
+</select>
+
+
+<div class="col-md-6 col-12">
+    <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
+    <select name="gender" id="gender" class="form-select" aria-label="form-select-sm example" required>
+        <option value="">Select gender</option>
+        <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
+        <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
+        <option value="others" {{ old('gender') == 'others' ? 'selected' : '' }}>Others</option>
+    </select>
+    @error('gender')
+        <span class="small text-danger">{{ $message }}</span>
+    @enderror
+</div>

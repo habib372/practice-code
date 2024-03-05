@@ -1,15 +1,16 @@
-
 <div class="form-group m-form__group row" id="show_service_provider_type" style="display:none;" ;>
     <div class="col-lg-6">
         <label for="service_provider_type_id">Select Service Provider <span class="text-danger">*</span></label>
-        {!! Form::select('service_provider_type_id', $serviceProviderTypes, null, ['class' => 'form-control m-input m-select2 m_select2_1', 'id' => 'service_provider_type_id', 'style="width:100%;"']) !!}
+        {!! Form::select('service_provider_type_id', $serviceProviderTypes, null, ['class' => 'form-control m-input
+        m-select2 m_select2_1', 'id' => 'service_provider_type_id', 'style="width:100%;"']) !!}
         @error('service_provider_type_id')
         <span class="text-danger">{{$message}}</span>
         @enderror
     </div>
     <div class="col-lg-6" id="show_service_provider" style="display:none;" ;>
         <label for="role">Select Branch <span class="text-danger">*</span></label>
-        {!! Form::select('service_provider_id', $serviceProviders, null, ['class' => 'form-control m-input m-select2 m_select2_1', 'id' => 'service_provider_id', 'style="width:100%;"']) !!}
+        {!! Form::select('service_provider_id', $serviceProviders, null, ['class' => 'form-control m-input m-select2
+        m_select2_1', 'id' => 'service_provider_id', 'style="width:100%;"']) !!}
         @error('service_provider_id')
         <span class="text-danger">{{$message}}</span>
         @enderror
@@ -19,13 +20,12 @@
 
 <!-- type 1 -->
 <script>
-    $(document).on('change', '#user_role_id' , function(){
+    $(document).on('change', '#user_role_id', function () {
         var user_role = $("#user_role_id").val();
 
-        if(user_role==2 || user_role==3 || user_role==7)
-        {
+        if (user_role == 2 || user_role == 3 || user_role == 7) {
             $('#show_service_provider').show('slow');
-        }else{
+        } else {
             $('#show_service_provider').hide('slow');
         }
     });
@@ -34,18 +34,73 @@
 
 
 <script>
-$(document).ready(function() {
-		$('#stage_id').hide();
+    $(document).ready(function () {
+        $('#stage_id').hide();
 
-		$(document).on('change', '#patient_type', function() {
-			var patient_type = $('#patient_type').val();
+        $(document).on('change', '#patient_type', function () {
+            var patient_type = $('#patient_type').val();
 
-			if (patient_type === 'cancer-patient') {
-				$('#stage_id').show('slow');
-			} else {
-				$('#stage_id').val('');
-				$('#stage_id').hide('slow');
-			}
-		});
-	});
+            if (patient_type === 'cancer-patient') {
+                $('#stage_id').show('slow');
+            } else {
+                $('#stage_id').val('');
+                $('#stage_id').hide('slow');
+            }
+        });
+    });
+</script>
+
+
+<!-- radio button value -->
+<div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="package_coverage" id="onlyme" value="only-me">
+    <label class="form-check-label" for="onlyme">Only Me</label>
+</div>
+<div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="package_coverage" id="family" value="family">
+    <label class="form-check-label" for="family">My Family and Me (2Adults + 2Kids)</label>
+</div>
+<div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="package_coverage" id="others" value="others">
+    <label class="form-check-label" for="others">Custom Select</label>
+</div>
+<div class="form-check form-check-inline" id="customSelect" style="display:none;">
+    <div class="">
+        <label> Adult : </label>
+        <select name="adult" id="adult">
+            @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" {{ old('adult') == $i ? 'selected' : '' }}>{{ $i }}
+                </option>
+                @endfor
+        </select>&nbsp;&nbsp;
+
+        <label>Kid : </label>
+        <select name="kid" id="adult">
+            @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" {{ old('adult') == $i ? 'selected' : '' }}>{{ $i }}
+                </option>
+                @endfor
+        </select>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('input[name=package_coverage]').change(function () {
+            var type = $(this).val();
+
+            if (type === 'only-me') {
+                $('#adult').val(0);
+                $('#kid').val(0);
+                $('.addMore').hide();
+                $('#customSelect').hide();
+            } else if (type === 'family') {
+                $('#adult').val(0);
+                $('#kid').val(0);
+                $('.addMore').show();
+                $('#customSelect').hide();
+            } else if (type === 'others') {
+                $('.addMore').show();
+                $('#customSelect').show();
+            }
+        });
+    });
 </script>

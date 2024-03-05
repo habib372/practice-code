@@ -61,7 +61,7 @@
  </div>
 
 
-{{-- module-3 --}}
+ {{-- module-3 --}}
  <label for="name">
      Doctor Type <span class="text-danger">*</span>
  </label>
@@ -107,81 +107,106 @@
 
 
  {{-- module-4 --}}
-<div class="row margin-bottom-15">
-            <div class="col-md-3">
-                <p class="pregnancy_status">Pregnancy Status</p>
-                {!! Form::radio('visit_pregnency_status', 'yes', ($patientVisit->pregnency_status == 'yes'), ['id' =>
-                'pregnancy_yes']) !!}
-                {!! Form::label('pregnancy_yes', 'Yes') !!}&nbsp;&nbsp;&nbsp;
-                {!! Form::radio('visit_pregnency_status', 'no', ($patientVisit->pregnency_status == 'no'), ['id' =>
-                'pregnency_no']) !!}
-                {!! Form::label('pregnency_no', 'No') !!}
-            </div>
+ <div class="row margin-bottom-15">
+     <div class="col-md-3">
+         <p class="pregnancy_status">Pregnancy Status</p>
+         {!! Form::radio('visit_pregnency_status', 'yes', ($patientVisit->pregnency_status == 'yes'), ['id' =>
+         'pregnancy_yes']) !!}
+         {!! Form::label('pregnancy_yes', 'Yes') !!}&nbsp;&nbsp;&nbsp;
+         {!! Form::radio('visit_pregnency_status', 'no', ($patientVisit->pregnency_status == 'no'), ['id' =>
+         'pregnency_no']) !!}
+         {!! Form::label('pregnency_no', 'No') !!}
+     </div>
 
-            <div class="col-md-3">
-                <p class="smoker">Smoker</p>
-                {!! Form::radio('visit_smoker', 'yes', ($patientVisit->smoker == 'yes'), ['id' => 'smoker_yes']) !!}
-                {!! Form::label('smoker_yes', 'Yes') !!}&nbsp;&nbsp;&nbsp;
-                {!! Form::radio('visit_smoker', 'socially', ($patientVisit->smoker == 'socially'), ['id' =>
-                'smoker_socially']) !!}
-                {!! Form::label('smoker_socially', 'Socially') !!}&nbsp;&nbsp;&nbsp;
-                {!! Form::radio('visit_smoker', 'no', ($patientVisit->smoker == 'no'), ['id' => 'smoker_no']) !!}
-                {!! Form::label('smoker_no', 'No') !!}
-            </div>
+     <div class="col-md-3">
+         <p class="smoker">Smoker</p>
+         {!! Form::radio('visit_smoker', 'yes', ($patientVisit->smoker == 'yes'), ['id' => 'smoker_yes']) !!}
+         {!! Form::label('smoker_yes', 'Yes') !!}&nbsp;&nbsp;&nbsp;
+         {!! Form::radio('visit_smoker', 'socially', ($patientVisit->smoker == 'socially'), ['id' =>
+         'smoker_socially']) !!}
+         {!! Form::label('smoker_socially', 'Socially') !!}&nbsp;&nbsp;&nbsp;
+         {!! Form::radio('visit_smoker', 'no', ($patientVisit->smoker == 'no'), ['id' => 'smoker_no']) !!}
+         {!! Form::label('smoker_no', 'No') !!}
+     </div>
 
-            <div class="col-md-3">
-                <p class="drinker">Drinker</p>
-                {!! Form::radio('visit_drinker', 'yes', ($patientVisit->drinker == 'yes'), ['id' => 'drinker_yes']) !!}
-                {!! Form::label('drinker_yes', 'Yes') !!}&nbsp;&nbsp;&nbsp;
-                {!! Form::radio('visit_drinker', 'socially', ($patientVisit->drinker == 'socially'), ['id' =>
-                'drinker_socially']) !!}
-                {!! Form::label('drinker_socially', 'Socially') !!}&nbsp;&nbsp;&nbsp;
-                {!! Form::radio('visit_drinker', 'no', ($patientVisit->drinker == 'no'), ['id' => 'drinker_no']) !!}
-                {!! Form::label('drinker_no', 'No') !!}
-            </div>
-
-
-                        <h6 class="custom_padding">Select Facilities <span class="text-danger">*</span></h6>
-							<div class="form-group m-form__group row facility_section">
-								@foreach ($facilities as $item)
-									@php $id = $item->id; @endphp
-									<div class="col-md-3">
-										<p class="facility_item">{{ $item->id.'. '.$item->title_en }}</p>
-										{!! Form::radio('facility_'.$id, 'active', ($item->facility_1== 'active'),['id' => 'facility_'.$id.'_active']) !!}
-										{!! Form::label('facility_'.$id.'_active', 'Yes') !!}&nbsp;&nbsp;&nbsp;
-										{!! Form::radio('facility_'.$id, 'inactive', ($item->facility_1 =='inactive'), ['id' => 'facility_'.$id.'_inactive']) !!}
-										{!! Form::label('facility_'.$id.'_inactive', 'No') !!}
-									</div>
-								@endforeach
-							</div>
+     <div class="col-md-3">
+         <p class="drinker">Drinker</p>
+         {!! Form::radio('visit_drinker', 'yes', ($patientVisit->drinker == 'yes'), ['id' => 'drinker_yes']) !!}
+         {!! Form::label('drinker_yes', 'Yes') !!}&nbsp;&nbsp;&nbsp;
+         {!! Form::radio('visit_drinker', 'socially', ($patientVisit->drinker == 'socially'), ['id' =>
+         'drinker_socially']) !!}
+         {!! Form::label('drinker_socially', 'Socially') !!}&nbsp;&nbsp;&nbsp;
+         {!! Form::radio('visit_drinker', 'no', ($patientVisit->drinker == 'no'), ['id' => 'drinker_no']) !!}
+         {!! Form::label('drinker_no', 'No') !!}
+     </div>
 
 
-            <div class="col-md-3">
-                @php
-                $data = explode(',', $patientVisit->vaccination_status);
-                @endphp
-                <p class="vaccination_status">Vaccination Status</p>
-                <label for="covid-19">
-                    {!! Form::checkbox('visit_vaccination_status[]', 'covid-19', in_array('covid-19', $data), ['id' =>
-                    'covid-19']) !!}
-                    Covid-19
-                </label>&nbsp;
-                <label for="booster">
-                    {!! Form::checkbox('visit_vaccination_status[]', 'booster', in_array('booster', $data), ['id' =>
-                    'booster']) !!}
-                    Booster
-                </label>&nbsp;
-                <label for="flue-shot">
-                    {!! Form::checkbox('visit_vaccination_status[]', 'flue-shot', in_array('flue-shot', $data), ['id' =>
-                    'flue-shot']) !!}
-                    Flue Shot
-                </label>&nbsp;
-                <label for="others">
-                    {!! Form::checkbox('visit_vaccination_status[]', 'others', in_array('others', $data), ['id' =>
-                    'others']) !!}
-                    Others
-                </label>
-            </div>
+     <h6 class="custom_padding">Select Facilities <span class="text-danger">*</span></h6>
+     <div class="form-group m-form__group row facility_section">
+         @foreach ($facilities as $item)
+         @php $id = $item->id; @endphp
+         <div class="col-md-3">
+             <p class="facility_item">{{ $item->id.'. '.$item->title_en }}</p>
+             {!! Form::radio('facility_'.$id, 'active', ($item->facility_1== 'active'),['id' =>
+             'facility_'.$id.'_active']) !!}
+             {!! Form::label('facility_'.$id.'_active', 'Yes') !!}&nbsp;&nbsp;&nbsp;
+             {!! Form::radio('facility_'.$id, 'inactive', ($item->facility_1 =='inactive'), ['id' =>
+             'facility_'.$id.'_inactive']) !!}
+             {!! Form::label('facility_'.$id.'_inactive', 'No') !!}
+         </div>
+         @endforeach
+     </div>
 
 
-        </div>
+     <div class="col-md-3">
+         @php
+         $data = explode(',', $patientVisit->vaccination_status);
+         @endphp
+         <p class="vaccination_status">Vaccination Status</p>
+         <label for="covid-19">
+             {!! Form::checkbox('visit_vaccination_status[]', 'covid-19', in_array('covid-19', $data), ['id' =>
+             'covid-19']) !!}
+             Covid-19
+         </label>&nbsp;
+         <label for="booster">
+             {!! Form::checkbox('visit_vaccination_status[]', 'booster', in_array('booster', $data), ['id' =>
+             'booster']) !!}
+             Booster
+         </label>&nbsp;
+         <label for="flue-shot">
+             {!! Form::checkbox('visit_vaccination_status[]', 'flue-shot', in_array('flue-shot', $data), ['id' =>
+             'flue-shot']) !!}
+             Flue Shot
+         </label>&nbsp;
+         <label for="others">
+             {!! Form::checkbox('visit_vaccination_status[]', 'others', in_array('others', $data), ['id' =>
+             'others']) !!}
+             Others
+         </label>
+     </div>
+
+
+ </div>
+
+
+ <select name="adult" id="adult">
+     @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" {{ old('adult') == $i ? 'selected' : '' }}>{{ $i }}</option>
+         @endfor
+ </select>
+
+
+ <div id="customSelect" style="display: ;" class="col-md-12 col-12 custom-select">
+     <label>Adult : </label>
+     <select name="adult" id="adult">
+         @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" {{ old('adult') == $i ? 'selected' : '' }}>{{ $i }}
+             </option>
+             @endfor
+     </select>
+
+     <label>Kid : </label>
+     <select name="kid" id="adult">
+         @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" {{ old('adult') == $i ? 'selected' : '' }}>{{ $i }}
+             </option>
+             @endfor
+     </select>
+ </div>
