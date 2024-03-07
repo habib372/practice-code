@@ -21,8 +21,11 @@ php artisan vendor:publish
 5. <!-- Controller/route -->
 Route::get('/', function () {
     Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center"]);
+     {{-- or --}}
+    toastr()->success('You have successfully buy a package', 'Success');
     return view('welcome');
 });
+
 
 
 6. <!-- view file (root) -->
