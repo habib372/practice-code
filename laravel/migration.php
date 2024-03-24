@@ -19,6 +19,7 @@ class CreateAgentsTable extends Migration
             $table->string('name');
             $table->string('father_name');
             $table->date('date_of_birth');
+            $table->dateTime('appointment_start_time')->nullable();
             $table->string('education');
             $table->text('permanent_address');
             $table->string('upazila');
@@ -31,6 +32,7 @@ class CreateAgentsTable extends Migration
             $table->string('nid_front_part');
             $table->string('nid_back_part');
             $table->text('message');
+            $table->float('amout');
             $table->longText('description')->nullable();
             $table->string('display')->default('none');
             $table->string('image')->default('photo.jpg');
@@ -48,6 +50,9 @@ class CreateAgentsTable extends Migration
 
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
+
+            $table->foreign('service_provider_id')->references('id')->on('service_providers')->onDelete('cascade');
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
 
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');

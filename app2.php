@@ -1,17 +1,12 @@
- <div class="modal-body">
-     <div class="view_data">
-         <div class="row">
-             <div class="col-md-4 col-12">
-                 <strong>Name : </strong>{{ $data->name }}<br />
-                 <strong>Email : </strong>{{ $data->email??'-' }}<br />
-                 <strong>Mobile : </strong>{{ $data->mobile }}<br />
-                 <strong>Alt Mobile : </strong>{{ $data->alt_mobile??'-' }}
-             </div>
-             <div class="col-md-8 col-12">
-                 <strong>Date of Birth : </strong>{{ $data->date_of_birth??'-' }}
-                 <strong>Gender : </strong>{{ $data->gender??'-' }}
-                 <strong>Address : </strong>{{ $data->address??'-' }}
-             </div>
-         </div>
-     </div>
- </div>
+<div class="col-md-6 col-12">
+    <label for="traveller_id" class="form-label">Select Traveller <span class="text-danger">*</span></label>
+    <select name="traveller_id" id="traveller_id" class="form-select" aria-label="form-select-sm example" required>
+        <option value="">Select a traveller</option>
+        @foreach ($allTravellers as $traveller)
+        <option value="{{  $traveller->id }}" {{ old('traveller_id') == $traveller->id ? 'selected' : '' }}>{{ $traveller->name }}</option>
+        @endforeach
+    </select>
+    @error('traveller_id')
+    <span class="small text-danger">{{ $message }}</span>
+    @enderror
+</div>
