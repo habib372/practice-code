@@ -45,7 +45,7 @@ Route::get('/', function () {
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
           <!-- or -->
 		<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-        {!! Toastr::message() !!}
+        {!! Toastr::message() !!}  //obossoi cdn ar niche dite hobe.
 
         <!-- custom css -->
         <script>
