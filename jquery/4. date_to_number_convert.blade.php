@@ -26,10 +26,16 @@ function calculateDaysDifference($specifiedDate)
 
 
 
-// next 30 days data = 2024-05-10
+//2024-02-22 - 2024-03-24 = 30 days  (format: 2024-02-15)
+use Carbon\Carbon;
+$buyPackage = BuyPackage::whereDate('apply_date', '>=', Carbon::now()->subDays(30))->latest()->first();
+
+
+
+// Next 30 days from today (format: 2024-02-15)
 $nextDate = date('Y-m-d', strtotime('+30 days'));
 
-// previous 30 days data = 2024-04-10
+// previous 30 days from today (format: 2024-02-15)
 $previousDate = date('Y-m-d', strtotime('-30 days'));
 
 // Get today's date as a Carbon instance
@@ -49,12 +55,12 @@ public static function calculateAgeToday($date){
     $datetime2 = new DateTime(date('Y-m-d'));
     $interval = $datetime1->diff($datetime2);
 
-    return $interval->format('%yY %mM');
+    return $interval->format('%yY %mM'); //11Y 10M
 
 }
 
 
-if (auth('doctor')->check() && $row->doctor_id == auth('doctor')->id()) {
+                if (auth('doctor')->check() && $row->doctor_id == auth('doctor')->id()) {
                     $createTime = strtotime($row->created_at);
                     $now = strtotime(date('Y-m-d H:i:s'));
                     $timeDiff = round(abs($now - $createTime) / (60 * 60));
