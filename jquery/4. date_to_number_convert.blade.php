@@ -8,7 +8,6 @@ public function sponsorshipApply()
 
     return view('frontend.patient.sponsorship_form', compact('sponsorshipData', 'verification', 'daysDifference'));
 }
-
 // 2023-10-25 - 2023-10-27 = 2
 function calculateDaysDifference($specifiedDate)
 {
@@ -35,8 +34,10 @@ $buyPackage = BuyPackage::whereDate('apply_date', '>=', Carbon::now()->subDays(3
 // Next 30 days from today (format: 2024-02-15)
 $nextDate = date('Y-m-d', strtotime('+30 days'));
 
+
 // previous 30 days from today (format: 2024-02-15)
 $previousDate = date('Y-m-d', strtotime('-30 days'));
+
 
 // Get today's date as a Carbon instance
  $todayDate = now();
