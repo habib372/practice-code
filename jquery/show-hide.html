@@ -74,8 +74,8 @@
         </select>&nbsp;&nbsp;
 
         <label>Kid : </label>
-        <select name="kid" id="adult">
-            @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" {{ old('adult') == $i ? 'selected' : '' }}>{{ $i }}
+        <select name="kid" id="kid">
+            @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" {{ old('kid') == $i ? 'selected' : '' }}>{{ $i }}
                 </option>
                 @endfor
         </select>
@@ -83,6 +83,7 @@
 </div>
 
 <script>
+    // hide show
     $(document).ready(function () {
         $('input[name=package_coverage]').change(function () {
             var type = $(this).val();
@@ -103,4 +104,25 @@
             }
         });
     });
+
+    // enable disable
+     $(document).ready(function () {
+            $('input[name=package_coverage]').change(function () {
+                var type = $(this).val();
+
+                if (type === 'only-me') {
+                    $('#adult').val(0).prop('disabled', true);
+                    $('#kid').val(0).prop('disabled', true);
+                    $('.addMore').hide();
+                } else if (type === 'family') {
+                    $('#adult').val(0).prop('disabled', false);
+                    $('#kid').val(0).prop('disabled', false);
+                    $('.addMore').show();
+                } else if (type === 'others') {
+                    $('#adult').prop('disabled', false);
+                    $('#kid').prop('disabled', false);
+                    $('.addMore').show();
+                }
+            });
+        });
 </script>
