@@ -20,6 +20,13 @@
   RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
 
+<!-- synchronous data transfer -->
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "https://mediroaming.com"
+    Header set Access-Control-Allow-Methods "GET, POST"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>
+
 
 
 <!-- Redirecting HTTP to HTTPS
