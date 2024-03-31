@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <input type="text" id="element" />
+      <input type="text" id="element2" />
+      <input type="text" id="element3" />
+      <input type="text" id="element4" />
+      <input type="text" id="element5" />
+      <button onclick="draft()">draft</button>
+      <button type="submit" onclick="hunsub()">submit</button>
+    </div>
+
+    <script>
+      let draftData =
+        localStorage.getItem("data") ||
+        `${element.value}, ${element2.value}, ${element3.value}, ${element4.value}, ${element5.value}`;
+      let toarray = draftData.split(",");
+      element.value = toarray[0];
+      element2.value = toarray[1];
+      element3.value = toarray[2];
+      element4.value = toarray[3];
+      element5.value = toarray[4];
+
+      //   for clear draft
+      const hunsub = () => {
+        localStorage.setItem("data", []);
+      };
+
+      //   for save draft
+      const draft = () => {
+        const draftString = `${element.value}, ${element2.value}, ${element3.value}, ${element4.value}, ${element5.value}`;
+        localStorage.setItem("data", draftString);
+      };
+    </script>
+  </body>
+</html>
