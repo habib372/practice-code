@@ -9,8 +9,19 @@ public function doPatientRegistration(Request $request){
             'patient_name' => 'required'
         ]);
 
-
+        
     // Form validation (2)
+        $this->validate($request, [
+            'appointment_id' => 'required',
+            'visit_payment_mode' => 'required',
+            'visit_age' => 'required',
+            'visit_date' => 'required|date_format:Y-m-d'
+        ], [
+            'appointment_id.required' => 'Appointment must be selected!'
+        ]);
+
+
+    // Form validation (3)
         $rules = [
             'patient_name' => 'required',
             'patient_email' => 'email|unique:patients,email',
