@@ -1,3 +1,5 @@
+
+
 if (in_array(auth()->user()->user_role_id, [1, 2, 3]) && !auth('doctor')->check()) {}
 
 if (!auth('doctor')->check() && (in_array(auth()->user()->user_role_id, [1, 2, 3]))) {}
@@ -391,3 +393,39 @@ $allData = SponsorshipContent::select([
         <span class="small text-danger">{{ $message }}</span>
     @enderror
 </div>
+
+
+
+
+<?php
+// <!-- nested loop: --> showing promotional ads into all products page in 7th position
+public function index(){
+
+    $products = Product::all()->paginate(13);
+
+    $promotionalAds = PromotionalAds::all();
+    $currentPage = request()->query('page', 1); // Get the current page number
+    $promotionalAdIndex = ($currentPage - 1) % count($promotionalAds);
+
+    // Get the promotional ad for the current page
+    $promotionalAds = $promotionalAds[$promotionalAdIndex];
+
+    return view('frontend.index', compact('products ', 'promotionalAds'));
+}
+?>
+
+<!-- view file -->
+@foreach($products as $key => $item)
+    @if(($key + 1) % 7 == 0)
+    <!-- promotional ads -->
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="promotional_ads">
+            <a href="{{ $promotionalAds->link }}" target="_blank">
+                <img src="{{ asset('frontend_assets/images/promotional_ads') }}/{{ $promotionalAds->image }}" alt="Ads">
+            </a>
+        </div>
+    </div>
+    @else
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        {{$item->name}}
+    </div>
