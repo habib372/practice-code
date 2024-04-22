@@ -69,7 +69,7 @@ class MembershipController extends Controller
         return redirect()->back()->withInput();
     }
 
-    // <!--File upload function -->
+    // <!--File upload function for not .gif-->
     public function uploadImages($image)
     {
         $originalName = $image->getClientOriginalName();
@@ -82,6 +82,29 @@ class MembershipController extends Controller
         return $filename;
     }
 
+    
+    // <!--File upload function for all format-->
+    public function uploadImages1($image)
+    {
+        $originalName = $image->getClientOriginalName();
+        $filename = strtotime("now") . '_' . $originalName;
+    
+        //not .gif image
+        $imagePath = public_path() . "/images/membership/" . $filename;
+        
+        // Check if the uploaded file is a GIF
+        if ($image->getClientOriginalExtension() === 'gif') {
+            // If it's a GIF, move it to the desired location without modifying it
+            $image->move(public_path() . "/images/membership/", $filename);
+        } else {
+            // If it's not a GIF, process it as usual
+            $image = Image::make($image);
+            $image->save($imagePath);
+        }
+    
+        return $filename;
+    }
+    
 
     /**
      * Display the specified resource.
