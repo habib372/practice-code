@@ -429,3 +429,20 @@ public function index(){
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
         {{$item->name}}
     </div>
+
+
+
+
+    @php
+        $patientId = auth('patient')->id();
+        $days = 30;
+        $activePackages = BuyPackage::where('patient_id', $patientId)->whereDate('package_start_date', '>=', \Carbon\Carbon::now()->subDays($days))->where('status', 'Complete')->get();
+
+    if ($activePackages->isNotEmpty()) {
+            $invoiceIds = $activePackages->pluck('invoice_id')->toArray();
+            $travellersCount =Traveller::where('patient_id', $patientId)
+                ->whereIn('invoice_id', $invoiceIds)->count();
+            $appointmentCount = Appointment::where('parent_id', $patientId)
+                ->whereIn('invoice_id', $invoiceIds)->count();
+        }
+    @endphp
