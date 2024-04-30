@@ -1,3 +1,4 @@
+php artisan make:mail AppointmentCreated --markdown=mail.appointment-created
 
 <!--folder:  email/contact_email.blade.php -->
 <h2>Hello Admin,</h2><br>
