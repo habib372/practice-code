@@ -45,3 +45,43 @@ function formatDate($dateString, $format = 'Y-m-d')
     $date = new DateTime($dateString);
     return $date->format($format);
 }
+
+
+     // Date to age convert - 10Y 5M
+    function calculateAgeToday($date){
+        //Take patient's dob and return age today
+        if(empty($date)){
+            return '';
+        }
+        $datetime1 = new DateTime($date);
+        $datetime2 = new DateTime(date('Y-m-d'));
+        $interval = $datetime1->diff($datetime2);
+
+        return $interval->format('%yY %mM');
+
+    }
+
+    // Format- 2024-02-22 02:30 PM
+    function convertDateTime($datetime)
+    {
+        $dateTimeObj = new DateTime($datetime);
+        $formattedDateTime = $dateTimeObj->format('Y-m-d h:i A');
+
+        return $formattedDateTime;
+    }
+
+    // Format- 25th April, 2024
+    if (!function_exists('formatDate')) {
+        function formatDate($date)
+        {
+            return Carbon::parse($date)->isoFormat('Do MMMM, YYYY');
+        }
+    }
+
+    // Format- 02:30 PM
+    if (!function_exists('formatTime')) {
+        function formatTime($time)
+        {
+            return Carbon::parse($time)->format('h:i A');
+        }
+    }
