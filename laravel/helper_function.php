@@ -85,3 +85,14 @@ function formatDate($dateString, $format = 'Y-m-d')
             return Carbon::parse($time)->format('h:i A');
         }
     }
+
+    // slug function
+    function bn_slug($string = null, $separator = "-") {
+        $string = strtolower($string);
+        $string = str_replace(' ',$separator, $string);
+        $string = str_replace('--',$separator, $string);
+        $string = str_replace('&',$separator, $string);
+        $string = str_replace('*',$separator, $string);
+        $string = str_replace('/',$separator, $string);
+        return $string;
+    }

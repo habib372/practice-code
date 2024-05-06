@@ -25,11 +25,12 @@
 @endforeach
 
 
- <!-- route -->
+<?php
+//  <!-- route -->
 Route::get('/project-details/{slug}','CommonController@projectDetails')->name('projectDetails');
 
 
-<!-- controller -->
+// <!-- controller -->
 public function projectDetails($slug) {
         // Decode the URL parameter
         $name = urldecode(str_replace("-", " ", $slug));
@@ -40,4 +41,16 @@ public function projectDetails($slug) {
             ->first();
 
         return view('website.page.projectDetails', compact('data'));
+    }
+
+
+    // slug function
+    public static function bn_slug($string = null, $separator = "-") {
+        $string = strtolower($string);
+        $string = str_replace(' ',$separator, $string);
+        $string = str_replace('--',$separator, $string);
+        $string = str_replace('&',$separator, $string);
+        $string = str_replace('*',$separator, $string);
+        $string = str_replace('/',$separator, $string);
+        return $string;
     }
