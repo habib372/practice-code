@@ -1,21 +1,12 @@
 
-
-<!-- Controller -->
+<!-- Helper function -->
 <?php
 
-use Illuminate\Http\Request;
-use GuzzleHttp\Client;
+ use GuzzleHttp\Client;
 
-class UserController extends Controller
-{
-    public function getCountry(Request $request)
+    //get USER Data and IP address base on Country
+    function getGeolocationData($ip)
     {
-        // Get user's IP address
-
-        $ip = $request->ip(); //or
-        // $ip = $_SERVER["REMOTE_ADDR"];
-        // $ip = "103.102.221.255";
-
         // Make a request to the IP geolocation service
         $client = new Client();
         $response = $client->get('https://api.ipgeolocation.io/ipgeo?apiKey=YOUR_API_KEY&ip=' . $ip);
@@ -23,7 +14,7 @@ class UserController extends Controller
         // Parse the response JSON
         $data = json_decode($response->getBody(), true);
 
-        // Extract the country name
+        // Extract the required information
         $geolocation = [
             'ip' => $data['ip'],
             'country_name' => $data['country_name'],
@@ -36,10 +27,30 @@ class UserController extends Controller
             'current_time' => $data['time_zone']['current_time']
         ];
 
-        // Display the country name
-         return view('frontend.user.show', compact('geolocationData'));
+        return $geolocation;
     }
-}
+
+
+
+    //controller function
+    class BuyPackageController extends Controller
+    {
+
+        public function buyPackage(Request $request)
+        {
+            $user_ip = $request->ip();
+            // $user_ip = $_SERVER["REMOTE_ADDR"];
+            // $user_ip = "103.102.221.255";
+
+            $geolocationData = getGeolocationData($user_ip);
+
+            $packageFacility = PackageFacility::where('status', 'active')->whereNotIn('id', [1,2,3])->get();
+            $packagePlan = PackageSetting::where('status', 'active')->get();
+
+            return view('frontend.patient.package', compact('packageFacility', 'packagePlan', 'geolocationData'));
+        }
+    }
+
 ?>
 
 
