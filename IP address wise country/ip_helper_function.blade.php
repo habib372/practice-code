@@ -44,10 +44,16 @@
 
             $geolocationData = getGeolocationData($user_ip);
 
-            $packageFacility = PackageFacility::where('status', 'active')->whereNotIn('id', [1,2,3])->get();
-            $packagePlan = PackageSetting::where('status', 'active')->get();
+            // echo "<p>Country Name: ".$geolocationData['country_name'] ."</p>";
+            // echo "<p>Country Code2:" . $geolocationData['country_code2'] ."</p>";
+            // echo "<p>Country Code3:" . $geolocationData['country_code3'] ."</p>";
+            // echo "<p>Currency Code:". $geolocationData['currency_code'] ."</p>";
+            // echo "<p>Currency Symbol:".$geolocationData['currency_symbol']. "</p>";
+            // echo "<p>Timezone:". $geolocationData['timezone'] ."</p>";
+            // echo "<p>Current Time:" . $geolocationData['current_time']."</p>";
 
-            return view('frontend.patient.package', compact('packageFacility', 'packagePlan', 'geolocationData'));
+
+            return view('frontend.user.show', compact('geolocationData'));
         }
     }
 
