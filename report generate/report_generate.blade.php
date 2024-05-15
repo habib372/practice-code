@@ -1,3 +1,4 @@
+
 <!-- sidebar.blade.php -->
 <li class="m-menu__item {{ Request::is('tsr-admin/patients/report')? 'm-menu__item--active' : '' }}" aria-haspopup="true">
     <a href="{{ url('tsr-admin/patients/report?from_date='.date('Y-m-d').'&to_date='.date('Y-m-d').'&payment_mode='.null) }}" class="m-menu__link ">
@@ -7,12 +8,6 @@
         <span class="m-menu__link-text">Patient Report</span>
     </a>
 </li>
-
-if(auth('doctor')->check()){
-			$url = route('doctor.patient-visits.index', $queryString);
-		}else{
-			$url = route('tsr-admin.patient-visits.index', $queryString);
-		}
 
 
 <!-- route.blade.php -->
