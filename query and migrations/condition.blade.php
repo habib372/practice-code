@@ -50,9 +50,9 @@ $patient = Patient::findOrFail(auth('patient')->id());
 
 $uri = request()->path(); // Get the request URI path
 
-if (preg_match('#^(en|bn)/user/my/promote-ad/.*$#', $uri)) {
+if (preg_match('#^(en|bn)/promote-ad/.*$#', $uri)) {
     $paymentfor = 'promote';
-} else if (preg_match('#^(en|bn)/user/my/renew-ad/.*$#', $uri)) {
+} else if (preg_match('#^(en|bn)/renew-ad/.*$#', $uri)) {
     $paymentfor = 'renew';
 } else {
     $paymentfor = 'paid';
