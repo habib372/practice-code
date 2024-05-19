@@ -1,0 +1,4 @@
+
+
+<!--  <img src="{{ asset('mediroaming.png') }}" alt="mediroaming" width="200" /> -->
+<img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('mediroaming.png'))) }}" alt="mediroaming" width="200">
