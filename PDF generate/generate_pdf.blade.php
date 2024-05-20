@@ -36,6 +36,7 @@ public function download()
         $pdf = Pdf::loadView('generate_pdf', ['data' => $data, 'imageSrc' => $imageSrc]);
 
         return $pdf->download('prescription.pdf');
+        // return $pdf->stream('prescription.pdf');  //instant view
     }
 
 ?>
