@@ -16,6 +16,15 @@ public function download()
     {
         set_time_limit(120);
 
+        //base64 convert
+        $imagePath = public_path('images/branch/image.png');
+        if (file_exists($imagePath)) {
+            $imageData = base64_encode(file_get_contents($imagePath));
+            $imageSrc = 'data:image/' . pathinfo($imagePath, PATHINFO_EXTENSION) . ';base64,' . $imageData;
+        } else {
+            $imageSrc = '';
+        }
+
         $data = [
             [
                 'quantity' => 1,
@@ -24,7 +33,7 @@ public function download()
             ]
         ];
 
-        $pdf = Pdf::loadView('generate_pdf', ['data' => $data]);
+        $pdf = Pdf::loadView('generate_pdf', ['data' => $data, 'imageSrc' => $imageSrc]);
 
         return $pdf->download('prescription.pdf');
     }
@@ -91,6 +100,9 @@ table tr.items td {
             <td class="w-half">
                 <!-- convert base64 -->
                 <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('mediroaming.png'))) }}" alt="mediroaming" width="200">
+                {{-- or --}}
+                <img src="{{ $imageSrc }}" alt="mediroaming" width="200">
+
             </td>
             <td class="w-half">
                 <h2>Invoice ID: 834847473</h2>
