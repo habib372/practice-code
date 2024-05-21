@@ -1,4 +1,17 @@
+ 1. <img src="{{ asset('mediroaming.png') }}" alt="mediroaming" width="200" />
 
+2. <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('mediroaming.png'))) }}" alt="mediroaming" width="200">
 
-<!--  <img src="{{ asset('mediroaming.png') }}" alt="mediroaming" width="200" /> -->
-<img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('mediroaming.png'))) }}" alt="mediroaming" width="200">
+3.
+<!-- for  dynamic -->
+
+<!-- controller -->
+ $imagePath = public_path('images/branch/' . $visit->serviceProvider->logo);
+        if (file_exists($imagePath)) {
+            $imageData = base64_encode(file_get_contents($imagePath));
+            $imageSrc = 'data:image/' . pathinfo($imagePath, PATHINFO_EXTENSION) . ';base64,' . $imageData;
+        } else {
+            $imageSrc = '';
+        }
+
+<img src="{{  $imageSrc }}" alt="mediroaming" width="200" />
