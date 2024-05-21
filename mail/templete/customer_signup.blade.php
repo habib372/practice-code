@@ -5,10 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mediroaming</title>
+    <title>[Company Name]</title>
     <style>
         body {
-            /*font-family: 'Arial', sans-serif;*/
+            font-family: 'Arial', sans-serif;
             /*line-height: 1.6;*/
             color: #333;
             margin: 0;
@@ -63,11 +63,17 @@
             color:#fff;
             background:#176db8;
         }
-        h3, h4{
+        h4{
             color:#176db8;
+        }
+        h3{
+            color:#176db8;
+            margin:0;
+            font-size:16px;
         }
         h2{
             font-size:17px;
+            text-transform: capitalize;
         }
         span a {
             color: black!important;
@@ -87,37 +93,57 @@
             text-decoration: none;
             border-radius: 5px;
         }
+        .no_reply{
+            text-align:center;
+            font-weight: bold;
+        }
+        .powered_by{
+            text-align:center;
+        }
+         .powered_by i{
+            color:#a6a6a6!important;
+        }
 
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <img height="50" src="https://mediroaming.com/uploads/header/medilogo.png" alt=" Logo">
+            <img height="50" src="https://example.com/uploads/header/medilogo.png" alt=" Logo">
         </div>
 
 
         <h2>Dear {{$name}},</h2><br/>
 
-        <p>Thanks for signing up with MediRoaming. Your username is <b style="color: #15c;">{{$username}} </b>. Make sure to save this Username and Password for future Login.</p><br/>
+        <p>Thanks for signing up with [Company Name]. Your username is <b style="color: #15c;">{{$username}} </b>. Make sure to save this Username and Password for future Login.</p><br/>
 
-        <p>Enjoy your journey with MediRoaming. You can now visit your profile and purchase a tour cover package for Doctor Consultation or online telehealth.
+        <p>Enjoy your journey with [Company Name]. You can now visit your profile and purchase a tour cover package for Doctor Consultation or online telehealth.
         </p>
 
         <div class="signup">
-            <a class="login-button" href="https://mediroaming.com/nrbs-login" role="button">Access Your Account</a>
+            <a class="login-button" href="https://example.com/nrbs-login" role="button">Access Your Account</a>
         </div>
 
         <p>If you have any questions or feedback, please contact our support team at</p>
-        <span>Email: info@mediroaming.com</span><br/>
-        <span>Phone: +880 1766 662 479</span><br/><br/>
+        <span>Email: info@example.com</span><br/>
+        <span>Phone: +880 17xx xxx xxx</span><br/><br/>
 
-        <p>Thank you once again for choosing MediRoaming. We look forward to providing you with top-notch health care services!</p><br/>
+        <p>Thank you once again for choosing [Company Name]. We look forward to providing you with top-notch health care services!</p><br/>
 
-        <p><b>Best Regards,</b></p>
-        <h3>MediRoaming</h3><br/>
+        <p>Best Regards,</p>
+        <h3>[Company Name]</h3>
 
-        <i><b>(This is an auto-generated email from mediroaming.com. Do not reply to this email as the mailbox is not monitored.)</b></i><br/><br/>
+        <br/><br/>
+
+        <div class="no_reply">
+           <i>(This is an auto-generated email from [Company Name]. Do not reply to this email as the mailbox is not monitored)</i>
+        </div>
+
+         <br/> <br/>
+
+        <div class="powered_by">
+            <i>Poweredby Patient Management System from [Company Name]</i>
+        </div>
 
     </div>
 </body>
