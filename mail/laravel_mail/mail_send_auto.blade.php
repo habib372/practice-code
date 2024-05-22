@@ -1,3 +1,5 @@
+php artisan make:mail PrescriptionMail
+
 {{-- controller --}}
  $data = [
                 'patient_id' => $visit->patient->id,
