@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+        box-sizing: border-box;
+        }
+
+        .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        height: 10vh;
+        }
+
+        .box {
+        position: relative;
+        width: 500px;
+        height: 150px;
+        background-color: #ddd;
+        overflow: hidden;
+        }
+
+        .ribbon {
+        position: absolute;
+        display: inline-block;
+        
+        top: 0.3em;
+        right: 0.8em;
+        
+        max-width: 5em;
+        
+        color: #fff;
+        
+        z-index: 1;
+        }
+
+        .ribbon::after {
+        position: absolute;
+        top: -1.5em;
+        right: -6em;
+        content: "";
+        
+        height: 5em;
+        width: 15em;
+        
+        transform: rotatez(45deg);
+
+        background-color: red;
+        z-index:-1;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+  
+        <div class="box">
+          <div class="ribbon text-center">paid</div>
+        </div>
+        
+      </div>
+</body>
+</html>
