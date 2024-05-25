@@ -1,19 +1,23 @@
 <!-- create -->
-<div class="col-lg-3">
-    <img src="" alt="" width="100" id="output_image">
+<div class="col-lg-3 text-center">
+    <img src="" alt="" width="150" id="output_image_1">
+</div>
+<div class="col-lg-3 text-center">
+    <img src="" alt="" width="150" id="output_image_2">
 </div>
 
+
 <!-- update -->
-<div class="col-lg-3">
+<div class="col-lg-3 text-center">
     @if (file_exists('images/slider/'.$slider->slider_image))
-    <img class="float-right" src="/images/slider/{{$slider->slider_image}}" width="150" id="output_image">
+    <img src="/images/slider/{{$slider->slider_image}}" width="150" id="output_image">
     @else
-    <img class="float-right" src="/images/default_logo.png" width="150" id="output_image">
+    <img class="rounded" src="/images/default_logo.png" width="150" id="output_image">
     @endif
 </div>
 
 
-<!-- image preview create or update -->
+<!-- image preview create or update [Single Image]-->
 <script type='text/javascript'>
     function readURL(input) {
         if (input.files && input.files[0]) {
@@ -29,3 +33,24 @@
         readURL(this);
     });
 </script>
+
+ <!-- image preview create or update [Multiple images] -->
+ <script type="text/javascript">
+        function readURL(input, target) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $(target).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#logo").change(function(){          // name = "logo"
+            readURL(this, '#output_image_1');    // id = "output_image_1"
+        });
+
+        $("#featured_image").change(function(){     // name = "featured_image"
+            readURL(this, '#output_image_2');         // id = "output_image_2"
+        });
+    </script>

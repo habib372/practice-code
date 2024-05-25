@@ -21,6 +21,7 @@ $data = $request->validate([
     'slug' => 'nullable|alpha_dash',
     'size_chart' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|dimensions:max_width=1920|max:1024',
     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=285,min_height=380|max:1024',
+    'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
     'other_images' => 'required',
     'other_images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|dimensions:max_width=1920|max:1024',
 ]);
