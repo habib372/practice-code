@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use DataTables;
 use File;
 use Intervention\Image\Facades\Image;
-use Illuminate\Validation\Rules\Unique;
 
 
 class ContentController extends Controller
@@ -61,14 +60,18 @@ class ContentController extends Controller
             // 'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
-
-        $filename_en = null;
-        if ($request->image_en) {
-            $this->uploadImages($request->file('image_en'));
+        // Handle English image
+        if ($request->hasFile('image_en')) {
+            $filename_en = $this->uploadImages($request->file('image_en'));
+        } else {
+            $filename_en = null;
         }
-        $filename_bn = null;
-        if ($request->image_bn) {
-            $this->uploadImages($request->file('image_bn'));
+
+        // Handle Bengali image
+        if ($request->hasFile('image_bn')) {
+            $filename_bn = $this->uploadImages($request->file('image_bn'));
+        } else {
+            $filename_bn = null;
         }
 
         $content = Content::create([
@@ -211,7 +214,7 @@ class ContentController extends Controller
         }
 
         $imageInstance = Image::make($image);
-        $imageInstance->resize(600, null, function ($constraint) {
+        $imageInstance->resize(500, null, function ($constraint) {
             $constraint->aspectRatio();
         })->save($path . '/' . $fileName);
 
