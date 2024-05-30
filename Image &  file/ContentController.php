@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 
 use App\Models\ContentCategory;
@@ -8,8 +9,8 @@ use App\Models\Content;
 use Illuminate\Http\Request;
 use DataTables;
 use File;
+use DB;
 use Intervention\Image\Facades\Image;
-use Illuminate\Validation\Rules\Unique;
 
 
 class ContentController extends Controller
@@ -61,34 +62,43 @@ class ContentController extends Controller
             // 'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
-
-        $filename_en = null;
-        if ($request->image_en) {
-            $this->uploadImages($request->file('image_en'));
+        // Handle English image
+        if ($request->hasFile('image_en')) {
+            $filename_en = $this->uploadImages($request->file('image_en'));
+        } else {
+            $filename_en = null;
         }
-        $filename_bn = null;
-        if ($request->image_bn) {
-            $this->uploadImages($request->file('image_bn'));
+
+        // Handle Bengali image
+        if ($request->hasFile('image_bn')) {
+            $filename_bn = $this->uploadImages($request->file('image_bn'));
+        } else {
+            $filename_bn = null;
         }
 
         $content = Content::create([
-                    'content_category_id' => $request->content_category_id,
-                    'title_en' => $request->title_en,
-                    'title_bn' => $request->title_bn,
-                    'description_en' => $request->description_en,
-                    'description_bn' => $request->description_bn,
-                    'image_en' => $filename_en,
-                    'image_bn' => $filename_bn,
-                    'featured' => $request->featured,
-                    'order' => $request->order,
-                    'status' => $request->status,
-                    'created_by' => auth()->id()
-                ]);
+            'content_category_id' => $request->content_category_id,
+            'title_en' => $request->title_en,
+            'title_bn' => $request->title_bn,
+            'description_en' => $request->description_en,
+            'description_bn' => $request->description_bn,
+            'image_en' => $filename_en,
+            'image_bn' => $filename_bn,
+            'meta_title_en' => $request->meta_title_en,
+            'meta_title_bn' => $request->meta_title_bn,
+            'meta_tag_en' => $request->meta_tag_en,
+            'meta_tag_bn' => $request->meta_tag_bn,
+            'meta_description_en' => $request->meta_description_en,
+            'meta_description_bn' => $request->meta_description_bn,
+            'featured' => $request->featured,
+            'order' => $request->order,
+            'status' => $request->status,
+            'created_by' => auth()->id()
+        ]);
 
-        if($content->id){
+        if ($content->id) {
             return redirect()->route('tsr-admin.content.index')->with('success', 'Content created successfully');
         }
-
     }
 
     /**
@@ -99,7 +109,7 @@ class ContentController extends Controller
      */
     public function show(Content $content)
     {
-        return view('admin.content.show', compact('content'));
+        return view('admin.content.web_view', compact('content'));
     }
 
     /**
@@ -163,6 +173,12 @@ class ContentController extends Controller
             'description_bn' => $request->description_bn,
             'image_en' => $filename_en,
             'image_bn' => $filename_bn,
+            'meta_title_en' => $request->meta_title_en,
+            'meta_title_bn' => $request->meta_title_bn,
+            'meta_tag_en' => $request->meta_tag_en,
+            'meta_tag_bn' => $request->meta_tag_bn,
+            'meta_description_en' => $request->meta_description_en,
+            'meta_description_bn' => $request->meta_description_bn,
             'featured' => $request->featured,
             'order' => $request->order,
             'status' => $request->status,
@@ -186,17 +202,19 @@ class ContentController extends Controller
      */
     public function destroy(Content $content)
     {
-        if($content->delete()){
-            if (file_exists(public_path() . "/images/contents/" . $content->image_en)) {
-                unlink(public_path() . "/images/contents/" .$content->image_en);
+        if ($content->delete()) {
+            $imagePath = public_path('images/contents/' . $content->image_en);
+            if (file_exists($imagePath) && is_file($imagePath)) {
+                unlink($imagePath);
             }
-            if (file_exists(public_path() . "/images/contents/" . $content->image_bn)) {
-                unlink(public_path() . "/images/contents/" . $content->image_bn);
+            $imagePath2 = public_path('images/contents/' . $content->image_bn);
+            if (file_exists($imagePath2) && is_file($imagePath2)) {
+                unlink($imagePath2);
             }
-            return redirect()->route('tsr-admin.content.index')->with('success', 'Content '.$content->title_en.' has been deleted.');
+            return redirect()->route('tsr-admin.content.index')->with('success', 'Content ' . $content->title_en . ' has been deleted.');
         }
 
-        return redirect()->route('tsr-admin.content.index')->with('error', 'Content '.$content->title_en.' can not be deleted!');
+        return redirect()->route('tsr-admin.content.index')->with('error', 'Content ' . $content->title_en . ' can not be deleted!');
     }
 
 
@@ -211,7 +229,7 @@ class ContentController extends Controller
         }
 
         $imageInstance = Image::make($image);
-        $imageInstance->resize(600, null, function ($constraint) {
+        $imageInstance->resize(500, null, function ($constraint) {
             $constraint->aspectRatio();
         })->save($path . '/' . $fileName);
 
@@ -226,6 +244,4 @@ class ContentController extends Controller
             unlink($imagePath);
         }
     }
-
-
 }
