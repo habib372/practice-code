@@ -47,9 +47,10 @@
 <!-- when select user role in [4, 5, 6, 8], then show only service_provider_type_id otherwise show all -->
 <script>
     $(document).on('change', '#user_role_id', function() {
+        $('#show_service_provider_type, #show_service_provider').hide('slow').find('select').val(null);
         var user_role = $("#user_role_id").val();
         var superRoles = [4, 5, 6, 8];
-        var generalRoles = [2, 3, 7, 9, 10];
+        var generalRoles = [2, 3, 7];
 
         if (user_role !== '') {
             $('#show_service_provider_type').show('slow');
@@ -69,55 +70,32 @@
 
 <!-- when select "user_role_id", then show only "service_provider_type_id", when select "service_provider_type_id" then show "show_service_provider" -->
 <script>
-    $(document).on('change', '#user_role_id, #service_provider_type_id', function() {
-        var user_role = $("#user_role_id").val();
-        var service_provider_type = $("#service_provider_type_id").val();
-        var superRoles = [4, 5, 6, 8];
-        var generalRoles = [2, 3, 7, 9, 10];
-
-        if (user_role !== '' || service_provider_type !== '') {
-            $('#show_service_provider_type').show('slow');
-                if (generalRoles.includes(parseInt(user_role))) {
-                    $('#show_service_provider').show('slow');
-                } else {
-                    $('#show_service_provider').hide('slow');
-                }
-        } else {
-            $('#show_service_provider_type').hide('slow');
-            $('#show_service_provider').hide('slow');
-        }
-    });
-</script>
-<!--end-->
-
-
-<!-- If user_role is not 1 and either user_role or service_provider_type is selected, show the appropriate elements-->
-<script>
         $(document).on('change', '#user_role_id, #service_provider_type_id', function() {
             var user_role = $("#user_role_id").val();
             var service_provider_type = $("#service_provider_type_id").val();
             var superRoles = [4, 5, 6, 8];
             var generalRoles = [2, 3, 7, 9, 10];
 
+            // Clear selected values
+            $("#service_provider_type_id").val('');
+            $("#service_provider_id").val('');
+
             if (user_role === '1') {
-                // If user_role is 1, hide all elements
                 $('#show_service_provider_type').hide('slow');
                 $('#show_service_provider').hide('slow');
-                $('#show_service_provider_type').val();
-                $('#show_service_provider').val();
             } else if (user_role !== '' || service_provider_type !== '') {
-                // If user_role is not 1 and either user_role or service_provider_type is selected, show the appropriate elements
                 $('#show_service_provider_type').show('slow');
-                if (generalRoles.includes(parseInt(user_role))) {
-                    $('#show_service_provider').show('slow');
-                } else {
-                    $('#show_service_provider').hide('slow');
-                }
+                    if ((service_provider_type) && (generalRoles.includes(parseInt(user_role)))) {
+                        $('#show_service_provider').show('slow');
+                    } else {
+                        $('#show_service_provider').hide('slow');
+                    }
             } else {
                 // If neither user_role nor service_provider_type is selected, hide all elements
                 $('#show_service_provider_type').hide('slow');
                 $('#show_service_provider').hide('slow');
             }
+
         });
 
 </script>
@@ -147,6 +125,7 @@
                 }
             });
         </script>
+
         {{-- or --}}
         <script>
             $(document).on('change', '#payment_mode', function(){

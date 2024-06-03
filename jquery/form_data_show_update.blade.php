@@ -1,4 +1,4 @@
-    <div class="row" id="editMyProfile" style="display: none;">
+d    <div class="row" id="editMyProfile" style="display: none;">
     	<div class="col">
     		<form class="form" id="profileUpdateForm" enctype="multipart/form-data">
     			<div class="col-lg-6 col-md-6 col-12">
