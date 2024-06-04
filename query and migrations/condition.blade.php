@@ -12,8 +12,12 @@ if (! in_array(auth()->user()->user_role_id, [6, 7])) {}
 
 if (in_array(auth()->user()->user_role_id, [6,7])){}
 
+
 if ($row->status == 'Requested' || $row->status == 'Scheduled') {}
 
+@elseif(in_array(auth()->user()->userRole->name, ['author','publisher','ad-manager']))
+
+{{ old('title_en', $content->title_en) }}
 
 @if (auth()->user()->user_role_id == 1)
 @if (auth()->user()->userRole()->name == 'admin')
