@@ -17,6 +17,7 @@ if ($row->status == 'Requested' || $row->status == 'Scheduled') {}
 
 @if(in_array(auth()->user()->userRole->name, ['author','publisher','ad-manager']))
 
+{{ (Request::is('tsr-admin/doctor*') || Request::is('tsr-admin/doctor/*/edit'))? 'm-menu__item--active' : '' }}
 
 {{ old('title_en', $content->title_en) }}
 
