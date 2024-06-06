@@ -17,6 +17,10 @@ if ($row->status == 'Requested' || $row->status == 'Scheduled') {}
 
 @if(in_array(auth()->user()->userRole->name, ['author','publisher','ad-manager']))
 
+<!-- hide edit button when status === active and roleName !==admin and publisher and roleName === editor -->
+var roleName = '{{ auth()->user()->userRole->name }}';
+@if (!(table.status === 'active' && roleName === 'editor' && roleName !== 'admin' && roleName !== 'publisher')) {}
+
 {{ (Request::is('tsr-admin/doctor*') || Request::is('tsr-admin/doctor/*/edit'))? 'm-menu__item--active' : '' }}
 
 {{ old('title_en', $content->title_en) }}
