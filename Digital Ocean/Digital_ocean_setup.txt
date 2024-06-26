@@ -1,0 +1,151 @@
+
+###########  Digital Ocean setup  #########
+
+---------- install apache2 -------------
+ssh root@167.99.67.93
+yes
+password
+apt-get update && apt-get upgrade
+y
+sudo apt-get install apache2
+y
+sudo apt-get install mysql-server
+
+sudo apt-get update
+
+sudo apt-get install php libapache2-mod-php php-mysql php-xml php-mbstring php-curl php-zip
+y
+
+sudo systemctl restart apache2
+
+apt-get install phpmyadmin
+y > ok > yes > ok
+
+service apache2 restart
+
+sudo ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf-available/phpmyadmin.conf
+
+sudo a2enconf phpmyadmin.conf
+
+sudo service apache2 reload
+
+
+---------------------------
+## server website configration for redirect::
+---------------------------
+
+sudo a2enmod rewrite
+sudo systemctl restart apache2
+
+Edit the Apache configuration file (e.g., /etc/apache2/sites-available/your-domain.conf)
+ServerName example.com
+ServerAlias www.example.com
+ServerAdmin webmaster@localhost
+DocumentRoot /var/www/example.com/public
+
+sudo systemctl restart apache2
+
+sudo chown -R www-data:www-data /var/www/your-laravel-project
+sudo chmod -R 755 /var/www/your-laravel-project
+sudo chown -R www-data:www-data /var/www/html
+sudo chmod -R 755 /var/www/html
+
+cache clear korte hobe
+
+Edit the Apache configuration file to set the ServerName directive globally to suppress the warning. Open /etc/apache2/apache2.conf and add:
+ServerName your-domain.com
+<Directory /var/www/>
+	Options Indexes FollowSymLinks
+	AllowOverride All
+	Require all granted
+</Directory>
+
+sudo systemctl restart apache2
+
+sudo a2ensite example.com.conf
+sudo systemctl reload apache2
+
+
+------------- install mysql --------------
+sudo apt update
+sudo apt install mysql-server
+
+start mysql: 	sudo systemctl start mysql
+restart mysql:  sudo systemctl restart mysql
+status check: 	sudo systemctl status mysql
+
+
+---------Out-Of-Memory (OOM) kill error solved:--------------
+The oom-kill error indicates that the MySQL server was killed by the system's Out-Of-Memory (OOM) killer due to insufficient memory. This is a common issue on systems with low memory resources, like your Droplet with 512MB of RAM.
+
+Here are some steps to address this:
+
+1. Add Swap Space
+sudo fallocate -l 1G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo sh -c 'echo "/swapfile swap swap defaults 0 0" >> /etc/fstab'
+
+2. Reduce MySQL Memory Usage
+Optimize MySQL to use less memory by adjusting its configuration. Edit the MySQL configuration file (/etc/mysql/my.cnf or /etc/mysql/mysql.conf.d/mysqld.cnf) and add or modify the following settings:
+mysqld.cnf::
+[mysqld]
+innodb_buffer_pool_size = 128M
+innodb_log_file_size = 32M
+max_connections = 50
+table_open_cache = 200
+key_buffer_size = 16M
+thread_cache_size = 8
+
+sudo systemctl restart mysql
+sudo systemctl status mysql
+
+
+
+------------ export and import existing database: --------
+export databse::
+mysqldump -u your_local_user -p your_local_database > database_export.sql
+
+import database::
+mysql -u your_db_user -h your_digitalocean_db_host -P port_number -p your_db_name < /path/to/your_database.sql
+
+
+example::
+
+export:  mysqldump -u example_db_user -p example_db > /var/www/database_export.sql
+
+import:  mysql -u example_db_user -h db-mysql-sgp2-36581-do-user-36528749-0.c.db.ondigitalocean.com -P 10560 -p example_db < /var/www/example_db.sql
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
