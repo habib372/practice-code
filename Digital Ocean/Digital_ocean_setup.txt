@@ -2,7 +2,7 @@
 ###########  Digital Ocean setup  #########
 
 ---------- install apache2 -------------
-ssh root@167.99.67.93
+ssh root@159.79.65.21
 yes
 password
 apt-get update && apt-get upgrade
