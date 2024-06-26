@@ -117,35 +117,3 @@ export:  mysqldump -u example_db_user -p example_db > /var/www/database_export.s
 
 import:  mysql -u example_db_user -h db-mysql-sgp2-36581-do-user-36528749-0.c.db.ondigitalocean.com -P 10560 -p example_db < /var/www/example_db.sql
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
