@@ -5,3 +5,6 @@ UPDATE contents SET `publication_date` = DATE(updated_at);
 
 UPDATE patient_visits pv JOIN patients p ON pv.patient_id = p.id SET pv.disease_id = p.disease_id;
 
+
+SET SQL_REQUIRE_PRIMARY_KEY =OFF;
+SET FOREIGN_KEY_CHECKS = ON;
