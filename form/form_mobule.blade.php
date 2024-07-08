@@ -9,6 +9,41 @@
      @enderror
  </div>
 
+   <div class="col-lg-6">
+     <label for="country">Country: <span class="text-danger">*</span></label>
+     <select id="country" name="country" class="form-control {{ $errors->has('country') ? 'border-danger' : '' }}">
+         <option value="" selected disabled>Select</option>
+         @foreach($all_countries as $country)
+         <option value="{{ $country->name }}" {{ old('country') == $country->name ? 'selected' : '' }}>
+             {{ $country->name }}
+         </option>
+         @endforeach
+     </select>
+     @error('country')
+     <div class="custom-alert">
+         <span>{{ $message }}</span>
+     </div>
+     @enderror
+ </div>
+
+
+ <!-- default country selected -->
+ <div class="col-lg-6">
+    <label for="country">Country: <span class="text-danger">*</span></label>
+    <select id="country" name="country" class="form-control {{ $errors->has('country') ? 'border-danger' : '' }}">
+        <option value="" selected disabled>Select</option>
+        @foreach($all_countries as $country)
+        <option value="{{ $country->name }}" {{ $country->name == 'Bangladesh' ? 'selected' : '' }}>
+            {{ $country->name }}
+        </option>
+        @endforeach
+    </select>
+    @error('country')
+    <div class="custom-alert">
+        <span>{{ $message }}</span>
+    </div>
+    @enderror
+</div>
 
  <div class="form-group m-form__group row">
      <div class="col-lg-12">
