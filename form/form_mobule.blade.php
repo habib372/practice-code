@@ -45,6 +45,20 @@
     @enderror
 </div>
 
+  <div class="col-lg-6">
+      <label>Status : <span class="text-danger">*</span></label>
+      <select id="status" name=status class="form-control {{ $errors->has('status')? ' border-danger' : '' }}">
+          <option value="" selected disabled>Select</option>
+          <option value="active" {{ $data->status == 'active' ? 'selected' : '' }}>Active</option>
+          <option value="inactive" {{ $data->status == 'inactive' ? 'selected' : '' }}>Inactive</option>
+      </select>
+      @error('status')
+      <div class="custom-alert">
+          <span>{{$message}}</span>
+      </div>
+      @enderror
+  </div>
+
  <div class="form-group m-form__group row">
      <div class="col-lg-12">
          <label for="dashboard_cards">Dashboard Cards</label>
