@@ -70,6 +70,7 @@ if (preg_match('#^(en|bn)/promote-ad/.*$#', $uri)) {
 
 {{ old('gender') == 'male' ? 'selected' : '' }}
 
+<td>{{ isset($item->agentInfo->commission_for_agent) ? $item->agentInfo->commission_for_agent . '%' : '-' }}</td>
 
 <!-- skip first data -->
 $memberships = ['' => '-- Select a membership --'] + Membership::where('status', 'active')->pluck('name_en', 'id')->slice(1)->toArray();
