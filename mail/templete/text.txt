@@ -1,0 +1,17 @@
+## Congratulation mail templete ###
+
+Dear [Agent's Name],
+
+I hope this message finds you well.
+
+We are thrilled to inform you that one of your customers has successfully used your promo code! As a result, you have earned a 10% commission on their purchase.
+
+Your dedication and hard work are truly paying off, and we appreciate your continued efforts in promoting our products. Keep up the great work!
+
+Congratulations once again, and thank you for being an invaluable part of our team.
+
+Best regards,
+
+[Your Name]
+
+
