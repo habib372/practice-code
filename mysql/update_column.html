@@ -1,9 +1,15 @@
 
 1. UPDATE contents SET `image_bn` = `image_en`;
 
-UPDATE contents SET `publication_date` = DATE(updated_at);
+2. UPDATE contents SET `publication_date` = DATE(updated_at);
 
-UPDATE patient_visits pv JOIN patients p ON pv.patient_id = p.id SET pv.disease_id = p.disease_id;
+3. UPDATE patient_visits pv JOIN patients p ON pv.patient_id = p.id SET pv.disease_id = p.disease_id;
+
+4. UPDATE contents SET `order` = id;
+
+SET @serial = 0;
+UPDATE contents SET `order` = (@serial := @serial + 1); //1-1000
+
 
 
 SET SQL_REQUIRE_PRIMARY_KEY =OFF;
