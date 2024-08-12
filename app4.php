@@ -23,3 +23,19 @@
     </div>
 </section>
 <!----/end top banner---->
+
+<div class="breadcrumbs overlay" style="background-image:url('/images/pagebanner/large_{{$banner_image}}')">
+    <div class="container">
+        <div class="bread-inner">
+            <div class="row">
+                <div class="col-12">
+                    <h2>{{ $breadcrumb[ltrim($_SERVER['REQUEST_URI'], '/')]['title']??$title }}</h2>
+                    <ul class="bread-list">
+                        {!! $breadcrumb[ltrim($_SERVER['REQUEST_URI'], '/')]['link']??$link !!}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumbs -->
