@@ -133,6 +133,13 @@ $membership_payment_data = App\Models\MembershipPay::with('membership')
     }
 
 
+@if ($data->status=="active")
+<td><span class="m-badge m-badge--brand m-badge--wide">Active</span></td>
+@else
+<td><span class="m-badge m-badge--metal m-badge--wide">Inactive</span></td>
+@endif
+
+
 <!-- date time format -->
 <!-- Updated by: Habibur Rahman  -->
 <strong>Last Updated By</strong> : {{ $user->updatedBy->name??'' }}<br />

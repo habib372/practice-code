@@ -118,3 +118,16 @@ export:  mysqldump -u example_db_user -p example_db > /var/www/database_export.s
 import:  mysql -u example_db_user -h db-mysql-sgp2-36581-do-user-36528749-0.c.db.ondigitalocean.com -P 10560 -p example_db < /var/www/example_db.sql
 
 
+
+
+
+ERROR SOLVE::
+error: Can't write image data to path (/var/www/example.com/public/images/photo/imgage.png)
+
+solution:  sudo chown -R www-data:www-data /var/www/example.com/public/images/photo/
+           sudo chmod -R 755 /var/www/example.com/public/images/photo/
+
+
+Make file or folder::
+
+make folder:  mkdir -p /var/www/example.com/public/images/folder_name/
