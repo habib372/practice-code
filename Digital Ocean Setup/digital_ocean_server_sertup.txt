@@ -105,7 +105,7 @@ sudo systemctl status mysql
 
 ------------ export and import existing database: --------
 export databse::
-mysqldump -u your_local_user -p your_local_database > database_export.sql
+mysqldump -u your_local_user -p your_local_database > /var/www/database_export.sql
 
 import database::
 mysql -u your_db_user -h your_digitalocean_db_host -P port_number -p your_db_name < /path/to/your_database.sql
