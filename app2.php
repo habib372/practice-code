@@ -21,7 +21,7 @@
                 <table id="test_datatable" class="table table-bordered table-striped " >
 					<thead>
 						<tr>
-							<th>#ID</th>
+							<th width="30">#ID</th>
 							<th width="150">Service Provider Name</th>
 							<th width="60">Logo</th>
 							<th width="100">Contact Person</th>
