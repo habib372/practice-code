@@ -74,3 +74,8 @@
 						@endforeach
 					</tbody>
 				</table>
+
+
+Image = Intervention\Image\Facades\Image
+DB = Illuminate\Support\Facades\DB
+File = Illuminate\Support\Facades\File
