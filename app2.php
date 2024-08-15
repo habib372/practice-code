@@ -50,7 +50,7 @@
 							@else
 								<td><span class="m-badge m-badge--metal m-badge--wide">No</span></td>
 							@endif
-							<td> 
+							<td>
 								@if($data->featuredServiceProviderType !==null)
 								English : {{ $data->featuredServiceProviderType->name_en }}<br/>Bangla : {{ $data->featuredServiceProviderType->name_bn }}
 								@else
