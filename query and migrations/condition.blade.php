@@ -140,6 +140,13 @@ $membership_payment_data = App\Models\MembershipPay::with('membership')
 @endif
 
 
+<script>
+    function stripHTML(html) {
+            return html.replace(/<\/?[^>]+(>|$)/g, "");
+        }
+    var title_en = stripHTML(table.title_en);
+</script>
+
 <!-- date time format -->
 <!-- Updated by: Habibur Rahman  -->
 <strong>Last Updated By</strong> : {{ $user->updatedBy->name??'' }}<br />
