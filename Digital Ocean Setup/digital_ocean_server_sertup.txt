@@ -131,3 +131,19 @@ solution:  sudo chown -R www-data:www-data /var/www/example.com/public/images/ph
 Make file or folder::
 
 make folder:  mkdir -p /var/www/example.com/public/images/folder_name/
+
+
+
+
+
+
+
+
+
+cd /var/log/apache2/
+cat error.log
+
+
+
+
+
