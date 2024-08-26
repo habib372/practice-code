@@ -50,3 +50,50 @@
         $image->save(public_path() . "/images/membership/" . $filename);
         return $filename;
     }
+
+
+
+
+   <!-- Upload image -->
+    public function uploadImages($image)
+    {
+        $fileName = time() . rand(0, 1000) . "_" . str_replace(' ', '-', $image->getClientOriginalName());
+        $path = public_path('images/contents');
+
+        if (!File::exists($path)) {
+            File::makeDirectory($path, 0755, true);
+        }
+
+        $imageInstance = Image::make($image);
+        $imageInstance->resize(500, null, function ($constraint) {   <!-- resize -->
+            $constraint->aspectRatio();
+        })->save($path . '/' . $fileName);
+
+        return $fileName;
+    }
+
+
+    <!-- Delete image -->
+    public function deleteImages($image)
+    {
+        $imagePath = public_path('images/contents/' . $image);
+        if (file_exists($imagePath) && is_file($imagePath)) {
+            unlink($imagePath);
+        }
+    }
+
+    <!-- image upload create-->
+    if ($request->hasFile('image_en')) {
+        $filename_en = $this->uploadImages($request->file('image_en'));
+    } else {
+        $filename_en = null;
+    }
+
+
+    <!-- image upload updated-->
+    if ($request->hasFile('image_en')) {
+        $this->deleteImages($content->image_en);
+        $filename_en = $this->uploadImages($request->file('image_en'));
+    } else {
+        $filename_en = $content->image_en;
+    }
