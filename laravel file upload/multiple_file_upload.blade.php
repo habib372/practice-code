@@ -51,8 +51,6 @@ public function update(Request $request, $id)
 }
 
 
-
-
 // 1 ==> image upload function with resize
 public function uploadImages($image, $width)
     {
