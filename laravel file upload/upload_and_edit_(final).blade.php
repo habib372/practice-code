@@ -97,3 +97,24 @@
     } else {
         $filename_en = $content->image_en;
     }
+
+
+
+
+
+
+
+
+    @if ($advertise !==null)
+        @if (file_exists(public_path('/images/advertise/'). $advertise->ad_image))
+            <a href="{{ $advertise->ad_link }}">
+            <img src="{{'images/advertise/'. $advertise->ad_image }}" class="img-fluid rounded" alt="{{ $advertise->ad_provider_name }}">
+        </a>
+        @else
+            <img src="/advertise/default-patient-ad.png" class="img-fluid rounded" alt="Fighting Cancer Bangladesh">
+        @endif
+    @else
+        <a href="#">
+            <img src="/advertise/default-patient-ad.png" class="img-fluid rounded" alt="Fighting Cancer Bangladesh">
+        </a>
+    @endif
