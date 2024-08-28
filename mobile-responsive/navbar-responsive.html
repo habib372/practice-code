@@ -1,0 +1,58 @@
+<!-- css -->
+<style>
+    span.navbar-toggler-icon.patient-nav {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        top: 25px;
+        right: 13px;
+    }
+    button.navbar-toggler.patient_nav:focus {
+        outline: none;
+    }
+
+    .navbar-toggler {
+        display: none;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        font-size: 20px;
+    }
+    .navbar-collapse.collapse.show {
+        display: inline-block;
+    }
+
+
+
+     @media only screen and (max-width: 767px) {
+        /* patient navbar toggler */
+        .navbar-toggler {
+            display: block;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            font-size: 20px;
+        }
+
+        .navbar-collapse {
+            display: none;
+        }
+
+        .departments.section.patient-navs {
+            padding: 4px 0 3px !important;
+        }
+    }
+
+</style>
+
+<!-- Bootstrap navbar responsive -->
+<button class="navbar-toggler patient_nav" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon patient-nav"><i class="fas fa-bars"></i></span>
+</button>
+<div class="navbar-collapse" id="navbarNav">
+    <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Contacts</li>
+    </ul>
+</div>
