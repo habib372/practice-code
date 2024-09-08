@@ -7,5 +7,5 @@ For SEO Setup::>
 4. seo schema
 5. Google Tag Manager
 6. Google Analytics
-7. facebook pixel
-8. Google My Business (Google Map)
+7. Google My Business (Google Map)
+8. facebook pixel
