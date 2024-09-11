@@ -64,6 +64,8 @@
 				</table>
 
 
-Image = Intervention\Image\Facades\Image
-DB = Illuminate\Support\Facades\DB
-File = Illuminate\Support\Facades\File
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
+
+use Illuminate\Support\Facades\DB;
+
