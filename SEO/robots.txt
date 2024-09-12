@@ -1,4 +1,6 @@
+//note: upload it public_html or public_html/public folder
+
 User-agent: *
 Disallow:
 
-Sitemap:https://realtormela.com/sitemap.xml
+Sitemap:https://example.com/sitemap.xml
