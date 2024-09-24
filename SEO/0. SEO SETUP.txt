@@ -2,7 +2,7 @@
 For SEO Setup::>
 -----------------
 1. Google Search Console
-2. Sitemap
+2. Sitemap 
 3. robots.txt
 4. seo schema
 5. Google Tag Manager

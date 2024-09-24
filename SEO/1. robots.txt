@@ -1,0 +1,8 @@
+//note: upload it public_html or public_html/public folder
+
+User-agent: *
+Disallow: 
+or
+Allow: /
+
+Sitemap: https://example.com/sitemap.xml
