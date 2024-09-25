@@ -4,57 +4,34 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ID Card</title>
+    <title> ID Card</title>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="shortcut icon" href="https://www.example.com/assets/frontend/img/favicon.png" rel="icon">
 
     <style>
         body {
             background-color: transparent;
             font-family: 'verdana';
-            margin: 200px auto;
+            margin: 100px auto;
         }
 
         .id-card-holder {
-            width: 225px;
-            padding: 4px;
+            width: 230px;
+            padding: 1px;
             margin: 0 auto;
-            background-color: #1f1f1f;
+            background-color: #4b8fe2;
+            background: linear-gradient(135deg, #c9def7, #77a6f5);
             border-radius: 5px;
             position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-
-        /* .id-card-holder:after {
-            content: '';
-            width: 7px;
-            display: block;
-            background-color: #0a0a0a;
-            height: 80px;
-            position: absolute;
-            top: 105px;
-            border-radius: 0 5px 5px 0;
-        }
-
-        .id-card-holder:before {
-            content: '';
-            width: 7px;
-            display: block;
-            background-color: #0a0a0a;
-            height: 100px;
-            position: absolute;
-            top: 105px;
-            left: 222px;
-            border-radius: 5px 0 0 5px;
-        } */
 
         .id-card {
-
             background-color: #fff;
-            padding: 10px;
-            border-radius: 10px;
+            padding: 30px 15px 15px;
+            border-radius: 5px;
             text-align: center;
-            box-shadow: 0 0 1.5px 0px #b9b9b9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .id-card img {
@@ -63,7 +40,7 @@
 
         .header img {
             width: 100px;
-            margin-top: 15px;
+            border-radius: 50%;
         }
 
         .photo img {
@@ -73,13 +50,19 @@
 
         h2 {
             font-size: 15px;
-            margin: 5px 0;
+            margin: 10px 0 5px;
+            font-weight: 600;
         }
 
         h3 {
             font-size: 12px;
             margin: 2.5px 0;
-            font-weight: 300;
+            font-weight: 500;
+        }
+        h4 {
+            font-size: 11px;
+            font-weight: 500;
+            margin: 3px 0;
         }
 
         .qr-code img {
@@ -87,8 +70,18 @@
         }
 
         p {
-            font-size: 5px;
+            font-size: 10px;
             margin: 2px;
+        }
+        a{
+            text-decoration: none;
+        }
+        hr{
+            margin: 10px 0;
+        }
+        .id_link {
+            padding: 10px 0 2px;
+            color: #1a76d1;
         }
 
     </style>
@@ -100,25 +93,24 @@
     <div class="id-card-holder">
         <div class="id-card">
             <div class="header">
-                <img class="rounded-circle" src="https://www.fightingcancerbd.com/images/patients/64abe946b7b48.png">
+                <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png">
             </div>
 
             <h2>Mahmuda Harun</h2>
-
+            <h3>Membership: Silver</h3>
             <h3>Cancer Patient</h3>
-            <h3>id : 3</h3>
-            <p><a href="https://www.fightingcancerbd.com/">www.fightingcancerbd.com/patient/3</a></p>
+            <h3>Id No: 3</h3>
+            <p class="id_link">www.https://cdn-icons-png.com/id/3</p>
 
             <hr>
-            <p><strong>Fighting Cancer Bangladesh</strong><p>
-            <p>www.fightingcancerbd.com</p>
-            <p>Support: +88017 1416 4979</p>
-            <p>support@fightingcancerbd.com</p>
+            <div class="footer_content">
+                <h4><strong>Your Company Name</strong></h4>
+                <p>Support: +88017 5214 3621</p>
+                <p>support@cdn-icons-png.com</p>
+                <p>www.cdn-icons-png.com</p>
+           </div>
         </div>
     </div>
-
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
 
 </body>
 
