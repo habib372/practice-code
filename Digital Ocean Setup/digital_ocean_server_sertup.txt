@@ -125,7 +125,7 @@ ERROR SOLVE::
 error: Can't write image data to path (/var/www/example.com/public/images/photo/imgage.png)
 
 solution:  sudo chown -R www-data:www-data /var/www/example.com/public/images/photo/
-           sudo chmod -R 755 /var/www/example.com/public/images/photo/
+           sudo chmod -R 755 /var/www/example.com/public/uploads/outside_visit_attachments/
 
 
 Make file or folder::
