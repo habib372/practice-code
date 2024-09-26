@@ -133,8 +133,7 @@ Make file or folder::
 make folder:  mkdir -p /var/www/example.com/public/images/folder_name/
 
 
-
-
+sudo chmod -R 755 /var/www/fightingcancerbd.com/public/uploads/outside_visit_attachments/
 
 
 
