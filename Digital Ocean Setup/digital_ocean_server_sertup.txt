@@ -104,43 +104,54 @@ sudo systemctl status mysql
 
 
 ------------ export and import existing database: --------
-export databse::
+**export databse::
 mysqldump -u your_local_user -p your_local_database > /var/www/database_export.sql
 
-import database::
+**import database::
 mysql -u your_db_user -h your_digitalocean_db_host -P port_number -p your_db_name < /path/to/your_database.sql
 
 
-example::
-
+--------------example--------------
 export:  mysqldump -u example_db_user -p example_db > /var/www/database_export.sql
 
 import:  mysql -u example_db_user -h db-mysql-sgp2-36581-do-user-36528749-0.c.db.ondigitalocean.com -P 10560 -p example_db < /var/www/example_db.sql
 
 
 
-
-
-ERROR SOLVE::
+--------------ERROR SOLVE--------------
 error: Can't write image data to path (/var/www/example.com/public/images/photo/imgage.png)
 
 solution:  sudo chown -R www-data:www-data /var/www/example.com/public/images/photo/
            sudo chmod -R 755 /var/www/example.com/public/uploads/outside_visit_attachments/
 
 
-Make file or folder::
-
+--------------Make file or folder--------------
 make folder:  mkdir -p /var/www/example.com/public/images/folder_name/
 
 
 
+####--------composer install and phpcli::---------####
+ssh root@your_droplet_ip
 
+sudo apt update
 
+sudo apt install php-cli unzip
 
+cd ~
 
-cd /var/log/apache2/
-cat error.log
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 
+php -r "if (hash_file('sha384', 'composer-setup.php') === '906a13624044b147ff8b322b6742e5f2b5b60b48af40b98d07b340ca6acdc17d36cdd5e2adf1e08dd772bae90a377a2b') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" 
+
+sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+php -r "unlink('composer-setup.php');"
+
+composer --version
+
+cd /var/www/website_folder
+
+composer update or install package same as composer require stripe/stripe-php or any php command
 
 
 
