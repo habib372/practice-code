@@ -4,7 +4,6 @@
 
 
 	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.13.1/datatables.min.js"></script>
-
 	<script>
 		$(document).ready(function() {
 			$("#test_datatable").DataTable({
@@ -21,8 +20,10 @@
                 <table id="test_datatable" class="table table-bordered table-striped " >
 					<thead>
 						<tr>
-							<th width="30">#ID</th>
-							<th width="150">name</th>
+							<th>#ID</th>
+							<th >Medicine Name</th>
+							<th >Satus</th>
+							<th >Action</th>
 						</tr>
 					</thead>
 					<tbody class="data_set">
