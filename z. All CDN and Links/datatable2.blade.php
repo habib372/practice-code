@@ -31,8 +31,11 @@
 						@foreach($allData as $data)
 						<tr>
 							<td>{{ $data->id }}</td>
+							<td>{{ $data->name??'-' }}</td>
 							<td>English : {{ $data->name_en??'' }}<br/>Bangla : {{ $data->name_bn??'' }}</td>
-							<td>{{ $data->contact_number }}</td>
+							<td>{{ $data->mobile??'-' }}</td>
+							<td>{{ $data->username??'-' }}</td>
+							<td>{{ $data->patient->name??'-' }}</td>
 							<td>
 								@if ($data->logo)
 								<img src="/images/featured/{{ $data->logo }}" width="60">

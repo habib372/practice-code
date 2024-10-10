@@ -62,6 +62,9 @@ class MembershipController extends Controller
             'created_by' => auth()->id()
         ]);
 
+        // or
+
+
         if($data) {
             return redirect()->route('tsr-admin.membership.create')->with('success', 'Membership created successfully');
         }
@@ -82,16 +85,16 @@ class MembershipController extends Controller
         return $filename;
     }
 
-    
+
     // <!--File upload function for all format-->
     public function uploadImages1($image)
     {
         $originalName = $image->getClientOriginalName();
         $filename = strtotime("now") . '_' . $originalName;
-    
+
         //not .gif image
         $imagePath = public_path() . "/images/membership/" . $filename;
-        
+
         // Check if the uploaded file is a GIF
         if ($image->getClientOriginalExtension() === 'gif') {
             // If it's a GIF, move it to the desired location without modifying it
@@ -101,10 +104,10 @@ class MembershipController extends Controller
             $image = Image::make($image);
             $image->save($imagePath);
         }
-    
+
         return $filename;
     }
-    
+
 
     /**
      * Display the specified resource.
