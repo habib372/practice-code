@@ -21,7 +21,7 @@
 					<thead>
 						<tr>
 							<th>#ID</th>
-							<th >Medicine Name</th>
+							<th >Name</th>
 							<th >Satus</th>
 							<th >Action</th>
 						</tr>
@@ -31,18 +31,15 @@
 						@foreach($allData as $data)
 						<tr>
 							<td>{{ $data->id }}</td>
-
 							<td>English : {{ $data->name_en??'' }}<br/>Bangla : {{ $data->name_bn??'' }}</td>
-
+							<td>{{ $data->contact_number }}</td>
 							<td>
 								@if ($data->logo)
-								<img src="/images/featured_serviceprovider/{{ $data->logo }}" width="60">
+								<img src="/images/featured/{{ $data->logo }}" width="60">
 								@else
-								<img src="/images/featured_serviceprovider/default_logo.png" width="60">
+								<img src="/images/featured/default_logo.png" width="60">
 								@endif
 							</td>
-
-							<td>{{ $data->contact_number }}</td>
 
 							@if ($data->status=="active")
 								<td><span class="m-badge m-badge--brand m-badge--wide">Active</span></td>
@@ -52,11 +49,11 @@
 
 							<td>
 								<!-- view -->
-								<a href="{{ url('tsr-admin/featured-service-providers')}}/{{ $data->id }}/" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="View details"><i class="la la-eye"></i></a>
+								<a href="{{ url('admin/featured')}}/{{ $data->id }}/" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="View details"><i class="la la-eye"></i></a>
 								<!-- edit -->
-								<a href="{{ url('tsr-admin/featured-service-providers')}}/{{ $data->id }}/edit" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="Edit details"><i class="la la-edit"></i></a>
+								<a href="{{ url('admin/featured')}}/{{ $data->id }}/edit" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="Edit details"><i class="la la-edit"></i></a>
 								<!-- delete -->
-								<form style="display:inline" id="deleteForm-{{ $data->id }}" action="{{ url('tsr-admin/featured-service-providers') }}/{{ $data->id }}" method="POST">@method('delete') @csrf<a href="javascript:void(0)" data-id="{{ $data->id }}" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-delete" title="Delete"><i class="la la-trash"></i></a></form>
+								<form style="display:inline" id="deleteForm-{{ $data->id }}" action="{{ url('admin/featured') }}/{{ $data->id }}" method="POST">@method('delete') @csrf<a href="javascript:void(0)" data-id="{{ $data->id }}" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-delete" title="Delete"><i class="la la-trash"></i></a></form>
 							</td>
 
 						</tr>
