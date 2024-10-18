@@ -1,0 +1,179 @@
+<style>
+    /*megamenu*/
+    
+    .h_mega-menu {
+        color: #000000;
+        position: absolute;
+        background: #ffffff;
+        box-shadow: 0 0 4px #5555555c;
+        width: 1040px;
+        padding: 25px 10px;
+        left: 48px;
+        height: auto;
+        top: 60px;
+        z-index: 999999;
+        transition: .3s;
+        display: none;
+        border-radius: 0 0 30px 0;
+    }
+    .mega_title h4 {
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+    .h_mega-parent:hover .h_mega-menu {
+        display: block;
+        transition: .3s;
+    }
+    
+    /*.h_mega-menu:after {*/
+    /*    content: "";*/
+    /*    position: absolute;*/
+    /*    top: -10px;*/
+    /*    right: 370px;*/
+    /*    width: 20px;*/
+    /*    height: 20px;*/
+    /*    background: #fff;*/
+    /*    z-index: 999999;*/
+    /*    transform: rotate(45deg);*/
+    /*    border-top: 1px solid #5555555c;*/
+    /*    border-left: 1px solid #5555555c;*/
+    /*}*/
+    .h_mega-parent .fa{
+        margin: 0 0 0 10px!important;
+    }
+    
+    .h_mega-menu a {
+        border-right: none;
+        line-height: 32px;
+        color: #000!important;
+        font-size: 16px;
+        transition: .5s;
+    }
+    
+    .h_mega-menu a:hover {
+        color: #000;
+        transition: .5s;
+    }
+    
+    .h_mega-menu h5:hover {
+        background: #9999993c;
+        transition: .5s;
+    }
+    
+    .h_cat-menu h5 {
+        margin: 0;
+        padding: 2px 0;
+        border-bottom:1px solid #a7a3a3;
+    }
+    .h_cat-menu h5:first-child {
+        border-top: 1px solid gray;
+    }
+    
+    @media (max-width: 968px) {
+        .h_show {
+            display: block;
+            color: #4E4F51;
+            font-size: 16px;
+            padding: 0 5px;
+            line-height: 24px;
+            cursor: pointer;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+        #botomnav .icon {
+            z-index:99;
+        }
+    }
+    
+    @media only screen and (max-width: 767px) {
+        .h_mega-menu {
+            width: auto !important;
+            top: 44px !important;
+            left: -10px !important;
+        }
+        .h_mega-parent:hover .h_mega-menu.showmenu {
+            display: block;
+            padding-bottom: 0;
+            position: static;
+            max-height: 100%;
+            overflow: scroll;
+        }
+        .h_mega-parent:hover .h_mega-menu {
+            display: none;
+        }
+        #botomnav .icon {
+            z-index:99;
+        }
+    }
+    
+    @media only screen and (max-width: 578px) {
+    .h_mega-parent:hover .h_mega-menu.showmenu {
+            display: block;
+            padding-bottom: 0;
+            position: static;
+            max-height: 100%;
+            overflow: scroll;
+        }
+        .h_mega-parent:hover .h_mega-menu {
+            display: none;
+        }
+        #botomnav .icon {
+            z-index:99;
+        }
+    }
+    
+</style>
+
+
+<li class="h_mega-parent effect-one nav-items">
+    <a class="nav-link" href="#" id="dropmenu1" onclick="toggleDropdown1()">
+        MEDIA <i class="fa fa-caret-down" style="font-size:20px; color:#fff;"></i>
+    </a>
+    <div class="h_mega-menu" id="megamenu1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12 col-xs-12 mega_title">
+                    <h4>MEDIA</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-12 col-xs-12 h_cat-menu">
+                            <h5>
+                                <a href="{{url('blog')}}">
+                                   NEWS
+                                </a>
+                            </h5>
+                </div>
+
+                <div class="col-md-4 col-sm-12 col-xs-12 h_cat-menu">
+                            <h5>
+                                <a href="{{url('public-notice')}}">
+                                    PUBLIC NOTICE
+                                </a>
+                            </h5>
+                </div>
+
+                <div class="col-md-4 col-sm-12 col-xs-12 h_cat-menu">
+                            <h5>
+                                <a href="{{url('gallery')}}">
+                                   GALLERY
+                                </a>
+                            </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+
+
+<!-- for mobile responsive -->
+<script>
+     function toggleDropdown1() {
+            var megaMenu = document.getElementById('megamenu1');
+            if (megaMenu.classList.contains("showmenu")) {
+              megaMenu.classList.remove("showmenu");
+            } else {
+              megaMenu.classList.add("showmenu");
+            }
+        }
+</script>
