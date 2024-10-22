@@ -1,0 +1,27 @@
+<section id="page-title-area">
+    <div class=" title mb-5">
+       <h2 class="page-title">Application Form and Fees</h2>
+   </div>
+</section>
+<section id="page-section" class="my-md-5">
+    <div class="container py-3">
+        <div class="row">
+            @foreach ($datas as $item)
+                @if($item->file_name)
+                    <div class="col-md-6">
+                        <div class="top-content">
+                            @if(pathinfo($item->file_name, PATHINFO_EXTENSION) === 'pdf')
+                                <!-- Display PDF file in iframe -->
+                                <iframe src="{{ asset('uploads/candidate') }}/{{$item->file_name}}" width="520" height="380"></iframe>
+                            @else
+                                <!-- Display image file -->
+                                <img src="{{ asset('uploads/candidate') }}/{{$item->file_name}}" width="520" height="380"/>
+                            @endif
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+
+        </div>
+    </div>
+</section>

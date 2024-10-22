@@ -50,6 +50,37 @@
     });
 </script>
 
+<script>
+    $(document).ready(function () {
+        $(document).on('change', '#parentType', function () {
+            var parent_type = $('#parentType').val();
+
+            if (parent_type === '5') {
+                $('#referenceNumber').show('slow');
+                $('#trackApplicationStatus').show('slow');
+            } else {
+                $('#reference_number').val('');  
+                $('#trackApplication').val('');  
+                $('#referenceNumber').hide('slow');
+                $('#trackApplicationStatus').hide('slow');
+            }
+        });
+   
+        $(document).on('change', '#parentType', function () {
+            var parent_type = $('#parentType').val();
+    
+            if (parent_type === '6') {
+                $('#passportNo').hide('slow');
+                $('#title').html('Title'); 
+            } else {
+                $('#passport_no').val('');  
+                $('#passportNo').show('slow');
+                $('#title').html('Enter Your Name <span class="text-danger">*</span>'); 
+            }
+        });
+    });
+</script>
+
 
 <!-- radio button value -->
 <div class="form-check form-check-inline">

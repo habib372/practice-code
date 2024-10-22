@@ -37,10 +37,10 @@
 							<td>{{ $data->username??'-' }}</td>
 							<td>{{ $data->patient->name??'-' }}</td>
 							<td>
-								@if ($data->logo)
-								<img src="/images/featured/{{ $data->logo }}" width="60">
+								@if (!is_null($data->feature_image) && is_file(public_path('images/donation/' . $data->feature_image)))
+								<img src="/images/donation/{{ $data->feature_image }}" width="100">
 								@else
-								<img src="/images/featured/default_logo.png" width="60">
+								<img src="/images/default_logo.png" width="100">
 								@endif
 							</td>
 
