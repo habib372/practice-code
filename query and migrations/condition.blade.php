@@ -114,6 +114,12 @@ $membership_payment_data = App\Models\MembershipPay::with('membership')
                 'payable_amount' => $request->fees
             ]);
 
+ {{-- Merge and sort the collections by date --}}
+        $allConsultations = $visits->merge($outsideDoctorCons)
+            ->sortByDesc(function ($item) {
+                return $item->visit_date ?? $item->date_of_consultation;
+            })->values();
+
 
  $blog = Blog::where('slug', 'LIKE','%'.$slug.'%')->first();
 
