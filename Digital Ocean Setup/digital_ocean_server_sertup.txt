@@ -141,7 +141,7 @@ cd ~
 
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 
-php -r "if (hash_file('sha384', 'composer-setup.php') === '906a13624044b147ff8b322b6742e5f2b5b60b48af40b98d07b340ca6acdc17d36cdd5e2adf1e08dd772bae90a377a2b') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" 
+php -r "if (hash_file('sha384', 'composer-setup.php') === '906a13624044b147ff8b322b6742e5f2b5b60b48af40b98d07b340ca6acdc17d36cdd5e2adf1e08dd772bae90a377a2b') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 
 sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
@@ -153,6 +153,9 @@ cd /var/www/website_folder
 
 composer update or install package same as composer require stripe/stripe-php or any php command
 
+
+
+cd /var/www/website_folder   --for direct access.
 
 
 
