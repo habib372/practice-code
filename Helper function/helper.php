@@ -83,7 +83,7 @@ function getGeolocationData($user_ip)
     }
     // Make a request to the IP geolocation service
     $client = new Client();
-    $response = $client->get('https://api.ipgeolocation.io/ipgeo?apiKey=024d33e025f2425fbd81f274acb3737b&ip=' . $ip);
+    $response = $client->get('https://api.ipgeolocation.io/ipgeo?apiKey=your_api_key=' . $ip);
 
     // Parse the response JSON
     $data = json_decode($response->getBody(), true);

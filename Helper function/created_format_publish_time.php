@@ -1,4 +1,5 @@
 
+
 <!-- just now", "1 minute ago", "5 minutes ago", "1 hour ago", "10 hours ago", "1 day ago", "3 days ago", etc. -->
 <?php
 
@@ -24,7 +25,7 @@ function publishTime($date) {
     }
     else {
         $diffInDays = $timestamp->diffInDays($now);
-        $difference = $localLanguage ? $diffInDays . ($diffInDays > 1 ? ' days' : ' day') . ' ago' :  
+        $difference = $localLanguage ? $diffInDays . ($diffInDays > 1 ? ' days' : ' day') . ' ago' :
         engToBn($diffInDays) . ($diffInDays > 1 ? ' দিন' : ' দিন') . ' আগে';
     }
 
