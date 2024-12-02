@@ -49,6 +49,15 @@ MAIL_ENCRYPTION=ssl
 MAIL_FROM_ADDRESS=null
 MAIL_FROM_NAME="${APP_NAME}"
 
+<!-- success gmail/webmail-->
+MAIL_MAILER=sendmail
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=webmail
+MAIL_PASSWORD=password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=null
+MAIL_FROM_NAME="${APP_NAME}"
 
 On the device or in the app, enter smtp.gmail.com as the server address.
 In the Port field, enter one of the following numbers:
