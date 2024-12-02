@@ -49,13 +49,23 @@ MAIL_ENCRYPTION=ssl
 MAIL_FROM_ADDRESS=null
 MAIL_FROM_NAME="${APP_NAME}"
 
-<!-- success gmail/webmail-->
+<!-- **** success gmail/webmail ***-->
 MAIL_MAILER=sendmail
 MAIL_HOST=smtp.gmail.com
 MAIL_PORT=587
 MAIL_USERNAME=webmail
 MAIL_PASSWORD=password
 MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=null
+MAIL_FROM_NAME="${APP_NAME}"
+
+<!--*** success gmail/webmail ****-->
+MAIL_MAILER=smtp
+MAIL_HOST=mail.pqf.agency
+MAIL_PORT=465
+MAIL_USERNAME=webmail
+MAIL_PASSWORD=password
+MAIL_ENCRYPTION=ssl
 MAIL_FROM_ADDRESS=null
 MAIL_FROM_NAME="${APP_NAME}"
 
