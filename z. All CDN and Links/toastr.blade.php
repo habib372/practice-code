@@ -26,6 +26,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+toastr()->error('Unable to buy a package', 'Error');
+
 
 
 6. <!-- view file (root) -->
