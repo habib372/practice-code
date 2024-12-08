@@ -204,6 +204,18 @@ description', 'slug', 'images', 'content_category_id', 'created_at'])
 ->take(2)
 ->get();
 
+@if ($data->certificate)
+								@if (pathinfo($data->certificate, PATHINFO_EXTENSION) === 'pdf')
+									<a href="{{ asset('images/student_gallery/' . $data->certificate) }}" target="_blank">
+										<img width="50" src="{{ asset('images/pdf-icon.png') }}" alt="PDF Icon">
+									</a>
+								@else
+									<img width="50" src="{{ asset('images/student_gallery/' . $data->certificate) }}" alt="img">
+								@endif
+							@else
+								N/A
+							@endif
+
 
 @section('page_title')
 Primary Care Centre - PCC | All Appointment List
