@@ -58,6 +58,11 @@ $patient = Patient::findOrFail(auth('patient')->id());
 @endif
 
 
+ $othersdiscountPartners = DiscountPartner::with(['district', 'country'])
+    ->whereIn('discount_category', ['food-restaurant', 'grocery', 'life-style', 'others'])
+    ->where('status', 'active')->get();
+
+
 $uri = request()->path(); // Get the request URI path
 
 if (preg_match('#^(en|bn)/promote-ad/.*$#', $uri)) {
