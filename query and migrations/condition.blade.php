@@ -126,10 +126,22 @@ $membership_payment_data = App\Models\MembershipPay::with('membership')
             })->values();
 
 
+
  $blog = Blog::where('slug', 'LIKE','%'.$slug.'%')->first();
+
+
+ @foreach($all_category->skip(5)->take(4) as $category)
+<li><a href="{{url('category_products')}}/{{$category->id}}">{{$category->category_name}}</a>
+</li>
+@endforeach
+
 
  {{Illuminate\Support\Str::lower(Str::of($projecCategory->name)->replace(' ', '-') ??'')}}
 
+
+ @php
+ $url = url('project-details', urlencode(strtolower(str_replace(" ", "-", $data->name))));
+ @endphp
 
   public function projectDetails($slug) {
         // Decode the URL parameter
