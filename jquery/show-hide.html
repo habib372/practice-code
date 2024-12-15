@@ -51,6 +51,22 @@
 </script>
 
 <script>
+        $(document).ready(function () {
+            $('#FileCertificate').hide();
+
+            $('#category').on('change', function () {
+                var category = $(this).val();
+                if (category == 2) {
+                    $('#FileCertificate').show('slow');
+                } else {
+                    $('#FileCertificate').hide('slow');
+                    $('#formFileCertificate').val('');
+                }
+            });
+        });
+    </script>
+
+<script>
     $(document).ready(function () {
         $(document).on('change', '#parentType', function () {
             var parent_type = $('#parentType').val();
@@ -59,23 +75,23 @@
                 $('#referenceNumber').show('slow');
                 $('#trackApplicationStatus').show('slow');
             } else {
-                $('#reference_number').val('');  
-                $('#trackApplication').val('');  
+                $('#reference_number').val('');
+                $('#trackApplication').val('');
                 $('#referenceNumber').hide('slow');
                 $('#trackApplicationStatus').hide('slow');
             }
         });
-   
+
         $(document).on('change', '#parentType', function () {
             var parent_type = $('#parentType').val();
-    
+
             if (parent_type === '6') {
                 $('#passportNo').hide('slow');
-                $('#title').html('Title'); 
+                $('#title').html('Title');
             } else {
-                $('#passport_no').val('');  
+                $('#passport_no').val('');
                 $('#passportNo').show('slow');
-                $('#title').html('Enter Your Name <span class="text-danger">*</span>'); 
+                $('#title').html('Enter Your Name <span class="text-danger">*</span>');
             }
         });
     });
