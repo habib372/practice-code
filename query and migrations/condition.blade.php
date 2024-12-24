@@ -27,11 +27,21 @@ var roleName = '{{ auth()->user()->userRole->name }}';
 
 @if (auth()->user()->user_role_id == 1)
 @if (auth()->user()->userRole()->name == 'admin')
-@if(auth()->user()->userRole->name == 'super-consultant')
 @if (auth('doctor')->check()){}
 @if(auth('patient')->check()){}
+
 {{auth('patient')->user()->name}}
+
 auth('patient')->id()
+
+
+@php
+	$roleName = auth()->user()->userRole->name;
+@endphp
+
+@if ($roleName == 'admin')
+//code
+@endif
 
 @if (Custom::getAuth()->doctor_image)
 
