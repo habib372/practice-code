@@ -68,6 +68,20 @@ $patient = Patient::findOrFail(auth('patient')->id());
 @endif
 
 
+<div class="form-group">
+    <label>Year</label>
+    <select name="year" id="year" class="form-control" required>
+        @php
+        $currentYear = date('Y');
+        for ($i = 0; $i <= 5; $i++) {
+            $year=$currentYear + $i;
+            $selected=($year==$currentYear) ? 'selected' : '' ;
+            echo "<option value='{$year}' {$selected}>{$year}</option>" ; }
+        @endphp
+    </select>
+</div>
+
+
  $othersdiscountPartners = DiscountPartner::with(['district', 'country'])
     ->whereIn('discount_category', ['food-restaurant', 'grocery', 'life-style', 'others'])
     ->where('status', 'active')->get();
