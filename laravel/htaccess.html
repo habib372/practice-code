@@ -88,3 +88,14 @@ RewriteRule . /index.php [L]
 </IfModule>
 
 
+
+<!---folder a upload korle , https://example.com/lifelink -->
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteBase /lifelink   <!--folder name -->
+
+    # Redirect all requests to the public folder
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ public/index.php [L]
+</IfModule>
