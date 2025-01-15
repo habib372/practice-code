@@ -82,6 +82,13 @@ $patient = Patient::findOrFail(auth('patient')->id());
 </div>
 
 
+if ($request->hasFile('image')) {
+    if (file_exists('uploads/slider/' . $get_image->image)) {
+        $delete_location = base_path('public/uploads/slider/'.$get_image->image);
+        unlink($delete_location);
+    }
+}
+
  $othersdiscountPartners = DiscountPartner::with(['district', 'country'])
     ->whereIn('discount_category', ['food-restaurant', 'grocery', 'life-style', 'others'])
     ->where('status', 'active')->get();
