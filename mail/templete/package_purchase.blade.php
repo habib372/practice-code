@@ -109,7 +109,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <img height="50" src="https://example.com/uploads/header/medilogo.png" alt=" Logo">
+            <img height="50" src="https://example.com/header/medilogo.png" alt=" Logo">
         </div>
 
 
@@ -132,7 +132,7 @@
         </p>
 
         <div class="signup">
-            <a class="login-button" href="https://example.com/uploads/pds/pds-2024.pdf" role="button">Download PDS</a>
+            <a class="login-button" href="https://example.com/pds/pds-2024.pdf" role="button">Download PDS</a>
         </div>
 
         <p>If you have any questions or feedback, please contact our support team at</p>
@@ -157,7 +157,7 @@
          <br/> <br/>
 
         <div class="powered_by">
-            <i>Poweredby Patient Management System from [Company Name]</i>
+            <i>Poweredby [Company Name]</i>
         </div>
 
     </div>

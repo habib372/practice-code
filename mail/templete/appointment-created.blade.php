@@ -98,7 +98,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <img height="50" src="https://example.com/uploads/header/5.png" alt=" Logo">
+            <img height="50" src="https://example.com/header/5.png" alt=" Logo">
         </div>
 
 
@@ -139,7 +139,7 @@
          <br/> <br/>
 
         <div class="powered_by">
-            <i>Poweredby Patient Management System from [Company Name]</i>
+            <i>Poweredby  [Company Name]</i>
         </div>
 
     </div>
