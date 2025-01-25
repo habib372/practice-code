@@ -93,3 +93,25 @@ public function send_message(Request $request)
         return back()->with('success', 'Mail Sent Successfully');
     }
 
+
+
+    <!-- route -->
+     Route::get('/test-email', 'TestEmailController@sendTestEmail');
+
+    <!-- route -->
+     public function sendTestEmail()
+    {
+        Mail::raw('This is a test email from Laravel!', function ($message) {
+            $message->to('email@gmail.com')
+            ->subject('Test Email');
+        });
+        return "Test email sent successfully!";
+    }
+
+     public function sendTestEmail()
+    {
+        Mail::send('emails.email_templete', ['data' => $data], function ($message) use ($data) {
+            $message->to($data->email)->subject('mail subject');
+        });
+        return "Test email sent successfully!";
+    }
