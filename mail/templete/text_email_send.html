@@ -1,0 +1,25 @@
+<!--route-->
+Route::get('/test-email', 'Frontend\PageController@sendTestEmail');
+
+<!--controller-->
+public function sendTestEmail()
+    {
+        Mail::raw('This is a test email from Laravel!',
+            function ($message) {
+                $message->to('info@example.com')
+                ->subject('Test Email');
+            });
+            return "Test email sent successfully!";
+    }
+<!-- or -->
+ public function sendTestEmail()
+    {
+        Mail::send('emails.test_email_templete' , ['name' => 'Test Email'],
+            function ($message) {
+                $message->to('info@example.com')
+                    ->subject('Test Email');
+            });
+            return "Test email sent successfully!";
+
+    }
+
