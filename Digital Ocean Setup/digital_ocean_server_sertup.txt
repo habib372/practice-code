@@ -1,7 +1,7 @@
 
 ###########  Digital Ocean setup  #########
 
----------- install apache2 -------------
+####=========== install apache2  ===========####
 ssh root@159.79.65.21
 yes
 password
@@ -66,7 +66,7 @@ sudo a2ensite example.com.conf
 sudo systemctl reload apache2
 
 
-------------- install mysql --------------
+####=========== install mysql ===========####
 sudo apt update
 sudo apt install mysql-server
 
@@ -75,7 +75,7 @@ restart mysql:  sudo systemctl restart mysql
 status check: 	sudo systemctl status mysql
 
 
----------Out-Of-Memory (OOM) kill error solved:--------------
+####=========== Out-Of-Memory (OOM) kill error solved: ===========####
 The oom-kill error indicates that the MySQL server was killed by the system's Out-Of-Memory (OOM) killer due to insufficient memory. This is a common issue on systems with low memory resources, like your Droplet with 512MB of RAM.
 
 Here are some steps to address this:
@@ -102,8 +102,7 @@ sudo systemctl restart mysql
 sudo systemctl status mysql
 
 
-
------------- export and import existing database: --------
+####=========== export and import existing database: ===========####
 **export databse::
 mysqldump -u your_local_user -p your_local_database > /var/www/database_export.sql
 
@@ -111,26 +110,25 @@ mysqldump -u your_local_user -p your_local_database > /var/www/database_export.s
 mysql -u your_db_user -h your_digitalocean_db_host -P port_number -p your_db_name < /path/to/your_database.sql
 
 
---------------example--------------
+####=========== example ===========####
 export:  mysqldump -u example_db_user -p example_db > /var/www/database_export.sql
 
 import:  mysql -u example_db_user -h db-mysql-sgp2-36581-do-user-36528749-0.c.db.ondigitalocean.com -P 10560 -p example_db < /var/www/example_db.sql
 
 
 
---------------ERROR SOLVE--------------
+####=========== ERROR SOLVE ===========####
 error: Can't write image data to path (/var/www/example.com/public/images/photo/imgage.png)
 
 solution:  sudo chown -R www-data:www-data /var/www/example.com/public/images/photo/
            sudo chmod -R 755 /var/www/example.com/public/uploads/outside_visit_attachments/
 
 
---------------Make file or folder--------------
+####=========== Make file or folder ===========####
 make folder:  mkdir -p /var/www/example.com/public/images/folder_name/
 
 
-
-####--------composer install and phpcli::---------####
+####=========== composer install and phpcli:: ===========####
 ssh root@your_droplet_ip
 
 sudo apt update
@@ -149,13 +147,19 @@ php -r "unlink('composer-setup.php');"
 
 composer --version
 
-cd /var/www/website_folder
+cd /var/www/website_path
 
 composer update or install package same as composer require stripe/stripe-php or any php command
 
 
 
-cd /var/www/website_folder   --for direct access.
+cd /var/www/website_path   --for direct access.
+
+
+####========== Run Cronjob: ===========####
+cd /var/www/website_path
+crontab -e
+* * * * * php /var/www/website_path/artisan schedule:run >> /dev/null 2>&1
 
 
 
