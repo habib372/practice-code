@@ -162,4 +162,11 @@ crontab -e
 * * * * * php /var/www/website_path/artisan schedule:run >> /dev/null 2>&1
 
 
+##=========== check all folder::============
+ls -d /var/www/*/
 
+
+##=========== Password Authentication::============
+nano /etc/ssh/sshd_config
+PasswordAuthentication yes
+Y > Enter
