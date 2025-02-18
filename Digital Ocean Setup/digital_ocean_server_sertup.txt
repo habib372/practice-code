@@ -163,3 +163,18 @@ crontab -e
 
 
 
+nano /etc/ssh/sshd_config
+PasswordAuthentication no = PasswordAuthentication yes
+
+
+showing all files and folder,
+-------------------------
+ls -la /var/www/
+
+
+
+
+
+
+
+======apache install======
