@@ -156,19 +156,23 @@ composer update or install package same as composer require stripe/stripe-php or
 cd /var/www/website_path   --for direct access.
 
 
-####========== Run Cronjob: ===========####
+---------- Run Cronjob: ----------####
 cd /var/www/website_path
 crontab -e
 * * * * * php /var/www/website_path/artisan schedule:run >> /dev/null 2>&1
 
 
-##=========== check all folder::============
+---------- check all folder::------------
 ls -d /var/www/*/
 --or--
 ls -la /var/www/
 
 
-##=========== Password Authentication::============
+----------  new folder create ----------
+sudo mkdir /var/www/lifelinkmedicalgroup
+
+
+---------- Password Authentication:: ----------
 nano /etc/ssh/sshd_config
 PasswordAuthentication yes
 Y > Enter
@@ -177,13 +181,10 @@ PasswordAuthentication no = PasswordAuthentication yes
 
 
 
-sudo mkdir /var/www/lifelinkmedicalgroup
 
+###======== Apache install ========##
 
-
-###======apache install======##
-
-check installor not:
+check apache install or not:
 ---------
 apache2 -v
 
@@ -259,17 +260,17 @@ sudo nano /var/www/lifelinkmedicalgroup/.env
 Set the APP_URL, database credentials, and other required configurations.
 
 13. Set Up DNS:
--------------
+---------
 Ensure that your domain (e.g., lifelinkmedicalgroup.com) points to your DigitalOcean droplet's IP address. You can configure this in your domain registrar's DNS settings.
 
 14. Test the Setup:
--------------
+---------
 http://your_domain.com
 
 
 
 1. Optional: Secure with SSL:
---------
+---------
 sudo apt install certbot python3-certbot-apache
 sudo certbot --apache -d lifelinkmedicalgroup.com
 
