@@ -152,7 +152,7 @@ cd /var/www/website_path
 composer update or install package same as composer require stripe/stripe-php or any php command
 
 
-
+----------------
 cd /var/www/website_path   --for direct access.
 
 
@@ -164,9 +164,118 @@ crontab -e
 
 ##=========== check all folder::============
 ls -d /var/www/*/
+--or--
+ls -la /var/www/
 
 
 ##=========== Password Authentication::============
 nano /etc/ssh/sshd_config
 PasswordAuthentication yes
 Y > Enter
+nano /etc/ssh/sshd_config
+PasswordAuthentication no = PasswordAuthentication yes
+
+
+
+sudo mkdir /var/www/lifelinkmedicalgroup
+
+
+
+###======apache install======##
+
+check installor not:
+---------
+apache2 -v
+
+
+1. Install Apache::
+---------
+sudo apt update
+sudo apt install apache2
+
+2. Enable and start Apache:
+---------
+sudo systemctl enable apache2
+sudo systemctl start apache2
+
+3. Install PHP and Required Extensions:
+---------
+sudo apt install php libapache2-mod-php php-mysql php-curl php-json php-mbstring php-xml php-zip php-bcmath php-tokenizer php-pear php-dev
+
+4.Restart Apache after installation:
+---------
+sudo systemctl restart apache2
+
+5. Install Composer:
+---------
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+
+6. Deploy the Laravel Application
+---------
+cd /var/www
+sudo composer create-project --prefer-dist laravel/laravel lifelinkmedicalgroup
+
+7.Set the correct permissions:
+---------
+sudo chown -R www-data:www-data /var/www/lifelinkmedicalgroup
+sudo chmod -R 755 /var/www/lifelinkmedicalgroup
+sudo chmod -R 755 /var/www/lifelinkmedicalgroup/storage
+sudo chmod -R 755 /var/www/lifelinkmedicalgroup/bootstrap/cache
+
+8.Create a New Virtual Host for Laravel:
+---------
+sudo nano /etc/apache2/sites-available/lifelinkmedicalgroup.conf
+
+9.Add the following configuration:
+---------
+<VirtualHost *:80>
+    ServerAdmin admin@lifelinkmedicalgroup.com
+    ServerName lifelinkmedicalgroup.com
+    DocumentRoot /var/www/lifelinkmedicalgroup/public
+
+    <Directory /var/www/lifelinkmedicalgroup/public>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+
+10.Enable the Laravel Site:
+---------
+sudo a2ensite lifelinkmedicalgroup.conf
+
+11.Reload Apache:
+---------
+sudo systemctl reload apache2
+
+12. Configure .env File:
+---------
+sudo nano /var/www/lifelinkmedicalgroup/.env
+Set the APP_URL, database credentials, and other required configurations.
+
+13. Set Up DNS:
+-------------
+Ensure that your domain (e.g., lifelinkmedicalgroup.com) points to your DigitalOcean droplet's IP address. You can configure this in your domain registrar's DNS settings.
+
+14. Test the Setup:
+-------------
+http://your_domain.com
+
+
+
+1. Optional: Secure with SSL:
+--------
+sudo apt install certbot python3-certbot-apache
+sudo certbot --apache -d lifelinkmedicalgroup.com
+
+2. Verify Both Sites:
+---------
+WordPress: http://your-droplet-ip (or your WordPress domain)
+Laravel: http://lifelinkmedicalgroup.com
+
+Both sites should now be accessible.
