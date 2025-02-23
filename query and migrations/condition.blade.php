@@ -12,6 +12,7 @@ if (! in_array(auth()->user()->user_role_id, [6, 7])) {}
 
 if (in_array(auth()->user()->user_role_id, [6,7])){}
 
+{{ auth()->user()->userRole->name === 'admin' }}
 
 if ($row->status == 'Requested' || $row->status == 'Scheduled') {}
 
