@@ -1,0 +1,3 @@
+
+1. Termious for file management
+2. HeidiSQL for database management
