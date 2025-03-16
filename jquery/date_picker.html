@@ -1,3 +1,4 @@
+
 <div class="col-lg-6 col-md-6 col-12">
     <div class="form-group">
         <label for="patient_date_of_birth">Date of Birth <span class="text-danger">*</span></label>
@@ -5,19 +6,76 @@
     </div>
 </div>
 
+<style>
+        /* Custom styles for the datepicker */
+        .datepicker {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .datepicker table {
+            width: 100%;
+            margin: 0;
+        }
+        .datepicker table tr td,
+        .datepicker table tr th {
+            text-align: center;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .datepicker table tr td.day:hover,
+        .datepicker table tr td.day.focused {
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+        .datepicker table tr td.active,
+        .datepicker table tr td.active:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .datepicker table tr td.today {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .datepicker table tr td.disabled,
+        .datepicker table tr td.disabled:hover {
+            background-color: #e9ecef;
+            color: #6c757d;
+            cursor: not-allowed;
+        }
+        .datepicker table tr td.range,
+        .datepicker table tr td.range:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .datepicker table tr td.range-start,
+        .datepicker table tr td.range-start:hover,
+        .datepicker table tr td.range-end,
+        .datepicker table tr td.range-end:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
+		#DateOfBirth{
+			padding: 6px 12px;
+		}
+  </style>
 
-var date = new Date();
-  date.setDate(date.getDate() - 1);
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
-  $(".datepicker").datepicker({
-    autoclose: true,
-    format: "yyyy-mm-dd",
-    minDate: new Date(),
-    orientation: "bottom left",
-    templates: {
-      leftArrow: '<i class="la la-angle-left"></i>',
-      rightArrow: '<i class="la la-angle-right"></i>',
-    },
-});
+<script>
+    var date = new Date();
+      date.setDate(date.getDate() - 1);
 
+      $(".datepicker").datepicker({
+        autoclose: true,
+        format: "yyyy-mm-dd",
+        minDate: new Date(),
+        orientation: "bottom left",
+        templates: {
+          leftArrow: '<i class="la la-angle-left"></i>',
+          rightArrow: '<i class="la la-angle-right"></i>',
+        },
+    });
+</script>
 
