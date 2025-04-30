@@ -7,8 +7,17 @@
 
 4. UPDATE contents SET `order` = id;
 
+
+<!-- 1-1000 -->
 SET @serial = 0;
-UPDATE contents SET `order` = (@serial := @serial + 1); //1-1000
+UPDATE contents SET `order` = (@serial := @serial + 1);
+
+<!-- JBFH-0001, JBFH-0002 -->
+SET @row_num = 0;
+UPDATE patients
+SET unique_id = CONCAT('JBFH-', LPAD(@row_num := @row_num + 1, 4, '0'))
+ORDER BY id;
+
 
 
 
