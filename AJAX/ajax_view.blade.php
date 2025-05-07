@@ -38,7 +38,7 @@
             });
         </script>
 
-        <!-- Membership ajax -->
+        <!--find Membership ajax -->
         <script type="text/javascript">
             $('#membership_id').change(function(){
                 var membershipID = $(this).val();
