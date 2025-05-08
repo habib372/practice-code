@@ -26,8 +26,7 @@
                             }
                         }
                     });
-                } else {
-                    // Reset all fields if no patient is selected
+                } else {  // Reset all fields if no patient is selected
                     $("#name").val('');
                     $("#email").val('');
                     $("#phone").val('');
