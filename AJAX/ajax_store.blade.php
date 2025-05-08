@@ -11,7 +11,6 @@
     </div>
 </form>
 
-
 <!--Ajax script -->
     <script>
       ('#saveAppointment').click(function(){
@@ -45,13 +44,11 @@
         });
  </script>
 
-
 <!-- Route-->
 Route::post('/service/store', 'Front\ServiceController@store')->name('serviceStore');
 
 <!-- Controller-->
 <?php
-
     public function store(Request $request)
     {
         $data = Service::create([
