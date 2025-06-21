@@ -7,8 +7,10 @@
 my.ini file:
 
 search: [mysqld]
+max_allowed_packet = 256M
 wait_timeout = 600
-max_allowed_packet = 64M
+net_read_timeout = 300
+net_write_timeout = 300
 
 
 #2. PHP: Can't import database through phpmyadmin file size too large
