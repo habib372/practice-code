@@ -1,5 +1,5 @@
 <!-- Check which rows will be deleted	 -->
-SELECT * FROM 'patients' WHERE 'provider_id' IS NULL;
+SELECT * FROM patients WHERE provider_id IS NULL;
 
 <!-- Correct delete command	 -->
-DELETE FROM 'patients' WHERE 'provider_id' IS NULL;
+DELETE * FROM patients WHERE provider_id IS NULL;
