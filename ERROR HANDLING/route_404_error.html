@@ -1,0 +1,12 @@
+<!-- wrong -->
+Route::resource('/data', 'DataController');
+
+Route::get('/data/report', ['as' => 'patient/report', 'uses' => 'DataController@DataReport']);
+
+<!-- Get route return 404 error because resource method call first and skip get method, we have to change route name or get method stay first position.  -->
+
+
+<!-- correct -->
+Route::get('/data/report', ['as' => 'patient/report', 'uses' => 'DataController@DataReport']);
+
+Route::resource('/data', 'DataController');
