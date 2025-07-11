@@ -22,3 +22,15 @@ max_execution_time = 259200
 max_input_time = 259200
 memory_limit = 1000M
 
+
+#3. GD Library error:: GD Library extension not available with this PHP installation
+Step 1: Enable GD Library in PHP
+Open your XAMPP installation folder.
+
+Usually: C:\xampp\php\php.ini
+
+Open php.ini file in a text editor (e.g., Notepad).
+
+Uncomment the line by removing the semicolon ;. So it becomes: extension=gd
+
+Step 2: Restart Apache
