@@ -19,7 +19,7 @@ $products = Product::where('subcategory_id',$subcategory->id)->where('status',0)
 
 
 <!-- bootstrap load na nila 8.0-->
-<!-- appservice provider.php -->
+<!-- app/Providers/AppServiceProvider.php -->
 use Illuminate\Pagination\Paginator;
 
     public function boot()
