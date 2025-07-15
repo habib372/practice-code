@@ -188,3 +188,31 @@
                 }
             });
         </script>
+
+
+<script>
+
+    $(document).ready(function () {
+        $(document).on('change', '#gallery_type', function () {
+            var type = $('#gallery_type').val();
+
+            if (type === 'photo') {
+                $('#photoUpload').show('slow');
+                $('#date_time').hide('slow').find('input').val('');
+                $('#location').hide('slow').find('input').val('');
+                $('#description').hide('slow');
+                $('#summernote').summernote('code', '');
+            } else if (type === 'event') {
+                $('#photoUpload').show('slow');
+                $('#date_time').show('slow');
+                $('#location').show('slow');
+                $('#description').show('slow');
+            } else {
+				$('#photoUpload').val('').hide('slow');
+                $('#date_time').val('').hide('slow');
+                $('#location').val('').hide('slow');
+                $('#description').val('').hide('slow');
+                $('#summernote').summernote('code', '');
+			}
+        });
+    });
