@@ -206,12 +206,15 @@ $membership_payment_data = App\Models\MembershipPay::with('membership')
     var title_en = stripHTML(table.title_en);
 </script>
 
+
+
 <!-- date time format -->
 <!-- Updated by: Habibur Rahman  -->
 <strong>Last Updated By</strong> : {{ $user->updatedBy->name??'' }}<br />
 
 <strong>Last updated on</strong> : {{ date("h:i A \o\\n d F Y", strtotime($user->updated_at)) }}
 <!-- Last Updated On: 06:20 PM on 11 September 2023  -->
+
 
 
 $service_provider_id = (auth()->user()->user_role_id == 3) ? auth()->user()->service_provider_id :
@@ -230,8 +233,8 @@ return $row->doctor->title_en . ' ' . $row->doctor->name_en;
 public function index()
 {
 if (request()->ajax()) {
-$data = Specialist::select('specialists.*');
-return datatables()->eloquent($data)->make(true);
+    $data = Specialist::select('specialists.*');
+    return datatables()->eloquent($data)->make(true);
 }
 return view('admin.specialist.index');
 }
