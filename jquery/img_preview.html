@@ -50,6 +50,3 @@
         });
     </script>
 
- ->join('service_provider_types as spt', 'sp.service_provider_type_id', '=', 'spt.id')
-
-)->where('spt.id', auth()->user()->service_provider_type_id)
