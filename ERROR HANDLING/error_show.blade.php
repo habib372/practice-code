@@ -9,7 +9,7 @@
     @if ($errors->any())
         <div class="alert alert-error alert-danger text-center mb-0 mt-3" role="alert" id="danger-alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fas fa-times"></i></button>
-            <strong>Whoops!</strong> There were some problems with your input. Please Check all fields.
+            <strong>Whoops!</strong> There were some problems with your input. Please Check all fields.i
         </div>
     @endif
 </div>
