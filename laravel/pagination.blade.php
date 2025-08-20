@@ -31,7 +31,40 @@ Paginator::useBootstrap();
 
 
 $all_blog = Blog::paginate(8); // 8 posts per page
-
+<style>
+    .pagination_wrap ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0;
+        list-style: none;
+    }
+    .pagination_wrap ul li {
+        padding: 5px;
+    }
+    .pagination_wrap ul li a {
+        height: 50px;
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 600;
+        color: #0B3948;
+        border: 1px solid #EEE5E5;
+        background-color: #fff;
+        -webkit-transition: all 0.3s ease-out 0s;
+        -o-transition: all 0.3s ease-out 0s;
+        transition: all 0.3s ease-out 0s;
+        z-index: 1;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        overflow: hidden;
+    }
+</style>
 <!---Custom design paginaton-->
 <div class="pagination_wrap">
     <ul>
