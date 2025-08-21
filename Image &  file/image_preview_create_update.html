@@ -1,13 +1,43 @@
 <!-- create -->
-<div class="col-lg-3 text-center">
-    <img src="" alt="" width="150" id="output_image_1">
-</div>
-<div class="col-lg-3 text-center">
-    <img src="" alt="" width="150" id="output_image_2">
+<div class="form-group">
+    <div class="row">
+        <div class="col">
+            <label>Image</label>
+            <input type="file" name="image" class="form-control" id="upload_img">
+        </div>
+        <div class="col">
+            <img src="{{ asset('uploads/not-found.png') }}" id="upload_image_preview" height="100" style="padding-top: 5px;" />
+        </div>
+    </div>
 </div>
 
+<!-- Update -->
+<div class="form-group">
+    <div class="row">
+        <div class="col">
+            <label>Image</label>
+            <input type="file" name="image" class="form-control " id="update_image">
+        </div>
+        <div class="col">
+            <img width="150px" src="{{asset('uploads/service')}}/{{$service->image??'not-found.png'}}" style="padding-top:10px;" id="update_img_preview">
+        </div>
+    </div>
+</div>
 
-<!-- update -->
+<!-- Update using modal-->
+<div class="form-group">
+    <div class="row">
+        <div class="col">
+            <label>Image</label>
+            <input type="file" name="image" class="form-control update_img" data-preview="#update_img_preview_{{$service->id}}">
+        </div>
+        <div class="col">
+            <img width="150px" src="{{asset('uploads/service')}}/{{$service->image??'not-found.png'}}" style="padding-top:10px;" id="update_img_preview_{{$service->id}}">
+        </div>
+    </div>
+</div>
+
+<!-- view -->
 <div class="col-lg-3 text-center">
     @if (file_exists('images/slider/'.$slider->slider_image))
     <img src="/images/slider/{{$slider->slider_image}}" width="150" id="output_image">
@@ -34,6 +64,7 @@
     });
 </script>
 
+
  <!-- image preview create or update [Multiple images] -->
  <script type="text/javascript">
         function readURL(input, target) {
@@ -46,11 +77,18 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        $("#logo").change(function(){          // name = "logo"
-            readURL(this, '#output_image_1');    // id = "output_image_1"
+        //create
+        $("#upload_img").change(function(){        // input id
+            readURL(this, '#upload_image_preview');      // preview id
         });
 
-        $("#featured_image").change(function(){     // name = "featured_image"
-            readURL(this, '#output_image_2');         // id = "output_image_2"
+        //update
+        $("#update_img").change(function(){        // input id
+            readURL(this, '#update_image_preview');      // preview id
         });
+
+        //update using modal
+        $(".update_img").change(function(){           // input id
+			readURL(this, $(this).data("preview"));   // preview id
+		});
     </script>
