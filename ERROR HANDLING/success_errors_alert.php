@@ -80,6 +80,7 @@ return back()->with('success','You have successfully file uplaod.');
 </div>
 @endif
 
+<!-- alert bootstrap 4.x-->
 @if ($errors->any())
 <div class="alert alert-error alert-danger alert-dismissible fade show text-center" role="alert" id="danger-alert">
 	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></button>
@@ -87,6 +88,20 @@ return back()->with('success','You have successfully file uplaod.');
 </div>
 @endif
 
+
+<!-- alert bootstrap 5.2x-->
+@if ($errors->any())
+<div class="container">
+	<div class="row">
+		<div class="col-lg-10 m-auto">
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				<strong>Whoops!</strong> There were some problems with your input. Please Check all fields.
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		</div>
+	</div>
+</div>
+@endif
 
 
 <script>
