@@ -1,6 +1,20 @@
 <?php
 
 $data = $request->validate([
+    'first_name' => ['required', 'string', 'max:100', 'regex:/^[a-zA-Z\s\-\.]+$/'],
+    'last_name' => ['required', 'string', 'max:100', 'regex:/^[a-zA-Z\s\-\.]+$/'],
+    'ndis_number' => ['required', 'string', 'max:50', 'regex:/^[0-9A-Za-z\-]+$/'],
+    'dob' => ['required', 'date', 'before:today'],
+    'consent_to' => ['required', 'string'],
+    'person_email' => ['nullable', 'email', 'max:255'],
+    'person_phone' => ['nullable', 'string', 'max:30', 'regex:/^[0-9\+\-\s\(\)]+$/'],
+    'guardianship' => ['required', 'in:Yes,No'],
+    'plan_end_date' => ['nullable', 'date'],
+    'main_contact_street_address' => ['nullable', 'string', 'max:255'],
+    'main_contact_city' => ['nullable', 'string', 'max:100', 'regex:/^[a-zA-Z\s\-\.]+$/'],
+    'main_contact_state' => ['nullable', 'string', 'max:100', 'regex:/^[a-zA-Z\s\-\.]+$/'],
+    'main_contact_postcode' => ['nullable', 'string', 'max:20', 'regex:/^[0-9A-Za-z\-]+$/'],
+
     'title' => 'required|max:255',
     'tag' => 'nullable|max:1000',
     'code' => 'required|max:255',
