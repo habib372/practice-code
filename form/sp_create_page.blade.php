@@ -20,7 +20,7 @@
 						</div>
 					</div>
                     <!--begin::Form-->
-					<form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed" action="{{ route('tsr-admin.service-provider.store') }}" method="POST" enctype="multipart/form-data">
+					<form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed" action="" method="POST" enctype="multipart/form-data">
 						@csrf
 						<div class="m-portlet__body">
 							<div class="form-group m-form__group row">
