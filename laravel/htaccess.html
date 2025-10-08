@@ -1,10 +1,18 @@
 
-<!-- website.com/public to website.com -->
+<!-- website.com/public to website.com - default in cpanel-->
 <IfModule mod_rewrite.c>
   RewriteEngine on
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php74” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
+
 
 
 <!-- website.com/public to website.com and http://website.com/ to https://website.com/-->
@@ -19,6 +27,20 @@
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
+
+
+<!---folder a upload korle , https://example.com/website -->
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteBase /website_folder_path   <!--folder name -->
+
+    # Redirect all requests to the public folder
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ public/index.php [L]
+</IfModule>
+
+
 <!-- Redirect HTTP to HTTPS in public foler -->
 <IfModule mod_rewrite.c>
     RewriteEngine On
@@ -60,48 +82,4 @@ RewriteCond %{REQUEST_URI} folder
 RewriteRule ^(.*)$ https://www.yourdomain.com/folder/$1 [R,L]
 
 
-<!-- auto create -->
-<IfModule mod_rewrite.c>
-  RewriteEngine on
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteRule ^(.*)$ public/$1 [L]
-</IfModule>
 
-# php -- BEGIN cPanel-generated handler, do not edit
-# Set the “ea-php74” package as the default “PHP” programming language.
-<IfModule mime_module>
-  AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
-</IfModule>
-# php -- END cPanel-generated handler, do not edit
-
-
-sarainterior
-<FilesMatch ".(py|exe|php)$">
- Order allow,deny
- Deny from all
-</FilesMatch>
-<FilesMatch "^(about.php|radio.php|index.php|content.php|lock360.php|admin.php|wp-login.php|wp-l0gin.php|wp-theme.php|wp-scripts.php|wp-editor.php|mah.php|jp.php|ext.php)$">
- Order allow,deny
- Allow from all
-</FilesMatch>
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteBase /
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
-</IfModule>
-
-
-
-<!---folder a upload korle , https://example.com/lifelink -->
-<IfModule mod_rewrite.c>
-    RewriteEngine on
-    RewriteBase /lifelink   <!--folder name -->
-
-    # Redirect all requests to the public folder
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ public/index.php [L]
-</IfModule>
