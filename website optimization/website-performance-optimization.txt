@@ -1,0 +1,110 @@
+
+Website performance optimization for production on cpanel:::
+
+composer install --optimize-autoloader --no-dev
+
+1. Enable OPcache on Server
+
+On cPanel, make sure OPcache is enabled in Select PHP Version → Extensions.
+Or add this to php.ini:
+
+opcache.enable=1
+opcache.memory_consumption=128
+opcache.max_accelerated_files=10000
+opcache.validate_timestamps=0
+
+
+2. Optimize Laravel Configuration
+
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+php artisan optimize
+
+
+3. Use indexing in MySQL
+
+ALTER TABLE patients ADD INDEX (email);
+ALTER TABLE patients ADD INDEX (mobile);
+ALTER TABLE appointments ADD INDEX (doctor_id);
+
+
+4. Optimize Database Queries
+
+Check your Eloquent queries and relationships:
+✅ Use with() to prevent N+1 queries
+
+
+5. Reduce Middleware and Debug Load
+
+APP_ENV=production
+APP_DEBUG=false
+
+
+6. Optimize Frontend Loading
+
+* Combine/minify your CSS and JS (e.g., use npm run prod or Laravel Mix/Vite).
+* Use CDN for libraries (Bootstrap, jQuery, etc.).
+* Compress images before upload (use TinyPNG or Image Intervention).
+
+minifying your CSS and JS
+Laravel Uses Laravel Mix (Webpack) or Vite
+
+npm install
+npm run prod
+
+You’ll see optimized files in:
+
+public/js/app.js
+public/css/app.css
+
+Replace your old file links with:
+
+<link rel="stylesheet" href="{{ mix('css/app.css') }}">
+<script src="{{ mix('js/app.js') }}"></script>
+
+
+
+7. Use Cache for Data
+
+If you load the same data often (like doctor lists, departments, etc.), cache it:
+
+$doctors = Cache::remember('doctors', 3600, function() {
+    return Doctor::all();
+});
+
+
+8. Queue Heavy Jobs
+
+Move heavy tasks (email sending, PDF generation, report creation) to queues:
+
+php artisan make:job SendReportSMS
+php artisan queue:table
+php artisan migrate
+php artisan queue:work
+
+cron jobs for cpanel:
+* * * * * /usr/local/bin/ea-php81 /home2/webroot/public_html/artisan queue:work --stop-when-empty >> /dev/null 2>&1
+
+0 * * * * /usr/local/bin/ea-php81 /home2/webroot/public_html/artisan queue:retry all >> /dev/null 2>&1
+
+
+9. Regularly Clean Logs & Cache
+Run these once a week:
+
+php artisan log:clear
+php artisan cache:clear
+php artisan view:clear
+php artisan config:clear
+
+
+10. After deployment or any update, always run these commands:
+php artisan optimize:clear
+php artisan optimize
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
+
+
+
