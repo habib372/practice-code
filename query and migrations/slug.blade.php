@@ -54,3 +54,21 @@ public function projectDetails($slug) {
         $string = str_replace('/',$separator, $string);
         return $string;
     }
+
+
+
+//Generate slug automatically when saving:
+// In your Blog model (app/Models/Blog.php):
+
+use Illuminate\Support\Str;
+
+protected static function boot()
+{
+    parent::boot();
+
+    static::saving(function ($blog) {
+        if (empty($blog->slug)) {
+            $blog->slug = Str::slug($blog->title);
+        }
+    });
+}
