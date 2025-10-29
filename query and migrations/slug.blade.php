@@ -2,7 +2,7 @@
  @foreach( $alldata as $data)
 
  @php
- $url = url('project-details', urlencode(strtolower(str_replace(" ", "-", $data->name))));
+$url = url('project-details', ['id'=>$blog->id,'slug'=>urlencode(strtolower(str_replace(" ", "-", $blog->title)))]);
  @endphp
 
  <div class="cs-portfolio__item js-portfolio-item style-3 no-space masonry col-12 filter-{{($data->is_featured == 1) ? 'featured': 'notfeatured' }}  year-{{$data->year}} status-{{($data->is_completed == 1) ? 'completed': 'incompleted' }} cs-5-col"
@@ -25,19 +25,19 @@
 @endforeach
 
 
-<?php
+@php
 //  <!-- route -->
-Route::get('/project-details/{slug}','CommonController@projectDetails')->name('projectDetails');
+Route::get('/project-details/{id}/{slug}','CommonController@projectDetails')->name('projectDetails');
 
 
 // <!-- controller -->
-public function projectDetails($slug) {
+public function projectDetails($id, $slug) {
         // Decode the URL parameter
-        $name = urldecode(str_replace("-", " ", $slug));
+        $name = Project::findOrFail($id);
 
         // Use parameter binding to handle special characters
         $data = Project::with('projectimage')
-            ->where('name', $name)
+            ->where('id', $name->id)
             ->first();
 
         return view('website.page.projectDetails', compact('data'));
