@@ -36,4 +36,12 @@ php artisan view:cache
 php artisan optimize
 
 
+Route::get('/clear-cache', function () {
+    Artisan::call('optimize:clear');
+    Artisan::call('config:cache');
+    Artisan::call('route:cache');
+    Artisan::call('view:cache');
+    return 'Cache Cleared';
+});
+
 <!-- ERROR: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) . DB_HOST set to localhost -->
