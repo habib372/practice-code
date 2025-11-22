@@ -46,76 +46,42 @@
 
 
 
-
-
-
-
-
-
-
 /* ========== Global / Default Styles (Desktop First or Mobile First) ========== */
 /* Write your common styles here. They apply to all screen sizes unless overridden. */
 
 
 /* ========== Extra Small Devices (Mobile Portrait) ========== */
-/* 0px - 480px */
 @media (max-width: 480px) {
-    /* Example:
-  body { font-size: 14px; }
-  header { flex-direction: column; }
-  */
+
 }
 
 /* ========== Small Devices (Mobile Landscape / Small Mobiles) ========== */
-/* 481px - 767px */
 @media (min-width: 481px) and (max-width: 767px) {
-    /* Example:
-  body { font-size: 15px; }
-  nav ul { flex-direction: column; }
-  */
+
 }
 
 /* ========== Medium Devices (Tablets) ========== */
-/* 768px - 1024px */
 @media (min-width: 768px) and (max-width: 1024px) {
-    /* Example:
-  body { font-size: 16px; }
-  .sidebar { display: none; }
-  */
+
 }
 
 /* ========== Large Devices (Small Laptops / Notebooks) ========== */
-/* 1025px - 1366px */
 @media (min-width: 1025px) and (max-width: 1366px) {
-    /* Example:
-  body { font-size: 17px; }
-  .container { max-width: 1100px; }
-  */
+
 }
 
 /* ========== Extra Large Devices (Standard Desktops / Laptops) ========== */
-/* 1367px - 1600px */
+
 @media (min-width: 1367px) and (max-width: 1600px) {
-    /* Example:
-  body { font-size: 18px; }
-  .container { max-width: 1300px; }
-  */
+
 }
 
 /* ========== Ultra Wide Monitors ========== */
-/* 1601px - 1920px */
 @media (min-width: 1601px) and (max-width: 1920px) {
-    /* Example:
-  body { font-size: 19px; }
-  .container { max-width: 1500px; }
-  */
+
 }
 
 /* ========== Super Ultra-Wide Monitors ========== */
-/* 1921px - 2560px */
 @media (min-width: 1921px) and (max-width: 2560px) {
-    /* Example:
-  body { font-size: 20px; }
-  .container { max-width: 1800px; margin: 0 auto; }
-  */
+
 }
