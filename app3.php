@@ -1,22 +1,21 @@
-
 .head2_mid_logo {
-    display: flex;
+display: flex;
 }
 .logo_subtitle {
-    margin-left: 20px;
+margin-left: 20px;
 }
 .logo_subtitle h2 {
-    margin: 10px 0 0;
-    font-weight: 700;
+margin: 10px 0 0;
+font-weight: 700;
 }
 .logo_subtitle h2 {
-    margin: 10px 0 0;
-    font-weight: 700;
+margin: 10px 0 0;
+font-weight: 700;
 }
 .logo_subtitle p {
-    margin: 0 !important;
-    font-family: monospace;
-    letter-spacing: 0.22rem;
+margin: 0 !important;
+font-family: monospace;
+letter-spacing: 0.22rem;
 }
 
 
@@ -31,3 +30,6 @@
         <p>E-visa Immigration Services</p>
     </div>
 </div>
+
+
+

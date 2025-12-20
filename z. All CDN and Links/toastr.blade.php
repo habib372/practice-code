@@ -58,6 +58,29 @@ toastr()->error('Unable to buy a package', 'Error');
             };
         </script>
 
+        <!-- Toastr -->
+        <script type="text/javascript">
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.error('Salary already generated for this month :)', 'Error');
+        </script>
+        <!-- Toastr -->
+
     </body>
 </html>
 
