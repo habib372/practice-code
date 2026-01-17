@@ -115,3 +115,23 @@ public function send_message(Request $request)
         });
         return "Test email sent successfully!";
     }
+
+
+    Mail::send(
+            'email.contact_email',
+            [
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'phone' => $request->get('phone'),
+                'date_of_birth' => $request->get('date_of_birth'),
+                'appointment_date' => $request->get('appointment_date'),
+                'time' => $request->get('time'),
+                'location' => $request->get('location'),
+                'user_message' => $request->get('message'),
+            ],
+            function ($message) use ($request) {
+                $message->from(config('mail.from.address'), config('mail.from.name'));
+                $message->replyTo($request->get('email'), $request->get('name'));
+                $message->to(['example@gmail.com'])->subject('Appointment Request from website');
+            }
+        );
